@@ -1,11 +1,8 @@
 /*
- * Every request we make to google.com/maps goes through this gate.
- * 2026-10-30: ~540 requests in ~70 s (16 searches + 260 places, 6 at a time) sent Maps to
- * google.com/sorry ("unusual traffic") — partly because the user was driving the same Chrome at the
- * same time. So: at most 4 in flight, ≥120 ms between starts (~8 req/s peak),
- * and the first sign of a block stops everything for a cool-down instead of retrying.
- * 2026-10-31: 346 requests in 81 s were fine, but ~770 within ~5 min were blocked again, so there
- * is also a rolling budget: past 300 starts in 5 min, new requests wait (one search click ≈ 120).
+ * Every request we make to google.com/maps goes through this gate: at most 4 in flight,
+ * ≥120 ms between starts, and a rolling budget of 300 starts per 5 min (one search click ≈ 120).
+ * If Maps answers 429 or shows its "unusual traffic" page, everything stops for a cool-down
+ * instead of retrying.
  */
 import { withAccount } from "./account";
 

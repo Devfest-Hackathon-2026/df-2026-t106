@@ -144,6 +144,6 @@
       "水産市場": "ブランチ 9:00–17:00 hours matched ランチ",
       "博多酒場 よかよい。": "ランチ hours = ディナー hours 12:00–23:15, no lunch menu → meal hours must end by 17:00 on some day"
     },
-    "rateLimit": "346 req / 81 s OK; ~770 req within ~5 min (two areas back to back) → google.com/sorry. Gate: 4 in flight, 120 ms gap, max 300 starts per 5 min, 5 min cool-down on block."
+    "rateLimit": "Gate: 4 in flight, 120 ms gap, max 300 starts per 5 min, 5 min cool-down on 429 or an unusual-traffic page."
   }
 }
