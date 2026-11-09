@@ -395,7 +395,7 @@ function How() {
 
 const PROOF = [
   { tone: "blue", label: "01 · Intent", value: "24/24", note: "ひと言 → 条件の置き換えが正解（Gemini Nano と規則の併用、約 1.5 秒。Nano だけなら 21/24）" },
-  { tone: "red", label: "02 · Speed", value: <>17<span className="text-2xl"> 秒</span></>, note: "「静かなデート」を池袋で全件判断するまで（Nano の準備後。最初の結果は約 5 秒）" },
+  { tone: "red", label: "02 · Speed", value: <>12<span className="text-2xl"> 秒</span></>, note: "渋谷で聞いてから、最初の 1 件が地図に出るまで（デモ動画の実測。Nano の準備後）" },
   { tone: "yellow", label: "03 · Warnings", value: "0.80", note: "クチコミ警告分類の精度（macro AP、910 件）。分類器なしは 0.62" },
   { tone: "green", label: "04 · Burst rule", value: "5/5", note: "事前に疑わしいとした 5 店をすべて検出し、正常な 5 店では 0 件" },
 ] as const;
