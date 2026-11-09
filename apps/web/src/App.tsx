@@ -7,15 +7,15 @@ import {
 
 /*
  * Two pages (Japanese), same design as the Claude Design mockup "Joren ウェブサイト（再デザイン）":
- *  - "/"      the story for judges: hero, demo video, 権八 vs 勝味, general-AI comparison, how it works, validation.
+ *  - "/"      the story for judges: hero, demo video, 権八 vs 道玄坂 漁, general-AI comparison, how it works, validation.
  *  - "/start" the guide for testers: install, requirements, try it, FAQ.
  * Firebase Hosting rewrites every path to index.html, so the path alone picks the page.
  * The extension is not on the Chrome Web Store: the site hands out the ZIP built by `npm run zip:ext` (see vite.config.ts).
  * Requirements follow developer.chrome.com/docs/ai/get-started (checked 2026-11-07).
- * Numbers come from our own measurements (2026-11-08 in Shibuya for the demo and the comparison).
+ * Numbers come from our own measurements (2026-11-09 in Shibuya for the demo and the 権八 / 道玄坂 漁 comparison; 2026-11-08 for the general-AI comparison).
  */
 const REPO_URL = "https://github.com/Devfest-Hackathon-2026/df-2026-t106";
-const DEMO_VIDEO = "/video/joren-demo.mp4"; // 2:12, H.264 1080p, no sound: submission/joren-demo-shibuya-v1.mp4 remuxed with +faststart
+const DEMO_VIDEO = "/video/joren-demo.mp4"; // 1:45, H.264 1080p, no sound: submission/joren-demo-shibuya-v2.mp4 (already +faststart)
 const MAPS_URL = "https://www.google.com/maps/@35.6578,139.6978,17z?hl=ja"; // 渋谷駅西側: the demo's view
 const EXAMPLES = ["静かなデート", "一人で電源が使えるカフェ", "深夜に一人でごはん"]; // = the panel's examples (i18n/ja.ts)
 
@@ -56,12 +56,12 @@ function Header({ page }: { page: Page }) {
 const ASK_STEPS: Step[] = [
   { label: "理解", sub: "ランチ + 和食", state: "done" },
   { label: "検索", sub: "388 店", state: "done" },
-  { label: "判断", sub: "43 店に印", state: "done" },
+  { label: "判断", sub: "26 店に印", state: "done" },
   { label: "表示", sub: "≤ ¥1,000", state: "active" },
 ];
 const PICKS = [
-  { mark: "A", tone: "bg-yellow-soft", name: "権八", price: "¥900 · 焼き鳥丼", pill: "外国語 74%", bad: true },
-  { mark: "B", tone: "bg-green-soft", name: "季節割烹 勝味", price: "¥880 · 熟成親子丼", pill: "日本語 100%", bad: false },
+  { mark: "A", tone: "bg-yellow-soft", name: "権八", price: "¥900 · 焼き鳥丼", pill: "外国語 73%", bad: true },
+  { mark: "B", tone: "bg-green-soft", name: "道玄坂 漁", price: "¥1,000 · 十八番丼", pill: "日本語 97%", bad: false },
 ];
 
 /** The product as one card: the sentence, the four steps and two of the places it marked (the demo's Shibuya run). */
@@ -87,7 +87,7 @@ function AskPanel() {
           </div>
         ))}
       </div>
-      <p className="m-0 text-[13px] leading-relaxed text-body">388 店を判断して 43 店に印。どちらも 1,000 円以下ですが、クチコミの言語がまったく違います。</p>
+      <p className="m-0 text-[13px] leading-relaxed text-body">388 店を判断して 26 店に印。どちらも 1,000 円以下ですが、クチコミの言語がまったく違います。</p>
     </div>
   );
 }
@@ -145,9 +145,9 @@ function Hero() {
 
 const CHAPTERS = [
   { t: "0:00", s: 0, tone: "bg-blue-soft", title: "ひと言で聞く", sub: "Gemini Nano が文を条件に置き換える" },
-  { t: "0:29", s: 29, tone: "bg-red-soft", title: "印と理由を見る", sub: "388 店を判断し、43 店に番号つきの印" },
-  { t: "0:43", s: 43, tone: "bg-yellow-soft", title: "お店の今", sub: "地元客の割合、評価の推移、クチコミの急増" },
-  { t: "2:04", s: 124, tone: "bg-green-soft", title: "このお店で頼むなら", sub: "クチコミで話題の料理を価格つきで" },
+  { t: "0:28", s: 28, tone: "bg-red-soft", title: "印と理由を見る", sub: "388 店を判断して 26 店に印。黄色は Gemini Nano がクチコミを読んだ判断" },
+  { t: "0:47", s: 47, tone: "bg-yellow-soft", title: "お店の今", sub: "クチコミの急増、警告サイン、外国語の割合" },
+  { t: "1:12", s: 72, tone: "bg-green-soft", title: "地元の人が通うお店", sub: "道玄坂 漁：評価は安定、クチコミの 97% が日本語" },
 ];
 
 /** The demo video plays in place: the yellow button starts it, a chapter card jumps to its time. */
@@ -174,10 +174,10 @@ function Demo() {
           <div className="relative aspect-video overflow-hidden rounded-[36px] border-2 border-ink bg-ink">
             <video ref={video} src={DEMO_VIDEO} poster="/img/demo-poster.webp" preload="none" playsInline muted controls={started}
               onPlay={() => setStarted(true)} className="block h-full w-full object-contain"
-              aria-label="デモ動画：渋谷で「1000円以下の和食ランチ」と聞く（2 分 12 秒、音声なし、字幕つき）" />
+              aria-label="デモ動画：渋谷で「1000円以下の和食ランチ」と聞く（1 分 45 秒、音声なし、字幕つき）" />
             {!started && (
               <>
-                <div className="pointer-events-none absolute top-5 left-5"><Chip variant="ink">Video 2:12</Chip></div>
+                <div className="pointer-events-none absolute top-5 left-5"><Chip variant="ink">Video 1:45</Chip></div>
                 <button type="button" onClick={() => playAt(0)} aria-label="デモ動画を再生"
                   className="absolute top-1/2 left-1/2 grid h-[104px] w-[104px] -translate-x-1/2 -translate-y-1/2 cursor-pointer place-items-center rounded-full border-2 border-ink bg-yellow-soft transition-colors hover:bg-yellow-half">
                   <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden><path d="M8 5l11 7-11 7z" fill="#1e1e1e" stroke="#1e1e1e" strokeWidth={2.5} strokeLinejoin="round" /></svg>
@@ -209,14 +209,14 @@ const STORES = [
   {
     name: "権八", bad: true, status: "要注意", price: "¥900 · 焼き鳥丼", img: "/img/gonpachi-store-now.webp",
     alt: "権八の「お店の今」：要注意、2026 年 9〜10 月にクチコミが急増",
-    share: 74, tone: "red" as const, shareNote: "外国語のクチコミ（英語 61%、4 言語）",
-    stats: [["4.1×", "30 日で 61 件。ふだんのペースの 4.1 倍に急増"], ["14", "接客への不満。最近のクチコミに「Tourist trap. Avoid.」"]],
+    share: 73, tone: "red" as const, shareNote: "外国語のクチコミ（246 件中。英語 61%、4 言語）",
+    stats: [["4.1×", "30 日で 61 件。ふだんのペースの 4.1 倍に急増"], ["15", "接客への不満（直近 8 件）。想定外の料金には「Tourist trap. Avoid.」"]],
   },
   {
-    name: "季節割烹 勝味", bad: false, status: "良好", price: "¥880 · 熟成親子丼", img: "/img/katsumi-store-now.webp",
-    alt: "季節割烹 勝味の「お店の今」：良好、評価は安定",
-    share: 0, tone: "green" as const, shareNote: "外国語のクチコミ（17 件すべて日本語）",
-    stats: [["0", "警告サイン。急増もなく、評価は安定"], ["58", "件のクチコミが「親子丼」に言及。頼むならこれ"]],
+    name: "道玄坂 漁", bad: false, status: "良好", price: "¥1,000 · 十八番丼", img: "/img/ryo-store-now.webp",
+    alt: "道玄坂 漁の「お店の今」：良好、評価は安定",
+    share: 3, tone: "green" as const, shareNote: "外国語のクチコミ（38 件中 1 件。37 件が日本語）",
+    stats: [["4.35", "直近 180 日の評価。以前は 4.32 で安定し、急増もなし"], ["0", "最近の警告サイン（以前に 1 件だけ）"]],
   },
 ];
 
