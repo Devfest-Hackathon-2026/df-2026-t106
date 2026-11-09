@@ -257,7 +257,7 @@ function Result() {
             </article>
           ))}
         </div>
-        <p className="mt-5 mb-0 font-mono text-xs leading-relaxed text-body">2026 年 11 月 8 日、渋谷駅西側での実測。画面は Joren の「お店の今」。警告サインの分類は拡張機能（クラウド）。</p>
+        <p className="mt-5 mb-0 font-mono text-xs leading-relaxed text-body">2026 年 11 月 9 日、渋谷駅西側での実測。画面は Joren の「お店の今」。警告サインの分類は拡張機能（クラウド）。</p>
       </div>
     </section>
   );
@@ -397,7 +397,7 @@ const PROOF = [
   { tone: "blue", label: "01 · Intent", value: "24/24", note: "ひと言 → 条件の置き換えが正解（Gemini Nano と規則の併用、約 1.5 秒。Nano だけなら 21/24）" },
   { tone: "red", label: "02 · Speed", value: <>17<span className="text-2xl"> 秒</span></>, note: "「静かなデート」を池袋で全件判断するまで（Nano の準備後。最初の結果は約 5 秒）" },
   { tone: "yellow", label: "03 · Warnings", value: "0.80", note: "クチコミ警告分類の精度（macro AP、910 件）。分類器なしは 0.62" },
-  { tone: "green", label: "04 · Burst rule", value: "7/7", note: "疑わしい 7 店をすべて検出し、正常な 5 店では 0 件" },
+  { tone: "green", label: "04 · Burst rule", value: "5/5", note: "事前に疑わしいとした 5 店をすべて検出し、正常な 5 店では 0 件" },
 ] as const;
 
 function Proof() {
