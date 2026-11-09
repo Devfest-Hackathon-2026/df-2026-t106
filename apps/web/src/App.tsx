@@ -190,8 +190,8 @@ function Demo() {
               <li key={c.t} className="flex flex-1">
                 <button type="button" onClick={() => playAt(c.s)} aria-label={`${c.t} から再生：${c.title}`}
                   className={`flex flex-1 cursor-pointer items-center gap-4 rounded-[22px] border-2 border-ink px-5 py-[18px] text-left transition-colors hover:border-dashed ${c.tone}`}>
-                  <span className="rounded-full border-[1.5px] border-ink bg-white px-[11px] py-[5px] font-mono text-xs font-bold">▶ {c.t}</span>
-                  <span className="flex flex-col gap-1">
+                  <span className="shrink-0 whitespace-nowrap rounded-full border-[1.5px] border-ink bg-white px-[11px] py-[5px] font-mono text-xs font-bold">▶ {c.t}</span>
+                  <span className="flex min-w-0 flex-col gap-1">
                     <b className="text-xl">{c.title}</b>
                     <span className="text-sm text-body">{c.sub}</span>
                   </span>
@@ -616,7 +616,7 @@ function Try() {
               { title: "「Gemini Nano を準備中… n/15」が消えるまで待つ", sub: "初回だけ約 1 分。モデルのダウンロードが必要なときは、さらに数分かかります。" },
               {
                 title: "例を押すか、ひと言入力して送信",
-                sub: "デモと同じ「1000円以下の和食ランチ」も使えます。予算はパネルの「予算でランチ」で ≤¥1,000 を押して絞り込みます。",
+                sub: "デモと同じ「1000円以下の和食ランチ」も使えます。文の中の金額から、予算（≤¥1,000）も自動で選ばれます。",
                 extra: EXAMPLES.map((e) => <Chip key={e}>{e}</Chip>),
               },
               { title: "印にカーソルを合わせると、理由が見られます", sub: "候補の点 → 判断中の黄色い輪 → 当てはまるお店に番号つきの輪。お店を開くと、お店のページにも答えが出ます。" },

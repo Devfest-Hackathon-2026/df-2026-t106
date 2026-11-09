@@ -41,6 +41,7 @@ export const zh: Dict = {
     intentNano: (words) => `Gemini Nano 對應到 ${words}`,
     intentRule: (words) => `用關鍵字對應到 ${words}`,
     intentNone: "沒有對應的條件，換個說法試試，例如「安靜的約會」。",
+    budgetFromText: (yen) => `依句中的金額，預算設為 ${yen} 以下`,
     noteNanoOff: "Nano 不可用",
     noteNanoTimeout: "Nano 逾時",
     noteNanoError: (msg) => `Nano：${msg}`,

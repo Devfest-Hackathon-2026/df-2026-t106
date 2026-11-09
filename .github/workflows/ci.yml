@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  extension-and-site:
+    name: Extension tests, type check, builds
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run test:ext
+      - run: npm run compile -w apps/extension
+      # extension ZIP + website (the site serves the ZIP at /download/joren.zip)
+      - run: npm run build:site
+
+  classify:
+    name: Cloud Run service tests (no network)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: services/classify/requirements*.txt
+      - run: pip install -r services/classify/requirements-dev.txt
+      - run: python -m unittest discover -s services/classify -v

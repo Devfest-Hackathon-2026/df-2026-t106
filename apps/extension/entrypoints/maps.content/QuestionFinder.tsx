@@ -16,6 +16,7 @@ import { priceIndex } from "@/lib/lunchPrice";
 import { fidFromHref, KEEP_RESULTS_KEY, openPlace } from "@/lib/searchList";
 import { parseView, type CenterMode, type View } from "@/lib/mapView";
 import { assignRanks, bubblesFor, isMatch, type Bubble } from "@/lib/askBubbles";
+import { budgetChoices, budgetFromText } from "@/lib/budget";
 import { htmlLang } from "@/lib/i18n";
 import { useT, type T } from "@/lib/i18n/useT";
 import { ListBadges, MapOverlay, type MapLabel } from "./Highlights";
@@ -316,8 +317,8 @@ function useAsk() {
   };
 }
 
-const BUDGETS = ["all", "800", "1000", "1500"] as const;
-type Budget = (typeof BUDGETS)[number];
+/** "all" or a yen amount: a preset, or the one the sentence named (lib/budget). */
+type Budget = string;
 /** Within budget: a match whose cheapest priced lunch meal fits. Places without a price never match. */
 const fitsBudget = (r: AskRow, b: Budget) => hasLunch(r) && (b === "all" || (!!r.price && r.price.yen <= Number(b)));
 const posOf = (p: FoundPlace) => (p.raw ? coordsOf(p.raw) : null);
@@ -327,13 +328,14 @@ function noteText({ t }: T, n: IntentNote) {
   if (n.code === "nano-error") return t.ask.noteNanoError(n.message);
   return n.code === "nano-off" ? t.ask.noteNanoOff : t.ask.noteNanoTimeout;
 }
-function intentNote(tt: T, r: IntentResult | null) {
+function intentNote(tt: T, r: IntentResult | null, asked: number | null) {
   if (!r) return "";
   const { t, q } = tt;
   const words = r.ids.map((id) => t.ask.quote(q(id).chip)).join(t.common.join);
   const note = r.note ? noteText(tt, r.note) : "";
   if (!r.ids.length) return `${note ? note + t.common.period : ""}${t.ask.intentNone}`;
-  return r.source === "nano" ? t.ask.intentNano(words) : t.ask.intentRule(words) + (note ? t.common.paren(note) : "");
+  const picked = r.source === "nano" ? t.ask.intentNano(words) : t.ask.intentRule(words) + (note ? t.common.paren(note) : "");
+  return asked ? `${picked}${t.common.period}${t.ask.budgetFromText(yen(asked))}` : picked;
 }
 
 export function QuestionFinder({ open, layers, onClose, onCount }: { open: boolean; layers: boolean; onClose: () => void; onCount?: (n: number) => void }) {
@@ -347,6 +349,8 @@ export function QuestionFinder({ open, layers, onClose, onCount }: { open: boole
   const intentNano = useRef<IntentNano | null>(null);
   const [filter, setFilter] = useState<"match" | "all">("match");
   const [budget, setBudget] = useState<Budget>("all");
+  // the budget the last sentence named (「1000円以下の…」); it joins the toggle's choices when not a preset
+  const [askedBudget, setAskedBudget] = useState<number | null>(null);
   const [hot, setHot] = useState<string | null>(null);
   // the place open in Maps keeps glowing on the map (after opening it from the list or a ring)
   const [placeFid, setPlaceFid] = useState(() => fidFromHref(location.href));
@@ -358,11 +362,17 @@ export function QuestionFinder({ open, layers, onClose, onCount }: { open: boole
   const [dim, setDim] = useState<"on" | "off">("off");
   const [centerMode, setCenterMode] = useState<CenterMode>("canvas");
   useEffect(() => { s.restore(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  // load Gemini Nano on every page load — the model (one throwaway sentence) and every question's judge
-  // session, one at a time in the page-wide queue — so the first question pays no cold start (~1 min)
+  // load Gemini Nano when the panel first opens — the model (one throwaway sentence) and every question's
+  // judge session, one at a time in the page-wide queue — so the first question pays no cold start (~1 min).
+  // Not on page load: a Maps visit that never opens the panel costs no model memory, CPU or battery.
+  // Closing the panel does not stop it; leaving the page does.
   const [preload, setPreload] = useState<{ done: number; total: number } | null>(null);
+  const preloadStarted = useRef(false);
+  const mounted = useRef(true);
+  useEffect(() => { mounted.current = true; return () => { mounted.current = false; }; }, []);
   useEffect(() => {
-    let stop = false;
+    if (!open || preloadStarted.current) return;
+    preloadStarted.current = true;
     (async () => {
       if ((await IntentNano.available()) !== "available") return;
       const specs = (Object.values(QUESTIONS) as QuestionSpec[]).filter(needsNano) as NanoSpec[];
@@ -370,26 +380,20 @@ export function QuestionFinder({ open, layers, onClose, onCount }: { open: boole
       setPreload({ done: 0, total });
       intentNano.current ??= sharedIntentNano();
       await intentNano.current.warm(true);
-      if (stop) return;
+      if (!mounted.current) return;
       setPreload({ done: 1, total });
       for (const [i, spec] of specs.entries()) {
-        if (stop) return;
+        if (!mounted.current) return;
         await lunchNanoFor(spec).warm();
         setPreload({ done: i + 2, total });
       }
     })();
-    return () => { stop = true; };
-  }, []);
+  }, [open]);
   useEffect(() => {
     const on = (e: Event) => { const d = (e as CustomEvent<FoundPlace>).detail; if (d?.fid) s.addOne(d); };
     window.addEventListener("gmap:place-checked", on);
     return () => window.removeEventListener("gmap:place-checked", on);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  // the intent model loads while the user types (first prompt after page load is a cold start)
-  useEffect(() => {
-    if (!open || intentNano.current) return;
-    IntentNano.available().then((a) => { if (a === "available" && !intentNano.current) { intentNano.current = sharedIntentNano(); intentNano.current.warm(); } });
-  }, [open]);
   const lunchOn = s.active.includes("lunch");
   useEffect(() => { if (!lunchOn) setBudget("all"); }, [lunchOn]);
   const matches = s.rows.filter(hasLunch);
@@ -401,7 +405,9 @@ export function QuestionFinder({ open, layers, onClose, onCount }: { open: boole
     setThinking(true); setIntent(null);
     try {
       const r = await resolveIntent(sentence, intentNano.current, new AbortController().signal);
-      setIntent(r);
+      // 「1000円以下の和食ランチ」 sets the lunch budget too; a sentence without an amount clears it
+      const asked = r.ids.includes("lunch") ? budgetFromText(sentence) : null;
+      setIntent(r); setAskedBudget(asked); setBudget(asked ? String(asked) : "all");
       if (r.ids.length) s.ask(r.ids);
     } finally { setThinking(false); }
   }
@@ -497,7 +503,7 @@ export function QuestionFinder({ open, layers, onClose, onCount }: { open: boole
       <section className="card tone-yellow min-h-0 gap-3 p-4">
         <SecHead index={num()} kicker="Ask" title={t.ask.heading} />
         <AskBar value={text} onChange={setText} onSubmit={submit} busy={thinking} placeholder={t.ask.placeholder} label={t.ask.submit} />
-        {intent && <p key={intentNote(tt, intent)} className="fade-up m-0 text-[13px] font-bold">{intentNote(tt, intent)}</p>}
+        {intent && <p key={intentNote(tt, intent, askedBudget)} className="fade-up m-0 text-[13px] font-bold">{intentNote(tt, intent, askedBudget)}</p>}
         {/* the entry is one sentence through Gemini Nano; the full chip rows are a dev tool */}
         {!dev && s.active.length > 0 && (
           <div className="flex flex-wrap items-center gap-1.5">
@@ -583,7 +589,8 @@ export function QuestionFinder({ open, layers, onClose, onCount }: { open: boole
         <section className="card tone-green min-h-0 gap-2 p-4">
           <SecHead index={num()} kicker={t.ask.kickerBudget} title={t.ask.budgetTitle} />
           <div className="self-start">
-            <SegToggle value={budget} onChange={setBudget} options={BUDGETS.map((b) => ({ value: b, label: b === "all" ? t.ask.budgetAny : `≤${yen(Number(b))}` }))} />
+            <SegToggle value={budget} onChange={setBudget}
+              options={[{ value: "all", label: t.ask.budgetAny }, ...budgetChoices(askedBudget).map((b) => ({ value: String(b), label: `≤${yen(b)}` }))]} />
           </div>
           <div className="grid grid-cols-3 gap-2">
             <Stat label={t.ask.budgetMedian} value={index ? yen(index.median) : "—"} />

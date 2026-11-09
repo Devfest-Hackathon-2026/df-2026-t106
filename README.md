@@ -48,10 +48,13 @@ npm run build:ext      # apps/extension/.output/chrome-mv3 を chrome://extensio
 npm run dev:ext        # 開発用
 npm run test:ext       # 拡張機能のテスト
 npm run compile -w apps/extension
+pip install -r services/classify/requirements-dev.txt   # バージョン固定（本番のイメージと同じ）
 python -m unittest discover -s services/classify   # サービスのテスト（ネットワーク不要）
 npm run build:site     # 拡張機能 ZIP + Web サイト
 npm run deploy         # Firebase Hosting + Firestore ルール
 ```
+
+テスト・型チェック・ビルドは、push のたびに GitHub Actions でも実行します（`.github/workflows/ci.yml`）。
 
 Gemini Nano の動作条件：デスクトップ版 Chrome 138 以降。VRAM 4 GB 超、または RAM 16 GB 以上と CPU 4 コア以上、空き容量 22 GB。Nano がなくても、店舗情報だけで判定できる条件と「お店の今」は動きます。
 

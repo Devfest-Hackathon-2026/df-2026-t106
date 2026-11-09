@@ -41,6 +41,7 @@ export const en: Dict = {
     intentNano: (words) => `Gemini Nano matched ${words}`,
     intentRule: (words) => `Keywords matched ${words}`,
     intentNone: "No matching condition. Try rephrasing, e.g. \"quiet date spot\".",
+    budgetFromText: (yen) => `Budget set to ${yen} or less, from your sentence`,
     noteNanoOff: "Nano unavailable",
     noteNanoTimeout: "Nano timed out",
     noteNanoError: (msg) => `Nano: ${msg}`,

@@ -43,6 +43,7 @@ export const ja = {
     intentNano: (words: string) => `Gemini Nano が ${words} に対応づけました`,
     intentRule: (words: string) => `キーワードで ${words} に対応づけました`,
     intentNone: "対応する条件がありません。「静かなデート」のように言い換えてみてください。",
+    budgetFromText: (yen: string) => `文中の金額から、予算を ${yen} 以下にしました`,
     noteNanoOff: "Nano 利用不可",
     noteNanoTimeout: "Nano タイムアウト",
     noteNanoError: (msg: string) => `Nano：${msg}`,

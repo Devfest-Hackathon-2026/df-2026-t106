@@ -1,6 +1,7 @@
-fastapi
-uvicorn[standard]
-numpy
-firebase-admin
-google-auth
-requests
+# Pinned to the versions in the live Cloud Run image (revision classify-00002, built 2026-11-08).
+fastapi==0.162.2
+uvicorn[standard]==0.54.0
+numpy==2.5.4
+firebase-admin==7.7.0
+google-auth==2.62.1
+requests==2.34.2

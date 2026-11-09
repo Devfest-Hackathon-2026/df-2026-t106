@@ -55,8 +55,11 @@ service runs on at most 3 instances.
 ## Tests (no network: in-memory store, fake Vertex)
 
 ```
-python -m unittest discover -s services/classify -v     # from the repo root; needs fastapi, numpy, httpx
+pip install -r services/classify/requirements-dev.txt  # pinned to the live image + httpx for TestClient
+python -m unittest discover -s services/classify -v     # from the repo root
 ```
+
+The same tests run in CI (`.github/workflows/ci.yml`) on every push.
 
 ## Local run
 
