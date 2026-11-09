@@ -1,4 +1,4 @@
-# 秘密情報（コミットしない）
+# Secrets — never commit
 .env
 .env.*
 !.env.example
@@ -13,22 +13,39 @@ credentials*.json
 google-services.json
 GoogleService-Info.plist
 
-# 依存関係とビルドの成果物
+# Dependencies and build output
 node_modules/
 dist/
 build/
 out/
-.next/
-.wrangler/
+.output/
+.wxt/
+.firebase/
+*.tsbuildinfo
+
+# Python
 __pycache__/
 *.pyc
 .venv/
 venv/
 
-# OS とエディタ
+# OS and editors
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/*
 !.vscode/extensions.json
 *.log
+.claude/settings.local.json
+
+# reference copy of the original site (third-party content, local only)
+df-hack26-mirror/
+
+# submission drafts (product doc, demo script) — not part of the code snapshot
+submission/
+
+# Verbatim Google Maps content (review text, owner replies) stays on the developer's machine, never in the repo:
+# the labelled review corpora used to train the warning heads, and the originals of the sanitized fixtures
+# (apps/extension/scripts/sanitize-fixtures.ts).
+apps/extension/fixtures/direction2-corpus*.json
+apps/extension/fixtures/private/

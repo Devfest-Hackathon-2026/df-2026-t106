@@ -1,0 +1,149 @@
+{
+  "$comment": "Lunch-menu detection research, 2026-10-30. 113 Ikebukuro places from 6 Maps searches (ランチ/居酒屋/カフェ/ラーメン/焼肉/イタリアン) + the test store. Goal: find a stable way to tell 'has a DEDICATED lunch menu' without the Places API.",
+  "method": {
+    "transport": "No UI clicks. From any google.com/maps page: fetch('/maps/search/<q>?hl=ja') → HTML contains <link rel=preload href='/search?tbm=map&...pb=...'> → fetch it → JSON (strip )]}' prefix). Place list at J[64][i][1]. Details: fetch('/maps/place/<name>/data=!4m2!3m1!1s<fid>?hl=ja') → preload href '/maps/preview/place?...' → fetch → first array with length>100 and string at [11]. ~1.8 s/place sequential, 2 requests.",
+    "hl": "Use hl=ja: attribute labels and review topics come back in Japanese (serves_lunch reads 'ランチメニューあり').",
+    "placeArrayIndexes": {
+      "4[8]": "review count",
+      "7[0]": "website",
+      "10": "feature id (fid) 0x...:0x...",
+      "11": "name",
+      "13": "categories",
+      "100": "attributes; entries [ '/geo/type/establishment_poi/serves_lunch', label, [1,[[1|0,...]]] ]  1=yes 0=no; group 100.1 positive, 100.5 negative/unknown",
+      "118": "secondary hours ('more hours'): [[typeName,null,null,[[day,..,..,[[\"11:30–14:30\",[[11,30],[14,30]]]]]]]] — typeName 'ランチ' = owner-set lunch hours",
+      "122": "owner posts (text + hashtags)",
+      "125": "structured menu (Business Profile): sections [[sectionName],[items]] items [[name,desc],[\"¥price\"],...]",
+      "153": "review topics [[mid,label,null,[..,..,..,..,count]]] (e.g. 定食:38 昼:28)",
+      "154": "owner description",
+      "171": "photo categories (メニュー etc.)",
+      "175": "featured reviews + owner replies + translations (noisy)",
+      "203": "regular hours, same day structure as 118"
+    },
+    "searchListOnly": "Search-list entries (J[64]) are light: name/fid/attrs/hours/categories but NO 122/125/153/154/175. Details need the per-place fetch."
+  },
+  "regexPitfalls": "ランチ matches アランチーニ, フランチャコルタ, ブランチ → use (?<![ァ-ヺー])ランチ(?!ャ). Owner replies + machine translations in 175 repeat the same text in zh/en.",
+  "results": {
+    "n": 113,
+    "hasStructuredMenu": 105,
+    "signalCounts": {
+      "M_menuLunchSectionOrItem": 22,
+      "H_lunchSecondaryHours": 6,
+      "A_tier_M_or_H": 24,
+      "P_ownerPostOrDescMentionsLunch": 37,
+      "R_featuredReviewMentionsLunch": 62,
+      "S_splitHoursLunchBlock": 22,
+      "attr_serves_lunch_yes": 78,
+      "reviewTopic_ランチ": 1
+    },
+    "tierA_precision": "24/24 hand-checked = real lunch menus (e.g. 'ランチ Pranzo', 'LUNCH PLATE', 'ランチセット【平日】', 'SPECIAL LUNCH').",
+    "tierB_ownerTextOnly_handLabels": {
+      "$comment": "22 places where only owner post/description mentions lunch (not tier A). y = dedicated lunch menu evident, n = not, u = unclear.",
+      "y": [
+        "くろちゃん (11:30〜ランチ営業 平日限定)",
+        "Espresso D Works (ハンバーグのランチ)",
+        "焼肉こじま離れ (お昼は黒毛和牛ハンバーグ)",
+        "KINTAN (こちらのランチがおすすめ)",
+        "ココチーノ (ランチは本格パスタをメインに)",
+        "鳥良商店 南池袋店 (期間限定ランチ / 定食)",
+        "ha-ha (reviews: ランチにはグリーンサラダ…)"
+      ],
+      "n": [
+        "小出洋食堂 (SEO hashtag, opens 17:30)",
+        "酒場つむぎ堂 (昼飲み)",
+        "酔っ手羽 (从午餐到深夜 = drinking)",
+        "富士喜商店 (lunch drinks)",
+        "三ツ矢堂製麺",
+        "中華そば 麒麟",
+        "つじ田 (ramen: same menu all day)"
+      ],
+      "u": [
+        "金のイタリアン",
+        "竈門ご飯一穀 (定食屋 all day)",
+        "カフェ・ド・巴里",
+        "ラシーヌ ファーム",
+        "Hulu-lu",
+        "金牛苑",
+        "焼肉 Moo",
+        "イルキャンティ",
+        "gra pasta"
+      ]
+    },
+    "splitHoursWithoutTierA_webCheck": {
+      "ギオットーネ (gorp.jp)": "yes — 平日ﾗﾝﾁ1,200円, separate Lunch page",
+      "金牛苑 (hotpepper)": "yes — /lunch/ page, 11:30～15:00",
+      "焼肉うし (tabelog)": "yes — 'ランチ(12)' menu tab",
+      "Hulu-lu (own site)": "no dedicated lunch menu (ramen, same menu)"
+    },
+    "nano": "Gemini Nano yes/no/unsure + quote on evidence snippets: 8/8 sensible, but 5–11 s per place and the queue stalled after 8 in a background tab → only for the ambiguous tier, never the bulk."
+  },
+  "conclusion": "Tier A (menu section/item or 'ランチ' secondary hours) is free, deterministic and precise but covers ~1/2 of true positives. Split hours (non-ramen) + linked hotpepper/tabelog/gorp page with a lunch tab recovers most of the rest. Owner text needs LLM judgment. serves_lunch attribute is useless for 'dedicated menu' (78/113).",
+  "tierB_liveCheck_2026-10-30": {
+    "$comment": "Real extension pipeline (lunch-harness) on live Maps; Nano ~3.4–4 s/store when the window is not minimized.",
+    "池袋 ランチ (12 places, prompt v1)": {
+      "menu": 5,
+      "likely": 3,
+      "unsure": 2,
+      "none": 1,
+      "closed": 1,
+      "nanoYes": {
+        "キッチンABC 西池袋店": "「日替わりランチ900円でこのボリューム！」 correct",
+        "竈門ご飯一穀": "「和食ランチ…定食屋」 acceptable",
+        "金のイタリアン": "「ランチからお酒を囲んだお集まりまで」 FALSE POSITIVE (marketing)"
+      },
+      "quoteGateCaught": [
+        "キッチンABC 東口: spliced two review sentences",
+        "神田たまごけん: rewrote owner reply ending"
+      ]
+    },
+    "池袋 居酒屋 (12 places, prompt v2 + vague gate)": {
+      "menu": 1,
+      "likely": 0,
+      "unsure": 5,
+      "none": 4,
+      "closed": 2,
+      "nanoSaidYesTo": [
+        "富士喜商店 'Perfect for lunch drinks'",
+        "こもれび 'ランチ営業もしております'",
+        "つむぎ堂 '土日祝は昼飲みも'",
+        "酔っ手羽 ×2 (spliced zh translation)"
+      ],
+      "allDowngraded": "5/5 → unsure by gates (vague ×3, quote-not-in-input ×2): zero false positives"
+    },
+    "lesson": "Nano says yes too easily even with few-shots; precision comes from the two deterministic gates (quote in input + concrete lunch item/price). Nano is effectively a quote extractor.",
+    "minimizedWindow": "Minimized Chrome window: rAF ~2 fps, CDP screenshots time out, Maps does not load more results. Not caused by the extension."
+  },
+  "categoryRounds_2026-10-31": {
+    "$comment": "z17, 20 results/query; counts are places NEW to the run (earlier queries first) and tier-A lunch among them (rules only, no Nano). B = owner text mentions lunch.",
+    "新宿三丁目 @35.6905,139.7045": {
+      "レストラン": "20/A8/B3",
+      "居酒屋": "19/A2/B1",
+      "カフェ": "20/A6/B5",
+      "定食": "18/A4/B4",
+      "中華料理": "18/A4/B5",
+      "焼肉": "20/A6/B6",
+      "ビストロ": "18/A6/B1",
+      "喫茶店": "13/A3/B1",
+      "カレー": "18/A5/B2"
+    },
+    "恵比寿 @35.6467,139.7101": {
+      "レストラン": "20/A9/B0",
+      "居酒屋": "19/A3/B3",
+      "カフェ": "20/A3/B5",
+      "定食": "18/A8/B5",
+      "中華料理": "18/A5/B2",
+      "焼肉": "19/A3/B3",
+      "ビストロ": "19/A6/B1",
+      "喫茶店": "12/A2/B0",
+      "カレー": "20/A7/B3",
+      "イタリアン": "17/A7/B4",
+      "和食": "13/A3/B0",
+      "ラーメン": "18/A0/B1"
+    },
+    "decision": "rounds = [レストラン,居酒屋,カフェ] [定食,中華料理,焼肉] [イタリアン,カレー,ビストロ] [喫茶店,和食]; ラーメン dropped",
+    "falsePositivesFixed": {
+      "水産市場": "ブランチ 9:00–17:00 hours matched ランチ",
+      "博多酒場 よかよい。": "ランチ hours = ディナー hours 12:00–23:15, no lunch menu → meal hours must end by 17:00 on some day"
+    },
+    "rateLimit": "346 req / 81 s OK; ~770 req within ~5 min (two areas back to back) → google.com/sorry. Gate: 4 in flight, 120 ms gap, max 300 starts per 5 min, 5 min cool-down on block."
+  }
+}

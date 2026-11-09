@@ -1,0 +1,2689 @@
+{
+ "$comment": "Label check 2026-11-06: 205 Japanese items drawn from direction2-corpus-v2.json (15 per warning category, 20 price_hike split by stance, 40 keyword-picked none, 40 random none), relabelled blind by a second subagent that saw only the text. corpus_index = position in the corpus items array. first = corpus label, second = blind relabel.",
+ "summary": {
+  "n": 205,
+  "exact_agreement": 0.824,
+  "kappa": 0.778,
+  "first_label_is_second_labellers_primary_or_secondary": 0.902,
+  "exact_by_first_category": {
+   "price_hike": "17/20",
+   "portion": "8/15",
+   "quality_decline": "14/15",
+   "staff_or_owner_change": "4/15",
+   "service": "12/15",
+   "hygiene": "13/15",
+   "surprise_charge": "12/15",
+   "improvement": "13/15",
+   "none": "76/80"
+  },
+  "price_hike_stance_agreement": "16/17",
+  "is_complaint_agreement": "199/205"
+ },
+ "items": [
+  {
+   "corpus_index": 739,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 336,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 149,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 495,
+   "first": {
+    "category": "portion",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": "portion",
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 875,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 525,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 784,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 628,
+   "first": {
+    "category": "portion",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "portion",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 538,
+   "first": {
+    "category": "none",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 277,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 265,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 270,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": "staff_or_owner_change",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 334,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 557,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 444,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": "surprise_charge",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 101,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 922,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 94,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 877,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 212,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": "service",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 213,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 490,
+   "first": {
+    "category": "portion",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "price_hike",
+    "second": "portion",
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 451,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 469,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "surprise_charge",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 301,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 583,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 206,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 563,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 573,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 409,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 546,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 507,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 439,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "surprise_charge",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 390,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 515,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 343,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": "price_hike",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 766,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 760,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 419,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "surprise_charge",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 38,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "surprise_charge",
+    "second": "quality_decline",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 511,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 108,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 657,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 912,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 55,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 104,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 767,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 460,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "surprise_charge",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 626,
+   "first": {
+    "category": "portion",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": "service",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 540,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 484,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 576,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 629,
+   "first": {
+    "category": "portion",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "portion",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 565,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 356,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 351,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 797,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 789,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 801,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 923,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 559,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 403,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 509,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 625,
+   "first": {
+    "category": "portion",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": "price_hike",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 577,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 746,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 462,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "surprise_charge",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 398,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 966,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 6,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 39,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 309,
+   "first": {
+    "category": "none",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 913,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 242,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 46,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "price_hike",
+    "second": "quality_decline",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 53,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 519,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 316,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 389,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 958,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 693,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 258,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "staff_or_owner_change",
+    "second": "service",
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 2,
+   "first": {
+    "category": "portion",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "portion",
+    "second": "service",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 467,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "surprise_charge",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 80,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": "price_hike",
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 642,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 35,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "surprise_charge",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 752,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 480,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 339,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "price_hike",
+    "second": "service",
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 450,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 790,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 235,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 365,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 527,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 665,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 473,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "surprise_charge",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 407,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 586,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 595,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 268,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 454,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 504,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 195,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 33,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 471,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "surprise_charge",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 866,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 319,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "staff_or_owner_change",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 962,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 432,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 405,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 396,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 491,
+   "first": {
+    "category": "portion",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "portion",
+    "second": "hygiene",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 799,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 505,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 745,
+   "first": {
+    "category": "none",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 214,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "price_hike",
+    "second": "improvement",
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 637,
+   "first": {
+    "category": "none",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 679,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "surprise_charge",
+    "second": "service",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 141,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 453,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 526,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 257,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "staff_or_owner_change",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 367,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 423,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "price_hike",
+    "second": "surprise_charge",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 121,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 264,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "staff_or_owner_change",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 585,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "hygiene",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 435,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "surprise_charge",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 876,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 918,
+   "first": {
+    "category": "none",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 120,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": "staff_or_owner_change",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 517,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": "staff_or_owner_change",
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 602,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 544,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 523,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 549,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 847,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 271,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 676,
+   "first": {
+    "category": "none",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 508,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 634,
+   "first": {
+    "category": "none",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 803,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 273,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": "staff_or_owner_change",
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 783,
+   "first": {
+    "category": "portion",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "portion",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 856,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 514,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 267,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 136,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 501,
+   "first": {
+    "category": "none",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 59,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 5,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 465,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": "surprise_charge",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 690,
+   "first": {
+    "category": "none",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 498,
+   "first": {
+    "category": "portion",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": "staff_or_owner_change",
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 105,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 274,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": "staff_or_owner_change",
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 834,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 332,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 225,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 181,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "none",
+    "second": "service",
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 286,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 487,
+   "first": {
+    "category": "portion",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "price_hike",
+    "second": "portion",
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 705,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 283,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 327,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 537,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 695,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 735,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 448,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 135,
+   "first": {
+    "category": "portion",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "portion",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 314,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 325,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": "service",
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 256,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "staff_or_owner_change",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 449,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 782,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 809,
+   "first": {
+    "category": "none",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 107,
+   "first": {
+    "category": "portion",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "portion",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 192,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 243,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 581,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "hygiene",
+    "second": null,
+    "is_complaint": false,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 99,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 15,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 906,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 911,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 361,
+   "first": {
+    "category": "price_hike",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 545,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 627,
+   "first": {
+    "category": "portion",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "price_hike",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 948,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 496,
+   "first": {
+    "category": "portion",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "portion",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 93,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 574,
+   "first": {
+    "category": "hygiene",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "hygiene",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 3,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 965,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 529,
+   "first": {
+    "category": "none",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 16,
+   "first": {
+    "category": "service",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "service",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 395,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 510,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 406,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 802,
+   "first": {
+    "category": "none",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "none",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 896,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 131,
+   "first": {
+    "category": "improvement",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": null,
+    "is_complaint": false,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 459,
+   "first": {
+    "category": "surprise_charge",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "surprise_charge",
+    "second": null,
+    "is_complaint": true,
+    "sure": "high"
+   }
+  },
+  {
+   "corpus_index": 275,
+   "first": {
+    "category": "quality_decline",
+    "is_complaint": true
+   },
+   "second": {
+    "category": "quality_decline",
+    "second": null,
+    "is_complaint": true,
+    "sure": "low"
+   }
+  },
+  {
+   "corpus_index": 261,
+   "first": {
+    "category": "staff_or_owner_change",
+    "is_complaint": false
+   },
+   "second": {
+    "category": "improvement",
+    "second": "staff_or_owner_change",
+    "is_complaint": false,
+    "sure": "high"
+   }
+  }
+ ]
+}

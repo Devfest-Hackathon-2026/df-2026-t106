@@ -1,0 +1,287 @@
+{
+  "$comment": "Canonical test store for all review-analysis experiments. Observations are manual snapshots, not live data.",
+  "name": "鳥良商店 南池袋店",
+  "searchUrl": "https://www.google.com/maps/search/鳥良商店+南池袋店",
+  "placeUrlContains": "0x60188d681355b373:0x984160981caefe27",
+  "featureId": "0x60188d681355b373:0x984160981caefe27",
+  "gPlaceKgId": "/g/1hm48lhj9",
+  "lat": 35.7280039,
+  "lng": 139.7128001,
+  "address": "〒171-0022 東京都豊島区南池袋1-20-1 横田ビル 1・2F",
+  "category": "居酒屋",
+  "priceRange": "¥1,000–4,000",
+  "observations": [
+    {
+      "date": "2026-10-30",
+      "uiLanguage": "zh-TW",
+      "chromeVersion": 156,
+      "displayedRating": 3.6,
+      "displayedReviewCount": 869,
+      "histogram": "relevance sort, 80 loaded: 5★29 4★34 3★9 2★3 1★5",
+      "fullScroll": {
+        "sort": "relevance",
+        "loaded": 780,
+        "seconds": 202,
+        "withText": 592,
+        "ratingOnly": 188,
+        "textChars": 25509,
+        "originalLanguages": {
+          "ja": 514,
+          "en": 32,
+          "zh": 25,
+          "ko": 13,
+          "fr": 3,
+          "de": 2,
+          "vi": 1,
+          "ru": 1,
+          "fil": 1
+        }
+      },
+      "newestSort300": {
+        "relativeDateHistogram": {
+          "<1y (month precision)": 92,
+          "1年前": 71,
+          "2年前": 61,
+          "3年前": 79
+        },
+        "orderIsMonotonic": true,
+        "textless": "3 of first 120",
+        "withPhotos": "36 of first 120"
+      }
+    }
+  ],
+  "pipelineRuns": [
+    {
+      "date": "2026-10-30",
+      "version": "harness v2 (1 review/prompt, originals revealed, owner replies excluded)",
+      "window": "36 months (stops at first '3年前')",
+      "scrapeSeconds": 87,
+      "totalSeconds": 231,
+      "reviewsInWindow": 221,
+      "withText": 146,
+      "photoOnly": 5,
+      "ratingOnly": 70,
+      "mapsTruthLanguages": {
+        "ja": 82,
+        "zh": 33,
+        "en": 18,
+        "ko": 8,
+        "fr": 2,
+        "de": 2,
+        "vi": 1
+      },
+      "nanoPie": {
+        "ja": 83,
+        "zh": 32,
+        "en": 12,
+        "ko": 9,
+        "other(<10% tail)": 10
+      },
+      "nanoAccuracyVsMaps": 0.918,
+      "nanoMsPerReview": 1553,
+      "knownMisses": "English sometimes → 'other'; mixed ja+zh text → zh",
+      "realStars3y": {
+        "avg": 3.77,
+        "n": 151,
+        "dist1to5": [
+          14,
+          10,
+          24,
+          51,
+          52
+        ]
+      },
+      "note": "v1 run: ~34 reviews were still Google-translated (original toggle timed out), so its truth distribution over-counts zh"
+    },
+    {
+      "date": "2026-10-30",
+      "version": "harness v3 (hybrid rules+Nano, few-shot prompt v2, originals retry up to 8s)",
+      "mode": "hybrid",
+      "totalSeconds": 231,
+      "note": "scrape was the bottleneck this run (machine busy: Chrome GPU 70-82%, Nano 3.3 s/review vs 1.7 s earlier)",
+      "reviewsInWindow": 221,
+      "withText": 146,
+      "translatedOnly": 0,
+      "mapsTruthLanguages": {
+        "ja": 95,
+        "en": 19,
+        "zh": 17,
+        "ko": 9,
+        "fr": 2,
+        "de": 2,
+        "vi": 1,
+        "fil": 1
+      },
+      "decidedBy": {
+        "rule": 104,
+        "nano": 42
+      },
+      "accuracy": {
+        "overall": 0.979,
+        "rule": 1.0,
+        "nano": 0.929
+      },
+      "pie": {
+        "ja": 97,
+        "en": 20,
+        "zh": 16,
+        "other(<10% tail)": 13
+      },
+      "knownMisses": [
+        "zh text with Japan-specific words → ja",
+        "vi text containing 焼き鳥/手羽先 → ja",
+        "fil 'Mura. Pero may seat fee' → en"
+      ],
+      "realStars3y": {
+        "avg": 3.77,
+        "n": 151
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "version": "extension build 5bc1eb8 (real content script, dev mode on)",
+      "comparison": {
+        "hybrid": {
+          "scrapeSeconds": 173,
+          "judged": 134,
+          "rule": 95,
+          "nano": 30,
+          "cache": 9,
+          "accuracy": 0.985,
+          "nanoAccuracy": 0.933,
+          "nanoMsPerReview": 1910,
+          "translatedOnly": 12
+        },
+        "pureNano": {
+          "note": "rerun on already-loaded list (scrape 13 s), cache off",
+          "judged": 135,
+          "nano": 135,
+          "accuracy": 0.978,
+          "nanoMsPerReview": 1715,
+          "nanoSecondsTotal": 232,
+          "translatedOnly": 11,
+          "misses": [
+            "zh text → ja",
+            "vi text with 焼き鳥 → ja",
+            "ja 'ボリュームあるランチ' → en (rules would catch)"
+          ]
+        }
+      },
+      "takeaway": "prompt v2 lifted pure-Nano accuracy 91.8% → 97.8%; hybrid matches/exceeds it with ~78% fewer Nano calls (≈50 s vs ≈230 s of Nano time)"
+    }
+  ],
+  "domNotes": {
+    "review": "div[data-review-id] (same id can appear on nested elements — dedupe by id)",
+    "text": ".MyEned .wiI7pd (owner reply is .CDe7pd .wiI7pd — exclude)",
+    "jsaction": "review.expandReview / review.showReviewInOriginal / review.expandOwnerResponse (stable, locale-independent)",
+    "stars": "[role=img][aria-label] e.g. '5 顆星'",
+    "date": ".rsqaWe e.g. '2 週前', '上次編輯：1年前'",
+    "photos": "button[data-photo-index]",
+    "more": "[jsaction*=review.expandReview] (clicking re-renders the review; re-query after)",
+    "original": "button text '由 Google 提供翻譯 ・ 查看原文 (日文)'; after click, text node's closest [lang] = original code",
+    "scroller": "nearest ancestor of a review with overflow-y auto/scroll",
+    "sort": "button[aria-label='排序評論'] → [role=menuitemradio] '最新'"
+  },
+  "lunchSignals": {
+    "observed": "2026-10-30, zh-TW UI",
+    "expectedHasLunch": true,
+    "about": {
+      "where": "簡介 tab",
+      "aria": [
+        "供應午餐 (用餐選擇)",
+        "午餐熱門餐廳 (熱門原因)"
+      ],
+      "strength": "strong, structured"
+    },
+    "hours": {
+      "where": "總覽 → 營業時間 table",
+      "value": "every day 11:00–04:00",
+      "strength": "weak (open at noon)"
+    },
+    "ownerPost": {
+      "where": "總覽 → 由業主提供",
+      "text": "【期間限定ランチ販売】鶏ちゃん焼定食 ¥1,078 (2026-10-05〜11-30)",
+      "strength": "strong but time-limited"
+    },
+    "visitorUpdate": {
+      "where": "總覽 → 訪客提供的更新內容",
+      "text": "巨大チキンカツと鶏唐揚げのチキン・チキン定食",
+      "strength": "medium"
+    },
+    "menuTab": {
+      "where": "菜單 tab",
+      "structuredSections": [
+        "看板",
+        "造り",
+        "焼鳥",
+        "だし巻き玉子",
+        "逸品",
+        "揚げ物",
+        "唐揚げ",
+        "早出し",
+        "〆・ごはん",
+        "甘味"
+      ],
+      "lunchSection": false,
+      "photos": "8 menu photos; first = 'お食事メニュー' 定食 board",
+      "officialMenuLink": "toriyoshishoten.jp"
+    },
+    "reviews": {
+      "where": "評論 tab",
+      "examples": [
+        "午間套餐介於¥790-890",
+        "ランチ利用でチキン南蛮定食"
+      ],
+      "strength": "medium, needs text match/Nano"
+    },
+    "searchCard": {
+      "where": "search results list",
+      "lunchInfo": false,
+      "fields": [
+        "rating",
+        "price",
+        "category",
+        "address",
+        "open now",
+        "dine-in/takeout/delivery"
+      ]
+    },
+    "filters": {
+      "lunchFilter": false,
+      "available": [
+        "price",
+        "rating",
+        "hours"
+      ]
+    },
+    "nanoImageTest": {
+      "thumbs": "224x224",
+      "results": "3/3 said hasLunch, but #3 (dense à-la-carte list) evidence 'ランチ' is likely hallucinated — leading prompt + low res",
+      "msPerImage": [
+        20805,
+        6216,
+        8987
+      ]
+    },
+    "structuredData_2026-10-30": {
+      "fid": "0x60188d681355b373:0x984160981caefe27",
+      "menu125": "60 items, 10 sections (看板/造り/焼鳥/…/甘味) — dinner menu only, NO lunch section",
+      "moreHours118": "none",
+      "posts122": [
+        "【期間限定ランチ販売】鶏ちゃん焼定食 (2026-10-05〜)",
+        "おすすめランチ 唐揚ナポリタン定食",
+        "#限定ランチ"
+      ],
+      "desc154": "…ランチ、テイクアウトも提供しております",
+      "reviewTopics153": {
+        "定食": 38,
+        "昼": 28,
+        "チキンカツ": 27,
+        "料理": 23,
+        "手羽先": 18
+      },
+      "attr": "serves_lunch=Y ('ランチメニューあり'), serves_lunch_popular=Y",
+      "tier": "B (owner text) — not caught by tier A; needs post/desc reading"
+    }
+  }
+}

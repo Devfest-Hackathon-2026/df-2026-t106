@@ -1,0 +1,23 @@
+rules_version = '2';
+
+// Clients (the extension, with Firebase anonymous auth) may only READ `tallies`.
+// Everything else is written and read only by our Cloud Run service (services/classify) through its
+// service account, which these rules do not apply to:
+//   reports/{meal~fid~uid}   private votes, one per (question, place, user)
+//   tallies/{meal~fid~v}     public aggregate of those votes, recomputed by the server; no uid in it
+//   verdicts/{h_<sha256>}    review-warning verdicts (probabilities only, never review text)
+//   usage/{yyyymmdd~uid}     daily quota counters
+// So nobody can list which places one user looked at, and nobody can write a verdict directly.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /tallies/{id} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

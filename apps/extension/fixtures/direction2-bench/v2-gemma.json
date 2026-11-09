@@ -1,0 +1,1236 @@
+{
+ "corpus": {
+  "total": 968,
+  "ja_with_en": 910
+ },
+ "minpos": 5,
+ "boot": 1000,
+ "probe_C": 10.0,
+ "models": {
+  "unsloth/embeddinggemma-300m": {
+   "run": {
+    "tag": "ja originals + Google English translation",
+    "n": 910,
+    "categories": [
+     "price_hike",
+     "portion",
+     "quality_decline",
+     "staff_or_owner_change",
+     "service",
+     "hygiene",
+     "surprise_charge",
+     "improvement"
+    ],
+    "label_counts": {
+     "service": 108,
+     "portion": 29,
+     "none": 463,
+     "hygiene": 60,
+     "staff_or_owner_change": 25,
+     "quality_decline": 71,
+     "improvement": 30,
+     "surprise_charge": 44,
+     "price_hike": 80
+    },
+    "rows": [
+     {
+      "review": "ja",
+      "instr": "none",
+      "mode": "zs_none",
+      "macro_ap": 0.4803,
+      "ci95": [
+       0.4488,
+       0.5247
+      ],
+      "per_class": {
+       "price_hike": 0.6979,
+       "portion": 0.1554,
+       "quality_decline": 0.6284,
+       "staff_or_owner_change": 0.2819,
+       "service": 0.5996,
+       "hygiene": 0.556,
+       "surprise_charge": 0.6269,
+       "improvement": 0.2967
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0794,
+       "portion": 0.3297,
+       "quality_decline": 0.0738,
+       "staff_or_owner_change": 0.3058,
+       "service": 0.1939,
+       "hygiene": 0.0769,
+       "surprise_charge": 0.0108,
+       "improvement": 0.3949
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "none",
+      "mode": "pr_none",
+      "macro_ap": 0.7186,
+      "ci95": [
+       0.6853,
+       0.7664
+      ],
+      "per_class": {
+       "price_hike": 0.846,
+       "portion": 0.3782,
+       "quality_decline": 0.727,
+       "staff_or_owner_change": 0.633,
+       "service": 0.8656,
+       "hygiene": 0.9462,
+       "surprise_charge": 0.844,
+       "improvement": 0.5086
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0,
+       "portion": 0.029,
+       "quality_decline": 0.0111,
+       "staff_or_owner_change": 0.0036,
+       "service": 0.0342,
+       "hygiene": 0.0,
+       "surprise_charge": 0.0,
+       "improvement": 0.0761
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "zs_cat",
+      "macro_ap": 0.4147,
+      "ci95": [
+       0.3844,
+       0.4609
+      ],
+      "per_class": {
+       "price_hike": 0.6082,
+       "portion": 0.1563,
+       "quality_decline": 0.5448,
+       "staff_or_owner_change": 0.1769,
+       "service": 0.6369,
+       "hygiene": 0.4072,
+       "surprise_charge": 0.5401,
+       "improvement": 0.2474
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0289,
+       "portion": 0.0797,
+       "quality_decline": 0.059,
+       "staff_or_owner_change": 0.1439,
+       "service": 0.0722,
+       "hygiene": 0.1136,
+       "surprise_charge": 0.0686,
+       "improvement": 0.413
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "zs_gen",
+      "macro_ap": 0.6215,
+      "ci95": [
+       0.5827,
+       0.667
+      ],
+      "per_class": {
+       "price_hike": 0.7992,
+       "portion": 0.3035,
+       "quality_decline": 0.6974,
+       "staff_or_owner_change": 0.4253,
+       "service": 0.7225,
+       "hygiene": 0.7615,
+       "surprise_charge": 0.7388,
+       "improvement": 0.5238
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0,
+       "portion": 0.1123,
+       "quality_decline": 0.0295,
+       "staff_or_owner_change": 0.0791,
+       "service": 0.057,
+       "hygiene": 0.033,
+       "surprise_charge": 0.0144,
+       "improvement": 0.1159
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "pr_gen",
+      "macro_ap": 0.7296,
+      "ci95": [
+       0.6968,
+       0.7766
+      ],
+      "per_class": {
+       "price_hike": 0.8591,
+       "portion": 0.4438,
+       "quality_decline": 0.7166,
+       "staff_or_owner_change": 0.5897,
+       "service": 0.8831,
+       "hygiene": 0.9347,
+       "surprise_charge": 0.8438,
+       "improvement": 0.566
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0,
+       "portion": 0.0217,
+       "quality_decline": 0.0221,
+       "staff_or_owner_change": 0.0036,
+       "service": 0.019,
+       "hygiene": 0.0037,
+       "surprise_charge": 0.0036,
+       "improvement": 0.0399
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "zs_spec",
+      "macro_ap": 0.4591,
+      "ci95": [
+       0.4306,
+       0.5056
+      ],
+      "per_class": {
+       "price_hike": 0.462,
+       "portion": 0.1368,
+       "quality_decline": 0.5471,
+       "staff_or_owner_change": 0.222,
+       "service": 0.6336,
+       "hygiene": 0.6238,
+       "surprise_charge": 0.636,
+       "improvement": 0.4116
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.1949,
+       "portion": 0.3297,
+       "quality_decline": 0.1365,
+       "staff_or_owner_change": 0.2086,
+       "service": 0.0875,
+       "hygiene": 0.1172,
+       "surprise_charge": 0.0758,
+       "improvement": 0.4203
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "pr_spec",
+      "macro_ap": 0.6483,
+      "ci95": [
+       0.6127,
+       0.7005
+      ],
+      "per_class": {
+       "price_hike": 0.7216,
+       "portion": 0.3493,
+       "quality_decline": 0.6708,
+       "staff_or_owner_change": 0.3873,
+       "service": 0.8633,
+       "hygiene": 0.8792,
+       "surprise_charge": 0.8058,
+       "improvement": 0.5088
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0108,
+       "portion": 0.029,
+       "quality_decline": 0.0701,
+       "staff_or_owner_change": 0.0216,
+       "service": 0.019,
+       "hygiene": 0.0147,
+       "surprise_charge": 0.0144,
+       "improvement": 0.0761
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "en",
+      "mode": "zs_cat",
+      "macro_ap": 0.4028,
+      "ci95": [
+       0.3711,
+       0.4508
+      ],
+      "per_class": {
+       "price_hike": 0.5831,
+       "portion": 0.255,
+       "quality_decline": 0.4494,
+       "staff_or_owner_change": 0.2093,
+       "service": 0.548,
+       "hygiene": 0.4562,
+       "surprise_charge": 0.5,
+       "improvement": 0.2215
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0217,
+       "portion": 0.0145,
+       "quality_decline": 0.059,
+       "staff_or_owner_change": 0.1475,
+       "service": 0.1141,
+       "hygiene": 0.1392,
+       "surprise_charge": 0.0939,
+       "improvement": 0.3659
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "en",
+      "mode": "zs_gen",
+      "macro_ap": 0.596,
+      "ci95": [
+       0.5566,
+       0.6475
+      ],
+      "per_class": {
+       "price_hike": 0.7072,
+       "portion": 0.3583,
+       "quality_decline": 0.6447,
+       "staff_or_owner_change": 0.4375,
+       "service": 0.6735,
+       "hygiene": 0.7384,
+       "surprise_charge": 0.7156,
+       "improvement": 0.4926
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0144,
+       "portion": 0.1957,
+       "quality_decline": 0.0332,
+       "staff_or_owner_change": 0.1079,
+       "service": 0.0798,
+       "hygiene": 0.0403,
+       "surprise_charge": 0.0361,
+       "improvement": 0.1232
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "en",
+      "mode": "pr_gen",
+      "macro_ap": 0.7334,
+      "ci95": [
+       0.6987,
+       0.7834
+      ],
+      "per_class": {
+       "price_hike": 0.8583,
+       "portion": 0.4672,
+       "quality_decline": 0.7113,
+       "staff_or_owner_change": 0.5732,
+       "service": 0.8855,
+       "hygiene": 0.9292,
+       "surprise_charge": 0.8466,
+       "improvement": 0.596
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0,
+       "portion": 0.0254,
+       "quality_decline": 0.0369,
+       "staff_or_owner_change": 0.0072,
+       "service": 0.019,
+       "hygiene": 0.0037,
+       "surprise_charge": 0.0072,
+       "improvement": 0.058
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "en",
+      "mode": "zs_spec",
+      "macro_ap": 0.4113,
+      "ci95": [
+       0.381,
+       0.4592
+      ],
+      "per_class": {
+       "price_hike": 0.455,
+       "portion": 0.122,
+       "quality_decline": 0.5002,
+       "staff_or_owner_change": 0.2933,
+       "service": 0.5377,
+       "hygiene": 0.5491,
+       "surprise_charge": 0.5221,
+       "improvement": 0.311
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.1661,
+       "portion": 0.6268,
+       "quality_decline": 0.1255,
+       "staff_or_owner_change": 0.2374,
+       "service": 0.0951,
+       "hygiene": 0.0806,
+       "surprise_charge": 0.1191,
+       "improvement": 0.2428
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "en",
+      "mode": "pr_spec",
+      "macro_ap": 0.6515,
+      "ci95": [
+       0.614,
+       0.7017
+      ],
+      "per_class": {
+       "price_hike": 0.7897,
+       "portion": 0.3049,
+       "quality_decline": 0.666,
+       "staff_or_owner_change": 0.4151,
+       "service": 0.8673,
+       "hygiene": 0.8897,
+       "surprise_charge": 0.7536,
+       "improvement": 0.5255
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0,
+       "portion": 0.0362,
+       "quality_decline": 0.0406,
+       "staff_or_owner_change": 0.0144,
+       "service": 0.019,
+       "hygiene": 0.011,
+       "surprise_charge": 0.0217,
+       "improvement": 0.087
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "zh",
+      "mode": "zs_cat",
+      "macro_ap": 0.4025,
+      "ci95": [
+       0.3702,
+       0.4466
+      ],
+      "per_class": {
+       "price_hike": 0.5977,
+       "portion": 0.2685,
+       "quality_decline": 0.5241,
+       "staff_or_owner_change": 0.1836,
+       "service": 0.6093,
+       "hygiene": 0.4073,
+       "surprise_charge": 0.4642,
+       "improvement": 0.1657
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0289,
+       "portion": 0.0471,
+       "quality_decline": 0.0517,
+       "staff_or_owner_change": 0.1835,
+       "service": 0.0837,
+       "hygiene": 0.1319,
+       "surprise_charge": 0.0939,
+       "improvement": 0.4819
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "zh",
+      "mode": "zs_gen",
+      "macro_ap": 0.4421,
+      "ci95": [
+       0.4117,
+       0.4859
+      ],
+      "per_class": {
+       "price_hike": 0.6214,
+       "portion": 0.1637,
+       "quality_decline": 0.6227,
+       "staff_or_owner_change": 0.2391,
+       "service": 0.567,
+       "hygiene": 0.5875,
+       "surprise_charge": 0.4336,
+       "improvement": 0.3017
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.1083,
+       "portion": 0.2862,
+       "quality_decline": 0.1144,
+       "staff_or_owner_change": 0.4353,
+       "service": 0.1825,
+       "hygiene": 0.1978,
+       "surprise_charge": 0.1336,
+       "improvement": 0.4203
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "zh",
+      "mode": "pr_gen",
+      "macro_ap": 0.7221,
+      "ci95": [
+       0.6866,
+       0.7687
+      ],
+      "per_class": {
+       "price_hike": 0.8471,
+       "portion": 0.4497,
+       "quality_decline": 0.7151,
+       "staff_or_owner_change": 0.5639,
+       "service": 0.8781,
+       "hygiene": 0.9302,
+       "surprise_charge": 0.834,
+       "improvement": 0.5582
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0,
+       "portion": 0.029,
+       "quality_decline": 0.0258,
+       "staff_or_owner_change": 0.0,
+       "service": 0.0228,
+       "hygiene": 0.0037,
+       "surprise_charge": 0.0036,
+       "improvement": 0.0725
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "zh",
+      "mode": "zs_spec",
+      "macro_ap": 0.3689,
+      "ci95": [
+       0.3438,
+       0.4133
+      ],
+      "per_class": {
+       "price_hike": 0.2749,
+       "portion": 0.122,
+       "quality_decline": 0.6617,
+       "staff_or_owner_change": 0.1714,
+       "service": 0.5004,
+       "hygiene": 0.5033,
+       "surprise_charge": 0.4368,
+       "improvement": 0.2807
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.4332,
+       "portion": 0.3406,
+       "quality_decline": 0.0406,
+       "staff_or_owner_change": 0.2518,
+       "service": 0.1065,
+       "hygiene": 0.1319,
+       "surprise_charge": 0.1444,
+       "improvement": 0.3768
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "zh",
+      "mode": "pr_spec",
+      "macro_ap": 0.6663,
+      "ci95": [
+       0.6312,
+       0.7171
+      ],
+      "per_class": {
+       "price_hike": 0.7171,
+       "portion": 0.342,
+       "quality_decline": 0.7085,
+       "staff_or_owner_change": 0.4456,
+       "service": 0.8732,
+       "hygiene": 0.9043,
+       "surprise_charge": 0.8197,
+       "improvement": 0.5199
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0036,
+       "portion": 0.0326,
+       "quality_decline": 0.0221,
+       "staff_or_owner_change": 0.0324,
+       "service": 0.0228,
+       "hygiene": 0.0073,
+       "surprise_charge": 0.0072,
+       "improvement": 0.1558
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "canon",
+      "mode": "zs_cat",
+      "macro_ap": 0.5434,
+      "ci95": [
+       0.5066,
+       0.597
+      ],
+      "per_class": {
+       "price_hike": 0.6851,
+       "portion": 0.3317,
+       "quality_decline": 0.6025,
+       "staff_or_owner_change": 0.4447,
+       "service": 0.7433,
+       "hygiene": 0.554,
+       "surprise_charge": 0.6424,
+       "improvement": 0.3434
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0036,
+       "portion": 0.0616,
+       "quality_decline": 0.0332,
+       "staff_or_owner_change": 0.0791,
+       "service": 0.057,
+       "hygiene": 0.1099,
+       "surprise_charge": 0.0433,
+       "improvement": 0.1739
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "canon",
+      "mode": "zs_gen",
+      "macro_ap": 0.5334,
+      "ci95": [
+       0.4972,
+       0.583
+      ],
+      "per_class": {
+       "price_hike": 0.6278,
+       "portion": 0.3398,
+       "quality_decline": 0.577,
+       "staff_or_owner_change": 0.444,
+       "service": 0.6468,
+       "hygiene": 0.5365,
+       "surprise_charge": 0.6885,
+       "improvement": 0.4071
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0,
+       "portion": 0.1051,
+       "quality_decline": 0.0554,
+       "staff_or_owner_change": 0.0683,
+       "service": 0.0646,
+       "hygiene": 0.1282,
+       "surprise_charge": 0.0181,
+       "improvement": 0.1957
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "canon",
+      "mode": "pr_gen",
+      "macro_ap": 0.7153,
+      "ci95": [
+       0.6818,
+       0.7676
+      ],
+      "per_class": {
+       "price_hike": 0.8531,
+       "portion": 0.4033,
+       "quality_decline": 0.7148,
+       "staff_or_owner_change": 0.5523,
+       "service": 0.8709,
+       "hygiene": 0.9269,
+       "surprise_charge": 0.8674,
+       "improvement": 0.534
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0,
+       "portion": 0.0326,
+       "quality_decline": 0.0185,
+       "staff_or_owner_change": 0.0108,
+       "service": 0.0266,
+       "hygiene": 0.0037,
+       "surprise_charge": 0.0,
+       "improvement": 0.0471
+      }
+     }
+    ],
+    "diffs": [
+     {
+      "a": [
+       "ja",
+       "ja",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.0656,
+      "ci95": [
+       -0.0962,
+       -0.0307
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_cat"
+      ],
+      "diff": -0.0119,
+      "ci95": [
+       -0.0376,
+       0.0142
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.0775,
+      "ci95": [
+       -0.1107,
+       -0.0365
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_cat"
+      ],
+      "diff": -0.0122,
+      "ci95": [
+       -0.0378,
+       0.0125
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.0778,
+      "ci95": [
+       -0.1116,
+       -0.0375
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "canon",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_cat"
+      ],
+      "diff": 0.1287,
+      "ci95": [
+       0.0907,
+       0.1654
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "canon",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.063,
+      "ci95": [
+       0.024,
+       0.1069
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "ja",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.1411,
+      "ci95": [
+       0.1125,
+       0.1682
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_gen"
+      ],
+      "diff": -0.0255,
+      "ci95": [
+       -0.0516,
+       0.0042
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.1156,
+      "ci95": [
+       0.0813,
+       0.1525
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_gen"
+      ],
+      "diff": -0.1794,
+      "ci95": [
+       -0.2148,
+       -0.1391
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.0383,
+      "ci95": [
+       -0.0727,
+       -0.001
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "canon",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_gen"
+      ],
+      "diff": -0.0881,
+      "ci95": [
+       -0.1227,
+       -0.0515
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "canon",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.0531,
+      "ci95": [
+       0.0156,
+       0.0901
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "ja",
+       "zs_spec"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.0212,
+      "ci95": [
+       -0.0495,
+       0.0104
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "zs_spec"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_spec"
+      ],
+      "diff": -0.0478,
+      "ci95": [
+       -0.0792,
+       -0.0188
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "zs_spec"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.0691,
+      "ci95": [
+       -0.1017,
+       -0.0314
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "zs_spec"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_spec"
+      ],
+      "diff": -0.0902,
+      "ci95": [
+       -0.1231,
+       -0.0555
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "zs_spec"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.1115,
+      "ci95": [
+       -0.1468,
+       -0.0687
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "ja",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": 0.011,
+      "ci95": [
+       -0.0084,
+       0.0269
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_gen"
+      ],
+      "diff": 0.0038,
+      "ci95": [
+       -0.0075,
+       0.0169
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": 0.0148,
+      "ci95": [
+       -0.0066,
+       0.034
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_gen"
+      ],
+      "diff": -0.0075,
+      "ci95": [
+       -0.0218,
+       0.0051
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": 0.0035,
+      "ci95": [
+       -0.0171,
+       0.0203
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "canon",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_gen"
+      ],
+      "diff": -0.0142,
+      "ci95": [
+       -0.0305,
+       0.0062
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "canon",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": -0.0033,
+      "ci95": [
+       -0.0187,
+       0.0127
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "ja",
+       "pr_spec"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": -0.0703,
+      "ci95": [
+       -0.0984,
+       -0.0423
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "pr_spec"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_spec"
+      ],
+      "diff": 0.0032,
+      "ci95": [
+       -0.0167,
+       0.0203
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "pr_spec"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": -0.0671,
+      "ci95": [
+       -0.0948,
+       -0.0418
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "pr_spec"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_spec"
+      ],
+      "diff": 0.018,
+      "ci95": [
+       0.0012,
+       0.0361
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "pr_spec"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": -0.0523,
+      "ci95": [
+       -0.076,
+       -0.0268
+      ]
+     }
+    ]
+   },
+   "stance_price_hike": {
+    "n": 80,
+    "unhappy": 35,
+    "accepting": 45,
+    "rows": [
+     {
+      "review": "ja",
+      "instr": "none",
+      "zs_auc": 0.823,
+      "zs_ci95": [
+       0.719,
+       0.914
+      ],
+      "probe_auc": 0.887,
+      "probe_ci95": [
+       0.799,
+       0.951
+      ]
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "zs_auc": 0.877,
+      "zs_ci95": [
+       0.798,
+       0.942
+      ],
+      "probe_auc": 0.899,
+      "probe_ci95": [
+       0.821,
+       0.962
+      ]
+     },
+     {
+      "review": "ja",
+      "instr": "en",
+      "zs_auc": 0.845,
+      "zs_ci95": [
+       0.747,
+       0.917
+      ],
+      "probe_auc": 0.903,
+      "probe_ci95": [
+       0.826,
+       0.961
+      ]
+     },
+     {
+      "review": "ja",
+      "instr": "zh",
+      "zs_auc": 0.851,
+      "zs_ci95": [
+       0.769,
+       0.924
+      ],
+      "probe_auc": 0.93,
+      "probe_ci95": [
+       0.878,
+       0.974
+      ]
+     }
+    ]
+   },
+   "texts_per_sec": 1101.7,
+   "texts": 26790,
+   "dim": 768,
+   "vertex_chars_billed": null
+  }
+ }
+}

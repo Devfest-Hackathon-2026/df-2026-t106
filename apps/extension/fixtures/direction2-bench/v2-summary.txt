@@ -1,0 +1,138 @@
+n = 910 | categories: {'price_hike': 80, 'portion': 29, 'quality_decline': 71, 'staff_or_owner_change': 25, 'service': 108, 'hygiene': 60, 'surprise_charge': 44, 'improvement': 30} | none: 463
+speed texts/s, dim: {'Q0.6B': (921.9, 1024), 'Q4B': (185.8, 2560), 'Q8B': (104.2, 4096), 'ruri-v3-310m': (1805.4, 768)}
+
+## zs_gen (macro AP [95% interval] | mean false-alarm rate on random reviews at 80% recall)
+review instr | Q0.6B | Q4B | Q8B | ruri-v3-310m
+ja   none | 0.51 [0.48,0.56] fa 0.105 | 0.52 [0.48,0.57] fa 0.156 | 0.51 [0.48,0.56] fa 0.142 | 0.64 [0.60,0.69] fa 0.035
+ja   ja   | 0.63 [0.59,0.67] fa 0.090 | 0.74 [0.70,0.79] fa 0.030 | 0.77 [0.73,0.81] fa 0.022 | 0.59 [0.56,0.63] fa 0.036
+ja   en   | 0.49 [0.45,0.53] fa 0.151 | 0.69 [0.65,0.74] fa 0.036 | 0.70 [0.66,0.75] fa 0.037 |         -        
+ja   zh   | 0.46 [0.43,0.51] fa 0.190 | 0.73 [0.69,0.78] fa 0.031 | 0.73 [0.69,0.78] fa 0.036 |         -        
+en   none | 0.48 [0.45,0.53] fa 0.179 | 0.52 [0.48,0.57] fa 0.153 | 0.56 [0.52,0.61] fa 0.114 |         -        
+en   en   | 0.61 [0.58,0.66] fa 0.128 | 0.72 [0.68,0.76] fa 0.039 | 0.71 [0.67,0.76] fa 0.042 |         -        
+en   ja   | 0.62 [0.58,0.67] fa 0.098 | 0.73 [0.69,0.77] fa 0.027 | 0.76 [0.72,0.80] fa 0.033 |         -        
+en   zh   | 0.62 [0.58,0.67] fa 0.117 | 0.75 [0.71,0.79] fa 0.036 | 0.73 [0.69,0.78] fa 0.036 |         -        
+
+## pr_gen (macro AP [95% interval] | mean false-alarm rate on random reviews at 80% recall)
+review instr | Q0.6B | Q4B | Q8B | ruri-v3-310m
+ja   none | 0.69 [0.65,0.75] fa 0.035 | 0.76 [0.71,0.80] fa 0.023 | 0.77 [0.74,0.82] fa 0.023 | 0.79 [0.75,0.83] fa 0.014
+ja   ja   | 0.73 [0.69,0.78] fa 0.028 | 0.84 [0.80,0.88] fa 0.006 | 0.84 [0.80,0.88] fa 0.007 | 0.74 [0.71,0.79] fa 0.010
+ja   en   | 0.72 [0.67,0.76] fa 0.034 | 0.80 [0.76,0.84] fa 0.010 | 0.81 [0.78,0.85] fa 0.008 |         -        
+ja   zh   | 0.73 [0.69,0.78] fa 0.040 | 0.83 [0.80,0.87] fa 0.004 | 0.84 [0.80,0.87] fa 0.006 |         -        
+en   none | 0.71 [0.67,0.76] fa 0.019 | 0.77 [0.73,0.81] fa 0.015 | 0.77 [0.74,0.82] fa 0.011 |         -        
+en   en   | 0.74 [0.70,0.79] fa 0.025 | 0.81 [0.77,0.85] fa 0.011 | 0.83 [0.79,0.86] fa 0.008 |         -        
+en   ja   | 0.75 [0.72,0.80] fa 0.014 | 0.84 [0.80,0.87] fa 0.008 | 0.85 [0.82,0.89] fa 0.002 |         -        
+en   zh   | 0.78 [0.74,0.82] fa 0.011 | 0.84 [0.80,0.87] fa 0.008 | 0.85 [0.81,0.88] fa 0.005 |         -        
+
+## zs_cat (macro AP [95% interval] | mean false-alarm rate on random reviews at 80% recall)
+review instr | Q0.6B | Q4B | Q8B | ruri-v3-310m
+ja   none | 0.51 [0.48,0.56] fa 0.105 | 0.52 [0.48,0.57] fa 0.156 | 0.51 [0.48,0.56] fa 0.142 | 0.64 [0.60,0.69] fa 0.035
+ja   ja   | 0.39 [0.37,0.44] fa 0.249 | 0.52 [0.48,0.56] fa 0.095 | 0.55 [0.52,0.60] fa 0.085 | 0.54 [0.51,0.58] fa 0.079
+ja   en   | 0.41 [0.37,0.46] fa 0.279 | 0.51 [0.48,0.55] fa 0.109 | 0.56 [0.52,0.60] fa 0.064 |         -        
+ja   zh   | 0.33 [0.31,0.37] fa 0.358 | 0.49 [0.45,0.54] fa 0.129 | 0.52 [0.49,0.56] fa 0.098 |         -        
+en   none | 0.48 [0.45,0.53] fa 0.179 | 0.52 [0.48,0.57] fa 0.153 | 0.56 [0.52,0.61] fa 0.114 |         -        
+en   en   | 0.48 [0.44,0.53] fa 0.184 | 0.56 [0.53,0.61] fa 0.121 | 0.57 [0.54,0.62] fa 0.087 |         -        
+en   ja   | 0.42 [0.39,0.46] fa 0.218 | 0.56 [0.52,0.60] fa 0.129 | 0.53 [0.50,0.58] fa 0.109 |         -        
+en   zh   | 0.40 [0.36,0.44] fa 0.253 | 0.56 [0.52,0.61] fa 0.129 | 0.53 [0.50,0.58] fa 0.120 |         -        
+
+## zs_spec (macro AP [95% interval] | mean false-alarm rate on random reviews at 80% recall)
+review instr | Q0.6B | Q4B | Q8B | ruri-v3-310m
+ja   none | 0.51 [0.48,0.56] fa 0.105 | 0.52 [0.48,0.57] fa 0.156 | 0.51 [0.48,0.56] fa 0.142 | 0.64 [0.60,0.69] fa 0.035
+ja   ja   | 0.39 [0.36,0.44] fa 0.322 | 0.59 [0.55,0.63] fa 0.039 | 0.65 [0.61,0.70] fa 0.126 |         -        
+ja   en   | 0.29 [0.26,0.34] fa 0.272 | 0.47 [0.43,0.52] fa 0.090 | 0.64 [0.60,0.69] fa 0.054 |         -        
+ja   zh   | 0.18 [0.17,0.23] fa 0.425 | 0.50 [0.47,0.55] fa 0.088 | 0.51 [0.48,0.57] fa 0.188 |         -        
+en   none | 0.48 [0.45,0.53] fa 0.179 | 0.52 [0.48,0.57] fa 0.153 | 0.56 [0.52,0.61] fa 0.114 |         -        
+en   en   | 0.34 [0.32,0.40] fa 0.208 | 0.43 [0.40,0.48] fa 0.157 | 0.57 [0.53,0.62] fa 0.095 |         -        
+en   ja   | 0.36 [0.32,0.41] fa 0.341 | 0.61 [0.58,0.66] fa 0.060 | 0.62 [0.59,0.67] fa 0.145 |         -        
+en   zh   | 0.30 [0.28,0.36] fa 0.270 | 0.48 [0.45,0.53] fa 0.108 | 0.49 [0.45,0.54] fa 0.205 |         -        
+
+## pr_spec (macro AP [95% interval] | mean false-alarm rate on random reviews at 80% recall)
+review instr | Q0.6B | Q4B | Q8B | ruri-v3-310m
+ja   none | 0.69 [0.65,0.75] fa 0.035 | 0.76 [0.71,0.80] fa 0.023 | 0.77 [0.74,0.82] fa 0.023 | 0.79 [0.75,0.83] fa 0.014
+ja   ja   | 0.69 [0.64,0.73] fa 0.057 | 0.80 [0.77,0.84] fa 0.011 | 0.82 [0.78,0.86] fa 0.006 |         -        
+ja   en   | 0.71 [0.67,0.75] fa 0.049 | 0.80 [0.77,0.84] fa 0.007 | 0.83 [0.79,0.86] fa 0.007 |         -        
+ja   zh   | 0.71 [0.67,0.75] fa 0.055 | 0.81 [0.77,0.84] fa 0.009 | 0.82 [0.79,0.85] fa 0.007 |         -        
+en   none | 0.71 [0.67,0.76] fa 0.019 | 0.77 [0.73,0.81] fa 0.015 | 0.77 [0.74,0.82] fa 0.011 |         -        
+en   en   | 0.71 [0.68,0.76] fa 0.027 | 0.77 [0.74,0.82] fa 0.010 | 0.82 [0.78,0.85] fa 0.014 |         -        
+en   ja   | 0.73 [0.69,0.77] fa 0.031 | 0.80 [0.76,0.84] fa 0.013 | 0.81 [0.78,0.85] fa 0.011 |         -        
+en   zh   | 0.71 [0.67,0.76] fa 0.039 | 0.79 [0.76,0.83] fa 0.014 | 0.82 [0.79,0.86] fa 0.011 |         -        
+
+## paired differences in macro AP (first minus second); * = 95% interval excludes 0
+                                                    | Q0.6B                  | Q4B                    | Q8B                   
+instruction vs none, ja/ja, zero-shot               | +0.12 [+0.09,+0.15]*   | +0.22 [+0.18,+0.26]*   | +0.25 [+0.21,+0.29]*  
+instruction vs none, ja/ja, probe                   | +0.04 [+0.00,+0.07]*   | +0.08 [+0.05,+0.12]*   | +0.06 [+0.03,+0.10]*  
+cond 2 (en instr + ja review) vs cond 1, zero-shot  | -0.14 [-0.18,-0.10]*   | -0.05 [-0.08,-0.02]*   | -0.07 [-0.10,-0.04]*  
+cond 2 vs cond 1, probe                             | -0.02 [-0.04,+0.01]    | -0.04 [-0.06,-0.02]*   | -0.02 [-0.04,-0.01]*  
+cond 3 (en instr + en review) vs cond 1, zero-shot  | -0.02 [-0.05,+0.03]    | -0.03 [-0.06,+0.01]    | -0.05 [-0.09,-0.02]*  
+cond 3 (en + en) vs cond 1, probe                   | +0.01 [-0.03,+0.06]    | -0.03 [-0.06,+0.01]    | -0.01 [-0.04,+0.02]   
+cond 3 (ja instr + en review) vs cond 1, zero-shot  | -0.01 [-0.03,+0.03]    | -0.01 [-0.04,+0.01]    | -0.00 [-0.03,+0.03]   
+cond 3 (ja + en) vs cond 1, probe                   | +0.02 [-0.01,+0.06]    | -0.00 [-0.03,+0.03]    | +0.02 [-0.01,+0.04]   
+zh instr + ja review vs cond 1, zero-shot           | -0.16 [-0.20,-0.13]*   | -0.01 [-0.04,+0.02]    | -0.03 [-0.06,-0.00]*  
+zh instr + ja review vs cond 1, probe               | -0.00 [-0.03,+0.02]    | -0.01 [-0.02,+0.01]    | -0.00 [-0.02,+0.02]   
+specific instr vs none, ja/ja, zero-shot            | -0.12 [-0.16,-0.09]*   | +0.07 [+0.03,+0.11]*   | +0.13 [+0.09,+0.17]*  
+specific instr vs none, ja/ja, probe                | -0.01 [-0.05,+0.03]    | +0.05 [+0.01,+0.09]*   | +0.04 [+0.01,+0.08]*  
+
+## across models and modes (same resamples), ja instruction + ja review
+  Q4B vs Q0.6B, zero-shot                        +0.116 [+0.081,+0.147]*
+  Q4B vs Q0.6B, probe                            +0.107 [+0.071,+0.147]*
+  Q8B vs Q4B, zero-shot                          +0.021 [-0.005,+0.050] 
+  Q8B vs Q4B, probe                              -0.001 [-0.030,+0.025] 
+  Q8B vs Q0.6B, zero-shot                        +0.137 [+0.100,+0.175]*
+  Q8B vs Q0.6B, probe                            +0.106 [+0.066,+0.148]*
+  Q0.6B: probe vs zero-shot                      +0.103 [+0.066,+0.136]*
+  Q0.6B probe vs ruri probe (no prefix)          -0.058 [-0.095,-0.017]*
+  Q0.6B zero-shot vs ruri zero-shot (no prefix)  -0.013 [-0.047,+0.021] 
+  Q4B: probe vs zero-shot                        +0.095 [+0.060,+0.130]*
+  Q4B probe vs ruri probe (no prefix)            +0.049 [+0.017,+0.089]*
+  Q4B zero-shot vs ruri zero-shot (no prefix)    +0.103 [+0.068,+0.137]*
+  Q8B: probe vs zero-shot                        +0.072 [+0.042,+0.101]*
+  Q8B probe vs ruri probe (no prefix)            +0.047 [+0.016,+0.087]*
+  Q8B zero-shot vs ruri zero-shot (no prefix)    +0.124 [+0.085,+0.162]*
+
+## per category, ja instruction + ja review: AP | false-alarm rate on random reviews at 80% recall
+                              price_hike         portion  quality_declin  staff_or_owner         service         hygiene  surprise_charg     improvement
+positives                             80              29              71              25             108              60              44              30
+zs_none  Q0.6B               0.69| 0.04      0.23| 0.14      0.62| 0.07      0.54| 0.03      0.60| 0.11      0.69| 0.10      0.44| 0.12      0.28| 0.22 
+zs_none  Q4B                 0.66| 0.12      0.16| 0.29      0.65| 0.09      0.52| 0.06      0.62| 0.17      0.72| 0.05      0.67| 0.05      0.16| 0.41 
+zs_none  Q8B                 0.63| 0.14      0.17| 0.19      0.63| 0.13      0.43| 0.11      0.56| 0.18      0.76| 0.05      0.73| 0.02      0.20| 0.32 
+zs_none  ruri-v3-310m        0.80| 0.01      0.29| 0.06      0.70| 0.02      0.54| 0.04      0.75| 0.04      0.74| 0.03      0.83| 0.01      0.48| 0.08 
+zs_gen   Q0.6B               0.75| 0.03      0.25| 0.26      0.74| 0.05      0.63| 0.02      0.73| 0.05      0.86| 0.00      0.67| 0.04      0.41| 0.25 
+zs_gen   Q4B                 0.88| 0.00      0.36| 0.11      0.81| 0.01      0.61| 0.05      0.87| 0.01      0.93| 0.01      0.80| 0.00      0.69| 0.04 
+zs_gen   Q8B                 0.90| 0.00      0.41| 0.08      0.76| 0.03      0.64| 0.01      0.84| 0.04      0.95| 0.00      0.85| 0.00      0.78| 0.01 
+zs_gen   ruri-v3-310m        0.78| 0.02      0.22| 0.03      0.74| 0.01      0.37| 0.06      0.77| 0.02      0.65| 0.05      0.81| 0.02      0.39| 0.08 
+pr_none  Q0.6B               0.84| 0.00      0.47| 0.06      0.67| 0.03      0.64| 0.00      0.82| 0.05      0.85| 0.01      0.74| 0.02      0.52| 0.11 
+pr_none  Q4B                 0.87| 0.00      0.51| 0.02      0.75| 0.01      0.70| 0.00      0.86| 0.04      0.92| 0.00      0.80| 0.01      0.64| 0.09 
+pr_none  Q8B                 0.87| 0.00      0.42| 0.04      0.77| 0.01      0.77| 0.00      0.89| 0.02      0.94| 0.00      0.86| 0.01      0.66| 0.11 
+pr_none  ruri-v3-310m        0.85| 0.00      0.56| 0.02      0.79| 0.01      0.74| 0.00      0.87| 0.02      0.90| 0.01      0.88| 0.00      0.73| 0.05 
+pr_gen   Q0.6B               0.85| 0.01      0.49| 0.06      0.75| 0.03      0.66| 0.03      0.83| 0.02      0.88| 0.00      0.77| 0.03      0.63| 0.05 
+pr_gen   Q4B                 0.93| 0.00      0.60| 0.01      0.86| 0.00      0.69| 0.02      0.93| 0.01      0.96| 0.00      0.88| 0.00      0.86| 0.00 
+pr_gen   Q8B                 0.92| 0.00      0.60| 0.03      0.86| 0.01      0.72| 0.01      0.94| 0.00      0.97| 0.00      0.87| 0.00      0.82| 0.00 
+pr_gen   ruri-v3-310m        0.87| 0.00      0.41| 0.03      0.78| 0.00      0.64| 0.00      0.88| 0.01      0.92| 0.00      0.88| 0.01      0.56| 0.02 
+
+## price-hike stance (unhappy vs accepting), AUROC [95% interval]
+  Q0.6B n=80 unhappy=35 accepting=45
+    review=ja instr=none zero-shot 0.79 [0.673, 0.879]  probe 0.80 [0.686, 0.883]
+    review=ja instr=ja   zero-shot 0.85 [0.764, 0.92]  probe 0.89 [0.811, 0.949]
+    review=ja instr=en   zero-shot 0.86 [0.762, 0.928]  probe 0.83 [0.733, 0.907]
+    review=ja instr=zh   zero-shot 0.89 [0.81, 0.949]  probe 0.85 [0.756, 0.93]
+    review=en instr=none zero-shot 0.87 [0.783, 0.938]  probe 0.91 [0.844, 0.964]
+    review=en instr=ja   zero-shot 0.91 [0.848, 0.97]  probe 0.90 [0.825, 0.957]
+    review=en instr=en   zero-shot 0.90 [0.822, 0.957]  probe 0.89 [0.805, 0.955]
+    review=en instr=zh   zero-shot 0.89 [0.818, 0.953]  probe 0.90 [0.816, 0.956]
+  Q4B n=80 unhappy=35 accepting=45
+    review=ja instr=none zero-shot 0.81 [0.696, 0.891]  probe 0.84 [0.746, 0.918]
+    review=ja instr=ja   zero-shot 0.92 [0.86, 0.973]  probe 0.95 [0.901, 0.983]
+    review=ja instr=en   zero-shot 0.95 [0.892, 0.983]  probe 0.95 [0.91, 0.987]
+    review=ja instr=zh   zero-shot 0.92 [0.853, 0.966]  probe 0.94 [0.896, 0.982]
+    review=en instr=none zero-shot 0.81 [0.707, 0.891]  probe 0.89 [0.813, 0.947]
+    review=en instr=ja   zero-shot 0.92 [0.855, 0.97]  probe 0.92 [0.85, 0.97]
+    review=en instr=en   zero-shot 0.92 [0.851, 0.97]  probe 0.91 [0.829, 0.965]
+    review=en instr=zh   zero-shot 0.92 [0.851, 0.972]  probe 0.91 [0.836, 0.972]
+  Q8B n=80 unhappy=35 accepting=45
+    review=ja instr=none zero-shot 0.84 [0.753, 0.921]  probe 0.90 [0.831, 0.957]
+    review=ja instr=ja   zero-shot 0.93 [0.856, 0.978]  probe 0.95 [0.898, 0.991]
+    review=ja instr=en   zero-shot 0.94 [0.881, 0.979]  probe 0.97 [0.926, 0.995]
+    review=ja instr=zh   zero-shot 0.88 [0.81, 0.943]  probe 0.95 [0.891, 0.988]
+    review=en instr=none zero-shot 0.91 [0.838, 0.966]  probe 0.93 [0.868, 0.973]
+    review=en instr=ja   zero-shot 0.91 [0.835, 0.968]  probe 0.92 [0.854, 0.971]
+    review=en instr=en   zero-shot 0.93 [0.865, 0.981]  probe 0.92 [0.851, 0.977]
+    review=en instr=zh   zero-shot 0.93 [0.872, 0.981]  probe 0.92 [0.845, 0.972]

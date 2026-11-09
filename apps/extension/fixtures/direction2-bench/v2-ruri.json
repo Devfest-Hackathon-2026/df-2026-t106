@@ -1,0 +1,247 @@
+{
+ "corpus": {
+  "total": 968,
+  "ja_with_en": 910
+ },
+ "minpos": 5,
+ "boot": 1000,
+ "probe_C": 10.0,
+ "models": {
+  "cl-nagoya/ruri-v3-310m": {
+   "run": {
+    "tag": "ja originals + Google English translation",
+    "n": 910,
+    "categories": [
+     "price_hike",
+     "portion",
+     "quality_decline",
+     "staff_or_owner_change",
+     "service",
+     "hygiene",
+     "surprise_charge",
+     "improvement"
+    ],
+    "label_counts": {
+     "service": 108,
+     "portion": 29,
+     "none": 463,
+     "hygiene": 60,
+     "staff_or_owner_change": 25,
+     "quality_decline": 71,
+     "improvement": 30,
+     "surprise_charge": 44,
+     "price_hike": 80
+    },
+    "rows": [
+     {
+      "review": "ja",
+      "instr": "none",
+      "mode": "zs_none",
+      "macro_ap": 0.6411,
+      "ci95": [
+       0.6018,
+       0.685
+      ],
+      "per_class": {
+       "price_hike": 0.7977,
+       "portion": 0.2945,
+       "quality_decline": 0.7043,
+       "staff_or_owner_change": 0.5368,
+       "service": 0.7519,
+       "hygiene": 0.7379,
+       "surprise_charge": 0.8253,
+       "improvement": 0.4808
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0072,
+       "portion": 0.058,
+       "quality_decline": 0.0185,
+       "staff_or_owner_change": 0.0396,
+       "service": 0.038,
+       "hygiene": 0.033,
+       "surprise_charge": 0.0108,
+       "improvement": 0.0761
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "none",
+      "mode": "pr_none",
+      "macro_ap": 0.7902,
+      "ci95": [
+       0.7521,
+       0.8277
+      ],
+      "per_class": {
+       "price_hike": 0.8473,
+       "portion": 0.5586,
+       "quality_decline": 0.7871,
+       "staff_or_owner_change": 0.7444,
+       "service": 0.8727,
+       "hygiene": 0.9026,
+       "surprise_charge": 0.8803,
+       "improvement": 0.7285
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0,
+       "portion": 0.0217,
+       "quality_decline": 0.0111,
+       "staff_or_owner_change": 0.0036,
+       "service": 0.0152,
+       "hygiene": 0.0073,
+       "surprise_charge": 0.0036,
+       "improvement": 0.0471
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "zs_cat",
+      "macro_ap": 0.538,
+      "ci95": [
+       0.5059,
+       0.5808
+      ],
+      "per_class": {
+       "price_hike": 0.7426,
+       "portion": 0.2244,
+       "quality_decline": 0.6563,
+       "staff_or_owner_change": 0.3337,
+       "service": 0.6671,
+       "hygiene": 0.654,
+       "surprise_charge": 0.7939,
+       "improvement": 0.2317
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0181,
+       "portion": 0.0725,
+       "quality_decline": 0.0221,
+       "staff_or_owner_change": 0.1475,
+       "service": 0.0608,
+       "hygiene": 0.0513,
+       "surprise_charge": 0.0108,
+       "improvement": 0.2464
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "zs_gen",
+      "macro_ap": 0.5898,
+      "ci95": [
+       0.5563,
+       0.631
+      ],
+      "per_class": {
+       "price_hike": 0.782,
+       "portion": 0.2152,
+       "quality_decline": 0.7399,
+       "staff_or_owner_change": 0.3676,
+       "service": 0.7668,
+       "hygiene": 0.6528,
+       "surprise_charge": 0.8068,
+       "improvement": 0.3872
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0181,
+       "portion": 0.029,
+       "quality_decline": 0.0074,
+       "staff_or_owner_change": 0.0647,
+       "service": 0.0228,
+       "hygiene": 0.0476,
+       "surprise_charge": 0.0181,
+       "improvement": 0.0797
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "pr_gen",
+      "macro_ap": 0.7429,
+      "ci95": [
+       0.7099,
+       0.7913
+      ],
+      "per_class": {
+       "price_hike": 0.8713,
+       "portion": 0.4066,
+       "quality_decline": 0.7818,
+       "staff_or_owner_change": 0.644,
+       "service": 0.8763,
+       "hygiene": 0.9249,
+       "surprise_charge": 0.881,
+       "improvement": 0.5572
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0,
+       "portion": 0.029,
+       "quality_decline": 0.0037,
+       "staff_or_owner_change": 0.0036,
+       "service": 0.0114,
+       "hygiene": 0.0,
+       "surprise_charge": 0.0072,
+       "improvement": 0.0217
+      }
+     }
+    ],
+    "diffs": [
+     {
+      "a": [
+       "ja",
+       "ja",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.1032,
+      "ci95": [
+       -0.1317,
+       -0.0734
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "ja",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.0513,
+      "ci95": [
+       -0.0745,
+       -0.0272
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "ja",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": -0.0473,
+      "ci95": [
+       -0.0689,
+       -0.0189
+      ]
+     }
+    ]
+   },
+   "stance_price_hike": null,
+   "texts_per_sec": 1805.4,
+   "texts": 2754,
+   "dim": 768
+  }
+ }
+}

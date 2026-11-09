@@ -1,0 +1,191 @@
+{
+ "corpus": {
+  "total": 256,
+  "ja_with_en": 240
+ },
+ "minpos": 5,
+ "boot": 1000,
+ "probe_C": 10.0,
+ "models": {
+  "cl-nagoya/ruri-v3-310m": {
+   "run": {
+    "tag": "ja originals + Google English translation",
+    "n": 240,
+    "categories": [
+     "price_hike",
+     "portion",
+     "quality_decline",
+     "staff_or_owner_change",
+     "service",
+     "hygiene",
+     "improvement"
+    ],
+    "label_counts": {
+     "service": 69,
+     "portion": 6,
+     "none": 96,
+     "hygiene": 14,
+     "staff_or_owner_change": 5,
+     "quality_decline": 18,
+     "improvement": 11,
+     "surprise_charge": 2,
+     "price_hike": 19
+    },
+    "rows": [
+     {
+      "review": "ja",
+      "instr": "none",
+      "mode": "zs_none",
+      "macro_ap": 0.6611,
+      "ci95": [
+       0.6014,
+       0.7509
+      ],
+      "per_class": {
+       "price_hike": 0.8558,
+       "portion": 0.2093,
+       "quality_decline": 0.6979,
+       "staff_or_owner_change": 0.4763,
+       "service": 0.8997,
+       "hygiene": 0.7556,
+       "improvement": 0.7333
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "none",
+      "mode": "pr_none",
+      "macro_ap": 0.7204,
+      "ci95": [
+       0.6497,
+       0.8189
+      ],
+      "per_class": {
+       "price_hike": 0.8197,
+       "portion": 0.754,
+       "quality_decline": 0.692,
+       "staff_or_owner_change": 0.1737,
+       "service": 0.9287,
+       "hygiene": 0.8933,
+       "improvement": 0.7812
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "zs_cat",
+      "macro_ap": 0.5535,
+      "ci95": [
+       0.4914,
+       0.6579
+      ],
+      "per_class": {
+       "price_hike": 0.755,
+       "portion": 0.2052,
+       "quality_decline": 0.6406,
+       "staff_or_owner_change": 0.4787,
+       "service": 0.8357,
+       "hygiene": 0.5848,
+       "improvement": 0.3743
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "zs_gen",
+      "macro_ap": 0.5865,
+      "ci95": [
+       0.5296,
+       0.6824
+      ],
+      "per_class": {
+       "price_hike": 0.7976,
+       "portion": 0.1423,
+       "quality_decline": 0.6729,
+       "staff_or_owner_change": 0.442,
+       "service": 0.8929,
+       "hygiene": 0.5735,
+       "improvement": 0.5843
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "pr_gen",
+      "macro_ap": 0.6671,
+      "ci95": [
+       0.6062,
+       0.7557
+      ],
+      "per_class": {
+       "price_hike": 0.8308,
+       "portion": 0.8278,
+       "quality_decline": 0.6852,
+       "staff_or_owner_change": 0.1152,
+       "service": 0.9305,
+       "hygiene": 0.8587,
+       "improvement": 0.4216
+      }
+     }
+    ],
+    "diffs": [
+     {
+      "a": [
+       "ja",
+       "ja",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.1076,
+      "ci95": [
+       -0.1622,
+       -0.0516
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "ja",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.0746,
+      "ci95": [
+       -0.1234,
+       -0.0362
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "ja",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": -0.0533,
+      "ci95": [
+       -0.1067,
+       0.0035
+      ]
+     }
+    ]
+   },
+   "stance_price_hike": null,
+   "texts_per_sec": 1171.8,
+   "texts": 741,
+   "dim": 768
+  }
+ }
+}

@@ -1,0 +1,3952 @@
+{
+ "$comment": "Direction 2 (now vs lifetime + warning signs) feasibility research, 2026-11-06, Google Maps only, work account (authuser=1), UI hl=ja (second pass hl=en for translations). Reviews were read PASSIVELY from the page's own responses while the review list was scrolled with newest sort: a main-world wrapper on window.fetch (installed after page load) cloned every /maps/_/MapsWizUi/data/batchexecute response containing rpc qv9Egd. Nothing was replayed or requested by hand. Harness: scratch d2scrape.js (eval-injected, results POSTed to a localhost CORS server). Review and owner-reply text is removed (\"[removed]\"); field paths, counts and our notes stay.",
+ "partA": {
+  "store": "鳥良商店 南池袋店 (0x60188d681355b373:0x984160981caefe27), newest sort, first 100 reviews (170 scraped within 24 months in 20.8 s)",
+  "passiveSource": {
+   "works": true,
+   "transport": "fetch POST /maps/_/MapsWizUi/data/batchexecute, rpcids=qv9Egd; body ')]}\\'' + length-prefixed chunks; chunk[0][i] = ['wrb.fr','qv9Egd', <JSON string>]. NOT listugcposts (that name never appears in the page's traffic now). The XHRs seen alongside are 204 logging pings.",
+   "perResponse": "10 reviews; inner = JSON.parse(chunk[2]); inner[1] = next-page token, inner[2][i][0] = review",
+   "readableBy": "window.fetch wrapper in the main world (javascript tool), set up after load; Response.prototype.text hook also sees it. read_network_requests did not list it by 'ugc'.",
+   "paths": {
+    "reviewId": "r[0]  (== DOM data-review-id)",
+    "placeId": "r[1][0]  ('0x0:0x<cid>')",
+    "publishedMicros": "r[1][2]  (µs epoch)",
+    "lastEditedMicros": "r[1][3]  (µs epoch; newest sort orders by THIS)",
+    "relativeDate": "r[1][6]  ('2 日前' / '最終編集: 3 週間前')",
+    "stars": "r[2][0][0]",
+    "originalLanguage": "r[2][14][0]  (ja, en, zh-Hant, zh-Hans, ko, fr, de, ru, th ...)",
+    "originalText": "r[2][15][0][0]  (full text, not truncated)",
+    "translatedText": "r[2][15][1][0]  (into the UI language: present for 1836/1837 non-UI-language reviews on the hl=en pass, 800/801 non-ja on hl=ja)",
+    "photos": "r[2][2]  (array, one entry per photo)",
+    "guidedDining": "r[2][6][k]: key q[0][0] e.g. GUIDED_DINING_FOOD_ASPECT; aspect score q[11][0]; choice answers q[2][0][m][1] (label) with code q[2][0][m][0][0] e.g. 'E:LUNCH', 'E:JPY_1_TO_1000'; DISH_RECOMMENDATION choices carry a menu entity 'M:/g/...' and the dish name",
+    "ownerReply": "r[3]: text r[3][14][0][0], language r[3][13][0], time r[3][1] (µs), relative r[3][3]; r[3] exists (with report/edit links) even when there is no reply, so test the text",
+    "reviewer": "r[1][4][5]: name [0], profile id [3], review count [5], photo count [6], Local Guide flag [8][0], level [8][1], label [10][0] ('ローカルガイド · クチコミ 488 件')",
+    "source": "r[1][13][0] ('Google' for all 7,250 reviews seen)",
+    "unknown": "r[4][2]: small integer that grows with review age (not likes; meaning unknown)"
+   },
+   "notFound": [
+    "like / helpful count (no liked review in the sample; path unknown)"
+   ]
+  },
+  "fieldShares_first100": {
+   "text": "[removed]",
+   "photos": "29/100",
+   "ownerReply": "95/100 (median 155 chars)",
+   "subRatings_food_service_atmosphere": "85/100 (any guided-dining answer 91/100)",
+   "pricePerPerson": "63/100",
+   "mealType": "54/100 (ランチ 26, ディナー 26)",
+   "reservation": "32/100",
+   "waitTime": "18/100",
+   "groupSize": "18/100",
+   "seating": "20/100",
+   "noiseLevel": "10/100",
+   "dishRecommendation": "1/100",
+   "localGuide": "62/100",
+   "reviewerWith1Review": "11/100",
+   "reviewerWith<=3Reviews": "28/100",
+   "edited": "3/100",
+   "originalLanguages": "ja 42, en 13, ko 5, zh-Hant 4, de 2, ru 1, fr 1 (of 68 with text)"
+  },
+  "fieldShares_all7250": {
+   "text": "[removed]",
+   "ownerReply": "30%",
+   "photos": "41%",
+   "foodServiceAtmosphere": "82%",
+   "pricePerPerson": "41%",
+   "mealType": "31%",
+   "dishRecommendation": "4%",
+   "localGuide": "70%",
+   "reviewer<=2Reviews": "16%",
+   "editedAfterPosting": "9%"
+  },
+  "domFallback": "Same data in the DOM per div[data-review-id]: body .MyEned .wiI7pd, owner reply .CDe7pd .wiI7pd, stars [role=img][aria-label], date .rsqaWe, reviewer line .RfnDt ('ローカルガイド · 25 件のクチコミ'), guided-dining answers as plain text blocks ('食事: 5', 'サービス: 5', '1 人あたりの料金 ￥1,000～2,000') that are truncated with '…' until expanded; translation toggle [jsaction*=review.showReviewInOriginal]. Obfuscated classes: prefer the payload.",
+  "datePrecision": "YES: exact microsecond publish and last-edit timestamps in the payload (and owner-reply timestamp). The DOM only has the relative string. Newest sort is by last edit, so an old review edited recently shows up at the top as '最終編集: N 前' (9% of reviews were edited).",
+  "uiLanguage": "Payload carries original + translation whatever hl is, so no clicking is needed. For the DOM: hl=ja shows Japanese originals as-is and only non-ja reviews translated (toggle 'Google による翻訳 ・ 原文を見る（英語）'); hl=en shows ja reviews translated into English with 'Translated by Google ・ See original (Japanese)'. Account default (zh-TW UI) translates the Japanese majority (from the 2026-10-30 notes, not re-measured).",
+  "scrapeSpeed": "≈10 reviews per scroll step, 0.9 s wait: 100–240 reviews in 13–55 s; 330 reviews/18 months 157 s. 4 tabs in parallel worked (all tabs report visible).",
+  "translationPairs": "Open the place with hl=en and read r[2][15][0][0] (original) and r[2][15][1][0] (English) for the same r[0]; Google keeps line breaks, so line-by-line alignment worked whenever line counts match (112 of 256 corpus items are single aligned lines)."
+ },
+ "stores": [
+  {
+   "tag": "q23",
+   "name": "大戸屋ごはん処 池袋東口店",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d67c8f4d177:0x363b5a4b8f64a7e0?hl=ja&authuser=1",
+   "fid": "0x60188d67c8f4d177:0x363b5a4b8f64a7e0",
+   "category": "定食屋",
+   "lifetime": {
+    "stars": 3.8,
+    "count": 1127
+   },
+   "measured": {
+    "last3m": {
+     "n": 26,
+     "avgStars": 3.15,
+     "withText": 19
+    },
+    "last12m": {
+     "n": 100,
+     "avgStars": 3.6,
+     "withText": 77
+    },
+    "older": {
+     "n": 40,
+     "avgStars": 3.98,
+     "withText": 30
+    },
+    "scrapedReviews": 140,
+    "reachedMonths": 18.9,
+    "editedReviews": 13
+   },
+   "deltaVsLifetime": {
+    "last3m": -0.65,
+    "last12m": -0.2
+   },
+   "group": "getting_worse",
+   "story": "Station-front 大戸屋 slid from 3.98 (12-18 mo ago) to 3.15 in the last 3 months: slow service, wrong/undercooked dishes, free refills of the breakfast rice ended.",
+   "grade": "A",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "1 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25GVVQwUmFSalkwWW1aeU5WVmtNMU5XVm1NdFZVRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "8 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25nNVltSm9XamcwWWtod1NEVkpiVGhJTmtkT2FsRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "11 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2poNlQyazFkMlI2ZDFwa2NsRkxkRzlSU0V4bFdFRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "11 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25oVWNFbGthMUl4VnpReE9VTnNURmR5VERFd1FVRRAB"
+     }
+    ],
+    "portion": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "2 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tGeFZGQklkM3BoYjB4S1ZUTkRPSEIzU1ZkTVJHYxAB"
+     }
+    ],
+    "hygiene": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "2 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21ndGVuaEpXRUphZG5SeWQxTjZkazU1YVdKUFRGRRAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [],
+   "keywordHitsLowStar12m": {
+    "service": 14,
+    "quality_decline": 4,
+    "staff_or_owner_change": 1,
+    "hygiene": 1
+   },
+   "ownerReplies": {
+    "present": 0,
+    "of": 140,
+    "distinctOpenings40": 0,
+    "tone": null,
+    "examples": []
+   },
+   "scrapeSec": 71.3,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "q21",
+   "name": "東京油組総本店 池袋組",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d5ddcba113f:0xfbc0681f44f73aa3?hl=ja&authuser=1",
+   "fid": "0x60188d5ddcba113f:0xfbc0681f44f73aa3",
+   "category": "ラーメン屋",
+   "lifetime": {
+    "stars": 3.8,
+    "count": 715
+   },
+   "measured": {
+    "last3m": {
+     "n": 18,
+     "avgStars": 3.22,
+     "withText": 16
+    },
+    "last12m": {
+     "n": 81,
+     "avgStars": 3.62,
+     "withText": 68
+    },
+    "older": {
+     "n": 39,
+     "avgStars": 3.77,
+     "withText": 35
+    },
+    "scrapedReviews": 120,
+    "reachedMonths": 18.1,
+    "editedReviews": 8
+   },
+   "deltaVsLifetime": {
+    "last3m": -0.58,
+    "last12m": -0.18
+   },
+   "group": "getting_worse",
+   "story": "Abura-soba shop at 3.8 lifetime drops to 3.22 in the last 3 months, driven by three separate cockroach reports (one staff member crushed it by hand) and rude service.",
+   "grade": "A",
+   "warnings": {
+    "hygiene": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "1 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT20xclUyczNhWEF6TlUxcFNIZHVWM1E1ZGtaTVEyYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "2 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tkd05EVnZia00zUjFjM2FIcEhNMDltYms0MWQwRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "4 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pKWFJrTTVRVUpNYmxNNVZEUmhiMGxPWTB4NU0wRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "2 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pSSWVESmxXVEpTUldObFpHeDFkbXhJV0hsSVNYYxAB"
+     }
+    ],
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "最終編集: 9 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xsR1FsbFJVV2RNWVVsYWIydzVVMDkxYWxOaWNrRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "6 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21nMFQyb3RhVVJyZGxFeFZuaEZSbUZKVFd4SFEwRRAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [],
+   "keywordHitsLowStar12m": {
+    "hygiene": 5,
+    "quality_decline": 5,
+    "service": 7,
+    "improvement": 1
+   },
+   "ownerReplies": {
+    "present": 0,
+    "of": 120,
+    "distinctOpenings40": 0,
+    "tone": null,
+    "examples": []
+   },
+   "scrapeSec": 21,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "q06",
+   "name": "舎鈴 池袋東口店",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d67e10701e9:0x10a5e2ec4361fbe0?hl=ja&authuser=1",
+   "fid": "0x60188d67e10701e9:0x10a5e2ec4361fbe0",
+   "category": "ラーメン屋",
+   "lifetime": {
+    "stars": 3.6,
+    "count": 740
+   },
+   "measured": {
+    "last3m": {
+     "n": 17,
+     "avgStars": 3.35,
+     "withText": 17
+    },
+    "last12m": {
+     "n": 62,
+     "avgStars": 3.23,
+     "withText": 56
+    },
+    "older": {
+     "n": 38,
+     "avgStars": 3.18,
+     "withText": 28
+    },
+    "scrapedReviews": 100,
+    "reachedMonths": 20.3,
+    "editedReviews": 8
+   },
+   "deltaVsLifetime": {
+    "last3m": -0.25,
+    "last12m": -0.37
+   },
+   "group": "getting_worse",
+   "story": "Tsukemen chain branch: 12-month average 3.23 vs 3.6 lifetime; complaints about rude staff and lukewarm soup; one reviewer notes things improved after Matsuya took over the parent company.",
+   "grade": "B",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "3 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2psalZXazBUbXhVWlU5dlFWWmxWRzlKU25CbU4yYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "2 日前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21wR04ySTJhbVJMYzJOaE1GZGpkelF4VjJsYWMwRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "2 週間前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25adWFtZE5ZMkpJVVZWM09GVjBMVFF0T0dwcFZXYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "3 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2t3NFVsWTBOVEZ2YTNJM1ZIcHZRa0oxTWxWcU1VRRAB"
+     }
+    ],
+    "staff_or_owner_change": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "最終編集: 7 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tKWGVrWnVhRkpmYlhGbmJqY3pha014VVZKTGVsRRAB"
+     }
+    ],
+    "hygiene": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "1 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21oSU4yb3dMWGxQUWt4bU9XVlBhVkpwVG00MExWRRAB"
+     }
+    ],
+    "quality_decline": [
+     {
+      "text": "[removed]",
+      "stars": 3,
+      "relDate": "2 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2padWFYQnJRbEpFTVZaaGNuZHdjVlZwTVhSUFdWRRAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [
+    {
+     "category": "improvement",
+     "text": "[removed]",
+     "stars": 1,
+     "relDate": "最終編集: 7 か月前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tKWGVrWnVhRkpmYlhGbmJqY3pha014VVZKTGVsRRAB"
+    }
+   ],
+   "keywordHitsLowStar12m": {
+    "quality_decline": 4,
+    "service": 3,
+    "hygiene": 1,
+    "improvement": 2,
+    "staff_or_owner_change": 1,
+    "portion": 1
+   },
+   "ownerReplies": {
+    "present": 0,
+    "of": 100,
+    "distinctOpenings40": 0,
+    "tone": null,
+    "examples": []
+   },
+   "scrapeSec": 18.8,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "p03",
+   "name": "魚金池袋店",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d5ddf64fcc3:0x112270c5c92c0418?hl=ja&authuser=1",
+   "fid": "0x60188d5ddf64fcc3:0x112270c5c92c0418",
+   "category": "居酒屋",
+   "lifetime": {
+    "stars": 3.7,
+    "count": 1082
+   },
+   "measured": {
+    "last3m": {
+     "n": 12,
+     "avgStars": 3.5,
+     "withText": 9
+    },
+    "last12m": {
+     "n": 54,
+     "avgStars": 3.37,
+     "withText": 42
+    },
+    "older": {
+     "n": 76,
+     "avgStars": 3.3,
+     "withText": 47
+    },
+    "scrapedReviews": 130,
+    "reachedMonths": 25.3,
+    "editedReviews": 9
+   },
+   "deltaVsLifetime": {
+    "last3m": -0.2,
+    "last12m": -0.33
+   },
+   "group": "getting_worse",
+   "story": "Seafood izakaya: 12-month 3.37 vs 3.7; the most consistent surprise-charge complaints of all stores (お通し 500円 + サービス料 5%), plus slow, unfriendly service.",
+   "grade": "A",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "10 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2twU1dubDNhR2swU1d3M1lqUmpORmxXUTJ0WlEyYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "最終編集: 11 か月前",
+      "lang": "ja",
+      "reviewId": "ChZDSUhNMG9nS0VJQ0FnSUNjNjR1SFVREAE"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "最終編集: 11 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xBNU1FVnlXRGRzVTB0UVkyOURVazVTWDJKVkxYYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "最終編集: 10 か月前",
+      "lang": "ja",
+      "reviewId": "ChZDSUhNMG9nS0VJQ0FnSUNfcEplTVR3EAE"
+     }
+    ],
+    "surprise_charge": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "6 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2paUVNrcGtNR1U0VjNVMk0yVTJUa2syTlRSNU4yYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "11 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25kNk1XMU1RMGh2YjJkaGNtUm5kRzU1YmxaS1kwRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "2 か月前",
+      "lang": "th",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2s1V1pISXhUMWhZWjJOcFZYZFBTbXRpY1hkcGJtYxAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [],
+   "keywordHitsLowStar12m": {
+    "quality_decline": 6,
+    "surprise_charge": 4,
+    "service": 7
+   },
+   "ownerReplies": {
+    "present": 0,
+    "of": 130,
+    "distinctOpenings40": 0,
+    "tone": null,
+    "examples": []
+   },
+   "scrapeSec": 27.1,
+   "scrapeWindowMonths": 24,
+   "stopReason": "window",
+   "broke": "First run did not switch to newest sort (unordered list); fixed by re-checking order after the sort click."
+  },
+  {
+   "tag": "q01",
+   "name": "東池袋 大勝軒 南池袋店",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d686174e6af:0xdc40ba7a454c0b58?hl=ja&authuser=1",
+   "fid": "0x60188d686174e6af:0xdc40ba7a454c0b58",
+   "category": "ラーメン屋",
+   "lifetime": {
+    "stars": 3.2,
+    "count": 774
+   },
+   "measured": {
+    "last3m": {
+     "n": 15,
+     "avgStars": 3.2,
+     "withText": 10
+    },
+    "last12m": {
+     "n": 51,
+     "avgStars": 2.82,
+     "withText": 36
+    },
+    "older": {
+     "n": 59,
+     "avgStars": 2.25,
+     "withText": 46
+    },
+    "scrapedReviews": 110,
+    "reachedMonths": 24.5,
+    "editedReviews": 16
+   },
+   "deltaVsLifetime": {
+    "last3m": 0,
+    "last12m": -0.38
+   },
+   "group": "getting_worse",
+   "story": "Tsukemen shop of a famous lineage: 12-month 2.82 vs 3.2 lifetime (12-18 mo ago 2.25, last 3 months 3.2). Long-time customers report price rises (もりそば 1,150円), smaller servings and a taste that is 'no longer Taishoken'.",
+   "grade": "A",
+   "warnings": {
+    "quality_decline": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "5 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2t3eWVVVTJaRTVJVUdodVEzWjNZV2hqUW5kek5sRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "5 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21admEwcEJjVXN6WXpoV01VRlZPR290UnpSVlJtYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "2 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2poTVpuZFVWbVprTkU0elFubEpUSGhqWkVKWFdsRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "1 週間前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25ObWVtcHNibFpWWVdWTE1FODRVMHBmWnpsQ2EyYxAB"
+     }
+    ],
+    "price_hike": [
+     {
+      "text": "[removed]",
+      "stars": 4,
+      "relDate": "最終編集: 5 か月前",
+      "lang": "ja",
+      "reviewId": "ChdDSUhNMG9nS0VJQ0FnSURtOVBqS25BRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "9 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tGbWIxQTJWelZ2WHpkM1JISndla3AxYzFac2QzYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "4 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2twNU5YcGhPRVpUUVdKVlEzWTBTMFJrWVhGVVNYYxAB"
+     }
+    ],
+    "hygiene": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "5 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT210emJFbGFXRzVLZW1sV1JGUTRjakozT0hKM2VsRRAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [
+    {
+     "category": "price_hike",
+     "text": "[removed]",
+     "stars": 3,
+     "relDate": "8 か月前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21WNU1FeGFOREJOTFhodFFUVkpVMFExYmxkMVVFRRAB"
+    },
+    {
+     "category": "improvement",
+     "text": "[removed]",
+     "stars": 1,
+     "relDate": "最終編集: 9 か月前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21rek1YaEVNRTVYZGtOek56UmxaMHh2VTI1V2QzYxAB"
+    }
+   ],
+   "keywordHitsLowStar12m": {
+    "quality_decline": 8,
+    "improvement": 3,
+    "price_hike": 4,
+    "hygiene": 1,
+    "service": 1
+   },
+   "ownerReplies": {
+    "present": 0,
+    "of": 110,
+    "distinctOpenings40": 0,
+    "tone": null,
+    "examples": []
+   },
+   "scrapeSec": 20,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "q07",
+   "name": "つけ麺専門店 三田製麺所 池袋西口店",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d5e71838035:0x83f0a4735e25f9f7?hl=ja&authuser=1",
+   "fid": "0x60188d5e71838035:0x83f0a4735e25f9f7",
+   "category": "ラーメン屋",
+   "lifetime": {
+    "stars": 3.6,
+    "count": 604
+   },
+   "measured": {
+    "last3m": {
+     "n": 12,
+     "avgStars": 3.67,
+     "withText": 8
+    },
+    "last12m": {
+     "n": 49,
+     "avgStars": 3.27,
+     "withText": 39
+    },
+    "older": {
+     "n": 21,
+     "avgStars": 3,
+     "withText": 19
+    },
+    "scrapedReviews": 70,
+    "reachedMonths": 18.4,
+    "editedReviews": 6
+   },
+   "deltaVsLifetime": {
+    "last3m": 0.07,
+    "last12m": -0.33
+   },
+   "group": "getting_worse",
+   "story": "Chain tsukemen: 12-month 3.27 vs 3.6; regulars say the dipping soup got thinner. Owner replies are one boilerplate text (12 distinct openings in 66 replies) and once correct the customer about the noodle weight.",
+   "grade": "B",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "5 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25CS2RUUnFXa2xVWWtwRFMxcE1aazU1YTI1MVRGRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "6 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT20wMWRHVmtPRjh6ZG0xNFQxa3liRTgwTFZGd1FrRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "5 か月前",
+      "lang": "en",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pkUVkzTTFOMk15V1c4NGEyMVlaRVpxV2t0eGNtYxAB"
+     }
+    ],
+    "quality_decline": [
+     {
+      "text": "[removed]",
+      "stars": 4,
+      "relDate": "6 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2s5MVZsUnRNSHB6YTNWSlFURTVTMjF1UlUxc1kyYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "最終編集: 11 か月前",
+      "lang": "ja",
+      "reviewId": "ChdDSUhNMG9nS0VJQ0FnSUNIcTl2amhBRRAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [],
+   "keywordHitsLowStar12m": {
+    "service": 4,
+    "improvement": 2,
+    "quality_decline": 2,
+    "hygiene": 1
+   },
+   "ownerReplies": {
+    "present": 66,
+    "of": 70,
+    "distinctOpenings40": 12,
+    "tone": "boilerplate / mildly defensive",
+    "examples": [
+     {
+      "reviewId": "ChdDSUhNMG9nS0VJQ0FnSUQzMjctcXJRRRAB",
+      "reviewStars": 2,
+      "reviewText": "[removed]",
+      "reviewRelDate": "最終編集: 2 日前",
+      "replyText": "[removed]",
+      "replyRelDate": "1 年前",
+      "replyLang": "ja"
+     },
+     {
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21STFlXRllOV1ZwWTFFeGJFVmlVVkV4YW05clRVRRAB",
+      "reviewStars": 2,
+      "reviewText": "[removed]",
+      "reviewRelDate": "5 か月前",
+      "replyText": "[removed]",
+      "replyRelDate": "5 か月前",
+      "replyLang": "ja"
+     }
+    ]
+   },
+   "scrapeSec": 13,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "q29",
+   "name": "横浜家系ラーメン 池袋商店",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d5eba740381:0x534ef42104f4572a?hl=ja&authuser=1",
+   "fid": "0x60188d5eba740381:0x534ef42104f4572a",
+   "category": "ラーメン屋",
+   "lifetime": {
+    "stars": 3.9,
+    "count": 972
+   },
+   "measured": {
+    "last3m": {
+     "n": 31,
+     "avgStars": 3.52,
+     "withText": 24
+    },
+    "last12m": {
+     "n": 104,
+     "avgStars": 3.76,
+     "withText": 85
+    },
+    "older": {
+     "n": 66,
+     "avgStars": 3.59,
+     "withText": 58
+    },
+    "scrapedReviews": 170,
+    "reachedMonths": 19.3,
+    "editedReviews": 8
+   },
+   "deltaVsLifetime": {
+    "last3m": -0.38,
+    "last12m": -0.14
+   },
+   "group": "getting_worse",
+   "story": "Iekei ramen: last 3 months 3.52 vs 3.9 lifetime ([quote removed]). Owner replies come from a template bank shared word-for-word with ラーメン豚山 and sometimes thank 2-star reviewers for their 'high rating'.",
+   "grade": "A",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "1 年前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pWd2FFdERSbmRXVUV0eWIybFdWMUY1VW1keE5XYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "2 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tOVVpuSTBVRzlTYmxKWVEyaFVlalkzVjJGWVoxRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "1 年前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21oSlprbzVPWE54TTBaRVNVdHdSVTR3T0V4aVRuYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "8 か月前",
+      "lang": "en",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21wMVNuWkxXaTA0Um1ad1ZubFJaekZKYUZaWmFVRRAB"
+     }
+    ],
+    "hygiene": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "3 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25JeU5tZFZOVFpSVG5saWJIQkVaWFZZV1U1blIyYxAB"
+     }
+    ],
+    "quality_decline": [
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "4 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tKYU1qa3pSeTF0TTJKQlpqUjBjV3BDTW14eU1VRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "最終編集: 6 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21aWVJYQXpOMFp3VFZCT1NHWnpNVkJJVVhKdmNsRRAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [],
+   "keywordHitsLowStar12m": {
+    "service": 9,
+    "quality_decline": 6,
+    "surprise_charge": 1,
+    "hygiene": 1,
+    "improvement": 2
+   },
+   "ownerReplies": {
+    "present": 142,
+    "of": 170,
+    "distinctOpenings40": 101,
+    "tone": "templated, mismatched",
+    "examples": [
+     {
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2taV1JFbzJOWEIyU0ZWVmRHZERUM1p4UWxWT2QwRRAB",
+      "reviewStars": 2,
+      "reviewText": "[removed]",
+      "reviewRelDate": "最終編集: 1 年前",
+      "replyText": "[removed]",
+      "replyRelDate": "1 年前",
+      "replyLang": "ja"
+     },
+     {
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xoeVNIWm5SRzVHTjNKYWIxZDZNRTVVU1MxcldHYxAB",
+      "reviewStars": 2,
+      "reviewText": "[removed]",
+      "reviewRelDate": "1 年前",
+      "replyText": "[removed]",
+      "replyRelDate": "1 年前",
+      "replyLang": "ja"
+     }
+    ]
+   },
+   "scrapeSec": 49.7,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": "Sort check needed 4 tries on the hl=en pass."
+  },
+  {
+   "tag": "q00",
+   "name": "皇綱家",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188dd45557a1db:0x2d8a48ffe196697a?hl=ja&authuser=1",
+   "fid": "0x60188dd45557a1db:0x2d8a48ffe196697a",
+   "category": "ラーメン屋",
+   "lifetime": {
+    "stars": 3.2,
+    "count": 1359
+   },
+   "measured": {
+    "last3m": {
+     "n": 68,
+     "avgStars": 3.01,
+     "withText": 57
+    },
+    "last12m": {
+     "n": 232,
+     "avgStars": 2.97,
+     "withText": 192
+    },
+    "older": {
+     "n": 168,
+     "avgStars": 2.88,
+     "withText": 144
+    },
+    "scrapedReviews": 400,
+    "reachedMonths": 19.2,
+    "editedReviews": 48
+   },
+   "deltaVsLifetime": {
+    "last3m": -0.19,
+    "last12m": -0.23
+   },
+   "group": "getting_worse",
+   "story": "Iekei ramen with a 3.2 lifetime and 2.97 over the last 12 months (232 reviews). Clear warnings rather than a big swing: hygiene (23 low-star hits), rude manager, repeated price rises to 1,000円, and one reviewer alleging that bad reviews disappear while staff post good ones.",
+   "grade": "B",
+   "warnings": {
+    "price_hike": [
+     {
+      "text": "[removed]",
+      "stars": 3,
+      "relDate": "最終編集: 8 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25BMU1VbHFUVFZLVXpSbU5EUmlRWHBrTW1aRmVVRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 3,
+      "relDate": "最終編集: 1 か月前",
+      "lang": "ja",
+      "reviewId": "ChZDSUhNMG9nS0VJQ0FnSUQ5X2NiNFFBEAE"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "最終編集: 6 か月前",
+      "lang": "ja",
+      "reviewId": "ChZDSUhNMG9nS0VJQ0FnSUR5NTlyOWJ3EAE"
+     }
+    ],
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "1 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT20xTlZtVlFZa3gxY1VWRGEyZHlZbWhIV1c5NGVsRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "3 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tsc05FZzBTMWwyUkcxTE1WQm5MWGhzT1VSdWQyYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "7 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25aR2VqQjRVbTFDZUhsc1VGTkxabWREVXpaR1VHYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "最終編集: 1 年前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tWb1NGZ3hZeTFhVFY5M05rODNXbkF0UzNVMlFtYxAB"
+     }
+    ],
+    "hygiene": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "1 年前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xWRFZFNXhObVJvWTJVeVFWaHRSR3hWWnpkNE5XYxAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [
+    {
+     "category": "improvement",
+     "text": "[removed]",
+     "stars": 4,
+     "relDate": "最終編集: 7 か月前",
+     "lang": "ja",
+     "reviewId": "ChZDSUhNMG9nS0VJQ0FnSUMyai1PRmR3EAE"
+    }
+   ],
+   "keywordHitsLowStar12m": {
+    "quality_decline": 29,
+    "hygiene": 11,
+    "service": 25,
+    "improvement": 6,
+    "price_hike": 5,
+    "portion": 1,
+    "surprise_charge": 1
+   },
+   "ownerReplies": {
+    "present": 0,
+    "of": 400,
+    "distinctOpenings40": 0,
+    "tone": null,
+    "examples": []
+   },
+   "scrapeSec": 125.8,
+   "scrapeWindowMonths": 18,
+   "stopReason": "maxN",
+   "broke": "Hit maxN=400 before reaching 24 months (126 s); 12-month buckets are complete."
+  },
+  {
+   "tag": "q26",
+   "name": "ラーメン豚山 池袋西口店",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d7ef4235cd9:0xc09b541e56b551df?hl=ja&authuser=1",
+   "fid": "0x60188d7ef4235cd9:0xc09b541e56b551df",
+   "category": "ラーメン屋",
+   "lifetime": {
+    "stars": 3.8,
+    "count": 907
+   },
+   "measured": {
+    "last3m": {
+     "n": 46,
+     "avgStars": 3.5,
+     "withText": 34
+    },
+    "last12m": {
+     "n": 162,
+     "avgStars": 3.68,
+     "withText": 123
+    },
+    "older": {
+     "n": 88,
+     "avgStars": 3.58,
+     "withText": 80
+    },
+    "scrapedReviews": 250,
+    "reachedMonths": 18,
+    "editedReviews": 32
+   },
+   "deltaVsLifetime": {
+    "last3m": -0.3,
+    "last12m": -0.12
+   },
+   "group": "getting_worse",
+   "story": "Jiro-style ramen: last 3 months 3.5 vs 3.8; complaints that the pork got thinner and the soup lukewarm. Owner replies 231/250, many seasonal templates that ignore the complaint (a hair in the food answered with 'enjoy the heat, recharge with our ramen').",
+   "grade": "A",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "2 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tkMVl6TmlRMVEyZEhRd2QwUldOall3T0hReE5rRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "3 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25vMGRXUkxlRlkzV21oeE1ISk1UVGc1VFY5dVVWRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "3 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21oYVZubHpaRXRUYURkWVozbzFWVmRuUVZWdlVuYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "8 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xWaGVIWnVYMFpJT0RCcE4xRlFRWGMyYldkdVprRRAB"
+     }
+    ],
+    "hygiene": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "4 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pKVVRYZFBaRWhQTUZvME9UVlhPRzVpWnpCVFVXYxAB"
+     }
+    ],
+    "quality_decline": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "4 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25SSVlYcHRTMU5vV0V4QloyVkZNVEZCYnpoVk0wRRAB"
+     }
+    ],
+    "staff_or_owner_change": [
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "3 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tkWVRuVlpiemhoWDJoQ1ZuWlRiRlJqVDFWTFUzYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 4,
+      "relDate": "9 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25JeFdWSkJWVmgyY1ZsNFkzRlliekpSYTI4MFlYYxAB"
+     }
+    ],
+    "portion": [
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "11 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT20xTVJGbEZUWFpXYjJGWE1XVTBNa1pJYWxsWVoxRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "3 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xWWmIySlBSVEZ4UTA5c00yWkZZWEZIUVRFMVluYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "3 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xWWmIySlBSVEZ4UTA5c00yWkZZWEZIUVRFMVluYxAB"
+     }
+    ],
+    "price_hike": [
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "11 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pkTWRtbE9jelF5UlhCSVRUbDBaemhYZWtaZldVRRAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [
+    {
+     "category": "improvement",
+     "text": "[removed]",
+     "stars": 4,
+     "relDate": "最終編集: 3 か月前",
+     "lang": "ja",
+     "reviewId": "ChZDSUhNMG9nS0VJQ0FnSURwOUtTQlhBEAE"
+    },
+    {
+     "category": "improvement",
+     "text": "[removed]",
+     "stars": 4,
+     "relDate": "最終編集: 9 か月前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT205Qk5UWkJNRWxVV21sZlkxYzVNR3N3TjBGdFpYYxAB"
+    }
+   ],
+   "keywordHitsLowStar12m": {
+    "quality_decline": 9,
+    "improvement": 2,
+    "service": 8,
+    "portion": 2,
+    "hygiene": 3,
+    "price_hike": 1
+   },
+   "ownerReplies": {
+    "present": 231,
+    "of": 250,
+    "distinctOpenings40": 144,
+    "tone": "templated, mismatched",
+    "examples": [
+     {
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21SeVZXeFVPVXBtUkhwUWFrbE5PVnAwWVZWMFFYYxAB",
+      "reviewStars": 2,
+      "reviewText": "[removed]",
+      "reviewRelDate": "1 年前",
+      "replyText": "[removed]",
+      "replyRelDate": "1 年前",
+      "replyLang": "ja"
+     },
+     {
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25KSVVrYzVPVUpPVFhaVVVrcG9XRGhXTkdJMlJFRRAB",
+      "reviewStars": 1,
+      "reviewText": "[removed]",
+      "reviewRelDate": "最終編集: 2 か月前",
+      "replyText": "[removed]",
+      "replyRelDate": "8 か月前",
+      "replyLang": "ja"
+     }
+    ]
+   },
+   "scrapeSec": 74.6,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "q34",
+   "name": "瞠 池袋本店",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d6676951c19:0x7c4bfe6bb923fe82?hl=ja&authuser=1",
+   "fid": "0x60188d6676951c19:0x7c4bfe6bb923fe82",
+   "category": "ラーメン屋",
+   "lifetime": {
+    "stars": 3.9,
+    "count": 903
+   },
+   "measured": {
+    "last3m": {
+     "n": 18,
+     "avgStars": 3.72,
+     "withText": 11
+    },
+    "last12m": {
+     "n": 84,
+     "avgStars": 3.95,
+     "withText": 57
+    },
+    "older": {
+     "n": 46,
+     "avgStars": 4.28,
+     "withText": 34
+    },
+    "scrapedReviews": 130,
+    "reachedMonths": 20.2,
+    "editedReviews": 10
+   },
+   "deltaVsLifetime": {
+    "last3m": -0.18,
+    "last12m": 0.05
+   },
+   "group": "getting_worse",
+   "story": "Abura-soba shop drifting down: 4.28 (12-18 mo ago) → 3.95 (12 mo) → 3.72 (3 mo); reviewers say the taste fell over the last few years.",
+   "grade": "B",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "8 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tKd1IyRnZPRVZaY1ZkWVVrOVJZV3htUVZObVNYYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 4,
+      "relDate": "1 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pGVVVYSkJhVnA1Y0c5aFUwdHdhVmhUTUVWc1RXYxAB"
+     }
+    ],
+    "quality_decline": [
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "4 週間前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xGWU5qSmZXVFZaV0RSSlNHSlpOMFZQUkZwd2MwRRAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [],
+   "keywordHitsLowStar12m": {
+    "quality_decline": 3,
+    "service": 2
+   },
+   "ownerReplies": {
+    "present": 0,
+    "of": 130,
+    "distinctOpenings40": 0,
+    "tone": null,
+    "examples": []
+   },
+   "scrapeSec": 42.5,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "p04",
+   "name": "座・麻婆唐府 池袋店",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d5e63b000f9:0x1e566d1845a4a857?hl=ja&authuser=1",
+   "fid": "0x60188d5e63b000f9:0x1e566d1845a4a857",
+   "category": "中華料理店",
+   "lifetime": {
+    "stars": 3.6,
+    "count": 514
+   },
+   "measured": {
+    "last3m": {
+     "n": 64,
+     "avgStars": 4.53,
+     "withText": 59
+    },
+    "last12m": {
+     "n": 104,
+     "avgStars": 4.05,
+     "withText": 90
+    },
+    "older": {
+     "n": 56,
+     "avgStars": 3.57,
+     "withText": 43
+    },
+    "scrapedReviews": 160,
+    "reachedMonths": 26,
+    "editedReviews": 18
+   },
+   "deltaVsLifetime": {
+    "last3m": 0.93,
+    "last12m": 0.45
+   },
+   "group": "got_better",
+   "story": "Sichuan restaurant re-opened after リニューアル: 64 reviews in 3 months averaging 4.53 vs 3.6 lifetime, many saying it is better than before. Caveat: the burst is dominated by long, dish-by-dish 5★ reviews from Chinese-writing Local Guides naming the same dishes; a few reviewers say the chef/menu changed and old favourites disappeared.",
+   "grade": "A",
+   "warnings": {
+    "hygiene": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "10 か月前",
+      "lang": "zh-Hans",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tKWWJUbG1XRkpmYUZGRVRUaFBVMVJHVFRORVEyYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "1 週間前",
+      "lang": "zh-Hans",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xWRGNUQnZObmMxUldKbmNXMXJablV4VEd4ZllXYxAB"
+     }
+    ],
+    "staff_or_owner_change": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "1 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xsV2FVMWZVblZhT0hBMk5VeE1iRFZpZUhaV2JWRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "1 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pCb01GVlJZMll5T0doVGJsRjBOR3hqUVdaUVFtYxAB"
+     }
+    ],
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "8 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pGRlNGSXpSVlF0T0d4WWJEUTVSMFJ5WTNCdFRHYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "8 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT213emFreEVOR3AyUlZSV1pYQm5iRk5oWDNOWFJsRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 3,
+      "relDate": "9 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xGSVNXMHpURzEzTkhWNVgwRkhTSHB0ZERCV1FYYxAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [
+    {
+     "category": "improvement",
+     "text": "[removed]",
+     "stars": 5,
+     "relDate": "1 日前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT205UFMzSkpTVWQ2TlVwUk9XbHZjR1UxYzA1S2VFRRAB"
+    },
+    {
+     "category": "improvement",
+     "text": "[removed]",
+     "stars": 5,
+     "relDate": "2 週間前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21SNmVqaEdOVXR4YVdaRWMwZE1SR05RY3poQlExRRAB"
+    },
+    {
+     "category": "improvement",
+     "text": "[removed]",
+     "stars": 5,
+     "relDate": "2 週間前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21SNmVqaEdOVXR4YVdaRWMwZE1SR05RY3poQlExRRAB"
+    },
+    {
+     "category": "improvement",
+     "text": "[removed]",
+     "stars": 5,
+     "relDate": "1 週間前",
+     "lang": "zh-Hans",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xSNlYwOWFkamhVVmpGSmJHZ3RRVEV4WTIxM1EwRRAB"
+    },
+    {
+     "category": "improvement",
+     "text": "[removed]",
+     "stars": 5,
+     "relDate": "2 日前",
+     "lang": "zh-Hans",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2paalVVOVVjMGwxTkd0aVVWcG9TVzFJV0Zwb1RHYxAB"
+    }
+   ],
+   "keywordHitsLowStar12m": {
+    "price_hike": 1,
+    "quality_decline": 3,
+    "staff_or_owner_change": 2,
+    "service": 5,
+    "hygiene": 1,
+    "improvement": 1
+   },
+   "ownerReplies": {
+    "present": 0,
+    "of": 160,
+    "distinctOpenings40": 0,
+    "tone": null,
+    "examples": []
+   },
+   "scrapeSec": 44.1,
+   "scrapeWindowMonths": 24,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "q14",
+   "name": "中国家庭料理 池袋 楊",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d5c132a97d3:0xe0d68bdc8561d7b5?hl=ja&authuser=1",
+   "fid": "0x60188d5c132a97d3:0xe0d68bdc8561d7b5",
+   "category": "四川料理店",
+   "lifetime": {
+    "stars": 3.7,
+    "count": 1452
+   },
+   "measured": {
+    "last3m": {
+     "n": 25,
+     "avgStars": 4,
+     "withText": 18
+    },
+    "last12m": {
+     "n": 100,
+     "avgStars": 3.91,
+     "withText": 80
+    },
+    "older": {
+     "n": 60,
+     "avgStars": 3.6,
+     "withText": 46
+    },
+    "scrapedReviews": 160,
+    "reachedMonths": 18.5,
+    "editedReviews": 14
+   },
+   "deltaVsLifetime": {
+    "last3m": 0.3,
+    "last12m": 0.21
+   },
+   "group": "got_better",
+   "story": "Chinese home cooking famous from 孤独のグルメ: 3.6 (12-18 mo ago) → 3.91 (12 mo) → 4.0 (3 mo) vs 3.7 lifetime; still some rude-staff complaints. Owner replies are short and plug the Instagram account.",
+   "grade": "B",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "11 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2w4MlgyUXhjRTh3TWxOUWMxaERaVlF0YlZCNVRHYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "6 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25wWVV6QmFWbDlEWlhBeVEycE1ZM1JIU3pSYWNWRRAB"
+     }
+    ],
+    "quality_decline": [
+     {
+      "text": "[removed]",
+      "stars": 4,
+      "relDate": "7 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tKd1drMDJlbk4zTjE5SmJrWjBWWFJxTm05RFRrRRAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [],
+   "keywordHitsLowStar12m": {
+    "quality_decline": 3,
+    "service": 3
+   },
+   "ownerReplies": {
+    "present": 63,
+    "of": 160,
+    "distinctOpenings40": 23,
+    "tone": "short, promotional",
+    "examples": [
+     {
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xnNGNUUkxaSFpyTUhoWFUyZElZa3czVEZJM1RtYxAB",
+      "reviewStars": 2,
+      "reviewText": "[removed]",
+      "reviewRelDate": "9 か月前",
+      "replyText": "[removed]",
+      "replyRelDate": "7 か月前",
+      "replyLang": "ja"
+     }
+    ]
+   },
+   "scrapeSec": 35.5,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "q28",
+   "name": "北前そば高田屋 池袋西口店",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d5c317cd981:0x40e9a522cc317127?hl=ja&authuser=1",
+   "fid": "0x60188d5c317cd981:0x40e9a522cc317127",
+   "category": "居酒屋",
+   "lifetime": {
+    "stars": 3.8,
+    "count": 864
+   },
+   "measured": {
+    "last3m": {
+     "n": 8,
+     "avgStars": 4.38,
+     "withText": 7
+    },
+    "last12m": {
+     "n": 80,
+     "avgStars": 4.16,
+     "withText": 71
+    },
+    "older": {
+     "n": 40,
+     "avgStars": 4.08,
+     "withText": 25
+    },
+    "scrapedReviews": 120,
+    "reachedMonths": 18.2,
+    "editedReviews": 8
+   },
+   "deltaVsLifetime": {
+    "last3m": 0.58,
+    "last12m": 0.36
+   },
+   "group": "got_better",
+   "story": "Soba izakaya chain: 12-month 4.16 vs 3.8 lifetime; owner replies to every review (120/120) in the reviewer's language. Remaining complaints are about service.",
+   "grade": "B",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "4 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xaVGNqSm1MVEJqT0dwTE4wUnJlamxPU0RNNFRGRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 3,
+      "relDate": "7 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25GaU56RnlNalpqVWpBNVVHZFRhVlYxUzFOT1VtYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "6 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tOeFpqZzNNMVpNV1cxbk9Hd3RaMWd6ZW5oWVFXYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "最終編集: 3 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xCcGN6Sm5SVUZVWjAxWFkybzNWbGRDYzFsblptYxAB"
+     }
+    ],
+    "hygiene": [
+     {
+      "text": "[removed]",
+      "stars": 4,
+      "relDate": "4 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xwSWNtTTVXWHB4Ym5Ka2FUQlJOa3BmUWxSMlFuYxAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [],
+   "keywordHitsLowStar12m": {
+    "quality_decline": 4,
+    "service": 4
+   },
+   "ownerReplies": {
+    "present": 120,
+    "of": 120,
+    "distinctOpenings40": 101,
+    "tone": "polite, multilingual",
+    "examples": [
+     {
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT210TWRHcFhPVlpDTkVKdVh6bFVNMGhQVkVSd1pIYxAB",
+      "reviewStars": 1,
+      "reviewText": "[removed]",
+      "reviewRelDate": "8 か月前",
+      "replyText": "[removed]",
+      "replyRelDate": "8 か月前",
+      "replyLang": "zh-Hant"
+     }
+    ]
+   },
+   "scrapeSec": 26.2,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "q22",
+   "name": "肉野菜炒めベジ郎 池袋東口店",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d41ee93e55b:0x16b703f06a55ed81?hl=ja&authuser=1",
+   "fid": "0x60188d41ee93e55b:0x16b703f06a55ed81",
+   "category": "定食屋",
+   "lifetime": {
+    "stars": 3.8,
+    "count": 694
+   },
+   "measured": {
+    "last3m": {
+     "n": 21,
+     "avgStars": 4.43,
+     "withText": 15
+    },
+    "last12m": {
+     "n": 73,
+     "avgStars": 3.79,
+     "withText": 60
+    },
+    "older": {
+     "n": 57,
+     "avgStars": 3.54,
+     "withText": 50
+    },
+    "scrapedReviews": 130,
+    "reachedMonths": 19.7,
+    "editedReviews": 15
+   },
+   "deltaVsLifetime": {
+    "last3m": 0.63,
+    "last12m": -0.01
+   },
+   "group": "got_better",
+   "story": "Vegetable stir-fry shop: last 3 months 4.43 vs 3.8 lifetime, older 3.54; small sample (21) and gradual price creep (ジリジリ値上げ) mentioned.",
+   "grade": "C",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "5 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pSUlFtSklla0pJVFdoa1ozaG9WMnBOWjFaUmIyYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "3 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xZek5uQjJiWGhuWjBaWVEzQTNPRVYxVm5CU2FGRRAB"
+     }
+    ],
+    "hygiene": [
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "4 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21KcWNqTXdVRE10Y21SdVJGTkpXVWcwTUY5VE9WRRAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [],
+   "keywordHitsLowStar12m": {
+    "price_hike": 1,
+    "quality_decline": 3,
+    "hygiene": 1,
+    "service": 1,
+    "portion": 1
+   },
+   "ownerReplies": {
+    "present": 2,
+    "of": 130,
+    "distinctOpenings40": 2,
+    "tone": null,
+    "examples": []
+   },
+   "scrapeSec": 57.6,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "p05",
+   "name": "タイストリートフードbyクルン・サイアム 池袋店",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d5d9e6fe2b5:0xd09eb7aa1ff0f7e5?hl=ja&authuser=1",
+   "fid": "0x60188d5d9e6fe2b5:0xd09eb7aa1ff0f7e5",
+   "category": "タイ料理店",
+   "lifetime": {
+    "stars": 4,
+    "count": 537
+   },
+   "measured": {
+    "last3m": {
+     "n": 19,
+     "avgStars": 4,
+     "withText": 14
+    },
+    "last12m": {
+     "n": 82,
+     "avgStars": 3.83,
+     "withText": 65
+    },
+    "older": {
+     "n": 88,
+     "avgStars": 4.19,
+     "withText": 62
+    },
+    "scrapedReviews": 170,
+    "reachedMonths": 24.9,
+    "editedReviews": 19
+   },
+   "deltaVsLifetime": {
+    "last3m": 0,
+    "last12m": -0.17
+   },
+   "group": "price_up_still_loved",
+   "story": "Thai street food in the station: several reviewers note prices went up (now over 1,000円) yet stay satisfied; rating stable (12-month 3.83 vs 4.0). Owner replies to complaints are exemplary: they report a fact check with the manager.",
+   "grade": "A",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "7 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25keVkxbE1UbkpTVUhWdFNXMW1NbGh6YWxGRGRGRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 4,
+      "relDate": "1 日前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xWRVUwRjZOelIyWVY5Q1JYTlpibWRQUmt0dmJtYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 3,
+      "relDate": "最終編集: 10 か月前",
+      "lang": "ja",
+      "reviewId": "ChdDSUhNMG9nS0VJQ0FnSURCczZyNGtBRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "7 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25oZlFVSklOWFV3TjBGWGVYZzFZbkV0V25wSVEwRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "3 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tscFExSmxZekZrVjJwMVVHZFljWEpyVWpaeFUyYxAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [
+    {
+     "category": "price_hike",
+     "text": "[removed]",
+     "stars": 5,
+     "relDate": "1 年前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2psalh6UTRVM1Z4T1ZaeGJpMXVTV2huV0ZGU1FuYxAB"
+    },
+    {
+     "category": "price_hike",
+     "text": "[removed]",
+     "stars": 5,
+     "relDate": "1 年前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25ocGFIWlZVMk5ZTVZFNVQyNU1hRmROZDE4d1dtYxAB"
+    }
+   ],
+   "keywordHitsLowStar12m": {
+    "service": 5,
+    "quality_decline": 2,
+    "improvement": 1
+   },
+   "ownerReplies": {
+    "present": 95,
+    "of": 170,
+    "distinctOpenings40": 69,
+    "tone": "exemplary",
+    "examples": [
+     {
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tscFExSmxZekZrVjJwMVVHZFljWEpyVWpaeFUyYxAB",
+      "reviewStars": 1,
+      "reviewText": "[removed]",
+      "reviewRelDate": "3 か月前",
+      "replyText": "[removed]",
+      "replyRelDate": "3 か月前",
+      "replyLang": "ja"
+     }
+    ]
+   },
+   "scrapeSec": 35.5,
+   "scrapeWindowMonths": 24,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "q03",
+   "name": "横浜家系らーめん 武蔵家 池袋店",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d5c11ebd17b:0x49547c56832ec67b?hl=ja&authuser=1",
+   "fid": "0x60188d5c11ebd17b:0x49547c56832ec67b",
+   "category": "ラーメン屋",
+   "lifetime": {
+    "stars": 3.5,
+    "count": 867
+   },
+   "measured": {
+    "last3m": {
+     "n": 27,
+     "avgStars": 4.33,
+     "withText": 22
+    },
+    "last12m": {
+     "n": 124,
+     "avgStars": 3.4,
+     "withText": 104
+    },
+    "older": {
+     "n": 116,
+     "avgStars": 3.55,
+     "withText": 100
+    },
+    "scrapedReviews": 240,
+    "reachedMonths": 25.1,
+    "editedReviews": 35
+   },
+   "deltaVsLifetime": {
+    "last3m": 0.83,
+    "last12m": -0.1
+   },
+   "group": "price_up_still_loved",
+   "story": "Iekei ramen: ラーメン 100円値上げ and the end (then return) of free rice are discussed without anger; 12-month 3.4 ≈ 3.5 lifetime, last 3 months 4.33. One recent 4★ review is a pasted chatbot answer with both a 'Googleマップ用' and a '食べログ用' version.",
+   "grade": "B",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "11 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xCNmVUVjJaakZpY1dWb1VqUlhiRFJYU25weGIxRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "3 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2t3ek1WRjJiRFpWVFdGWFowWlllbW80ZGpNdE9YYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "6 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xkelFqaFhkRVZXVkVReE5YRlpPV00zYUVaM04zYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "9 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2s1Uk0zWk9lbFl6WW05VlJESm5jazl4V1docFkwRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "8 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xaVFMwOXFVVWhJU1dkSVdWTmpaMTl1YlZGT05IYxAB"
+     }
+    ],
+    "quality_decline": [
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "最終編集: 4 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25Wa1NFOXRUbFZxZGpkcmR6WjZRMFJ6VDAwMWVWRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "9 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25OQmNGWnJkbTF4TWt0NlEwOXRVMkZaZUV0bVZsRRAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [
+    {
+     "category": "price_hike",
+     "text": "[removed]",
+     "stars": 4,
+     "relDate": "最終編集: 1 か月前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tWd1FuUjRlazkzTTBWeFgzRktORmhZT1VGdGIyYxAB"
+    },
+    {
+     "category": "price_hike",
+     "text": "[removed]",
+     "stars": 4,
+     "relDate": "最終編集: 1 か月前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2tWd1FuUjRlazkzTTBWeFgzRktORmhZT1VGdGIyYxAB"
+    }
+   ],
+   "keywordHitsLowStar12m": {
+    "service": 20,
+    "improvement": 2,
+    "quality_decline": 11,
+    "hygiene": 1,
+    "surprise_charge": 1
+   },
+   "ownerReplies": {
+    "present": 0,
+    "of": 240,
+    "distinctOpenings40": 0,
+    "tone": null,
+    "examples": []
+   },
+   "scrapeSec": 51.7,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "q19",
+   "name": "滝野川 大勝軒",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d6687daffff:0x6c6c041e53a2a364?hl=ja&authuser=1",
+   "fid": "0x60188d6687daffff:0x6c6c041e53a2a364",
+   "category": "ラーメン屋",
+   "lifetime": {
+    "stars": 3.8,
+    "count": 841
+   },
+   "measured": {
+    "last3m": {
+     "n": 23,
+     "avgStars": 3.35,
+     "withText": 18
+    },
+    "last12m": {
+     "n": 88,
+     "avgStars": 3.92,
+     "withText": 68
+    },
+    "older": {
+     "n": 42,
+     "avgStars": 3.9,
+     "withText": 32
+    },
+    "scrapedReviews": 130,
+    "reachedMonths": 18.3,
+    "editedReviews": 30
+   },
+   "deltaVsLifetime": {
+    "last3m": -0.45,
+    "last12m": 0.12
+   },
+   "group": "price_up_still_loved",
+   "story": "Taishoken branch with a loved owner: 価格改定 to 1,200円 accepted ([quote removed]); 12-month 3.92 vs 3.8. Caveat: last 3 months 3.35 because of complaints about one blond staff member.",
+   "grade": "B",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "最終編集: 5 日前",
+      "lang": "ja",
+      "reviewId": "ChZDSUhNMG9nS0VJQ0FnSUR1M04tY1JREAE"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "1 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21JeU1rRnVVR2xFU0VWblV6RnljM1V5YmxwSlZIYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "2 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21wc1dHcEVUMUF6TFcxbGNtVnZaRTVIUjNWU1puYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "最終編集: 3 週間前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2taMU4wMUpWakY2TFhGT1pHOXVkMlpqUkV0d1ZGRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "5 日前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25kTE9XUklaVmt5YlZwc05sVnlNbkJ1WDFaYUxYYxAB"
+     }
+    ],
+    "quality_decline": [
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "最終編集: 1 か月前",
+      "lang": "ja",
+      "reviewId": "ChdDSUhNMG9nS0VJQ0FnSURUN0syQV93RRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 3,
+      "relDate": "9 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21GdFZVSkxhVzgzTkZkV2FEbFdaMVZwZFd4VWJWRRAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [
+    {
+     "category": "price_hike",
+     "text": "[removed]",
+     "stars": 4,
+     "relDate": "最終編集: 2 か月前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21Kd1RuYzVhMGhIYW1seFZ6VnhVbWxLZEhaU1RrRRAB"
+    }
+   ],
+   "keywordHitsLowStar12m": {
+    "service": 4,
+    "quality_decline": 1,
+    "price_hike": 2,
+    "improvement": 1
+   },
+   "ownerReplies": {
+    "present": 0,
+    "of": 130,
+    "distinctOpenings40": 0,
+    "tone": null,
+    "examples": []
+   },
+   "scrapeSec": 19.3,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "q09",
+   "name": "頑者 TOKYO UNDERGROUND RAMEN 池袋",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d5d98fb1af3:0x554ab43c8f29b7e6?hl=ja&authuser=1",
+   "fid": "0x60188d5d98fb1af3:0x554ab43c8f29b7e6",
+   "category": "ラーメン屋",
+   "lifetime": {
+    "stars": 3.7,
+    "count": 954
+   },
+   "measured": {
+    "last3m": {
+     "n": 29,
+     "avgStars": 3.69,
+     "withText": 23
+    },
+    "last12m": {
+     "n": 106,
+     "avgStars": 3.62,
+     "withText": 82
+    },
+    "older": {
+     "n": 64,
+     "avgStars": 3.67,
+     "withText": 41
+    },
+    "scrapedReviews": 170,
+    "reachedMonths": 19.4,
+    "editedReviews": 25
+   },
+   "deltaVsLifetime": {
+    "last3m": -0.01,
+    "last12m": -0.08
+   },
+   "group": "stable_control",
+   "story": "Tsukemen shop: 3.69 / 3.62 / 3.67 (3 mo / 12 mo / older) vs 3.7 lifetime; complaints are ordinary service grumbles, no trend.",
+   "grade": "A",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "5 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xWcFpHeFJTak51U0ZONE5GOHRibXBXUzNScWIxRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 3,
+      "relDate": "11 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25SaGFYWTFVMlZzYzFwdmMzRkxSVVpwWkUxek1tYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "6 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pKVU5XSlpSMk0wTlcxSmR6TjJVVUZxVVdkYU1VRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "1 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2t0V1ZGbGhUSGhRVWxCQlIyRkNWbXhKT1ZwSVJVRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "最終編集: 6 か月前",
+      "lang": "ja",
+      "reviewId": "ChdDSUhNMG9nS0VJQ0FnSUNyNk5haG5nRRAB"
+     }
+    ],
+    "quality_decline": [
+     {
+      "text": "[removed]",
+      "stars": 2,
+      "relDate": "10 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25WMVRHbGxWbmxCVldWV2RFdHdZVFJFZURGNE9WRRAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [
+    {
+     "category": "price_hike",
+     "text": "[removed]",
+     "stars": 4,
+     "relDate": "最終編集: 1 年前",
+     "lang": "ja",
+     "reviewId": "ChdDSUhNMG9nS0VJQ0FnSUQ1d3E3MXR3RRAB"
+    },
+    {
+     "category": "improvement",
+     "text": "[removed]",
+     "stars": 5,
+     "relDate": "1 年前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21kMGR6aEdWMDVRTFRCU05FNUpSRmxtWWpjeGFYYxAB"
+    }
+   ],
+   "keywordHitsLowStar12m": {
+    "service": 6,
+    "portion": 1,
+    "quality_decline": 3
+   },
+   "ownerReplies": {
+    "present": 0,
+    "of": 170,
+    "distinctOpenings40": 0,
+    "tone": null,
+    "examples": []
+   },
+   "scrapeSec": 53.6,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "q31",
+   "name": "さかば ふくろ",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d5daf4d6369:0xd7f44a17444ccbc2?hl=ja&authuser=1",
+   "fid": "0x60188d5daf4d6369:0xd7f44a17444ccbc2",
+   "category": "居酒屋",
+   "lifetime": {
+    "stars": 3.9,
+    "count": 1135
+   },
+   "measured": {
+    "last3m": {
+     "n": 19,
+     "avgStars": 3.89,
+     "withText": 15
+    },
+    "last12m": {
+     "n": 83,
+     "avgStars": 3.93,
+     "withText": 62
+    },
+    "older": {
+     "n": 47,
+     "avgStars": 4,
+     "withText": 34
+    },
+    "scrapedReviews": 130,
+    "reachedMonths": 18.6,
+    "editedReviews": 16
+   },
+   "deltaVsLifetime": {
+    "last3m": -0.01,
+    "last12m": 0.03
+   },
+   "group": "stable_control",
+   "story": "Classic all-day izakaya: 3.89 / 3.93 / 4.0 vs 3.9; お通し mentioned as acceptable, praise and complaints about the older waitresses balance out.",
+   "grade": "A",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "4 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2t4eE5sQk9WWFY1WlVkbWFrUm5SMjl0UVVSUlJtYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 3,
+      "relDate": "8 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2t0NGRXVllWbWRFT0haSkxXWk1TbE50WDI5eFFVRRAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "9 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21GcFRVaHBla0ZZUVROMWJWa3RVekpQZEdSMGNIYxAB"
+     },
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "8 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT25KMllURmpabWhoV1U5NmIyZzNSMTlCZUhsRGMyYxAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [
+    {
+     "category": "price_hike",
+     "text": "[removed]",
+     "stars": 5,
+     "relDate": "11 か月前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT214V1NuZE9lVEZKTkc4eFJsbEtjRGxPZWpsR1IxRRAB"
+    }
+   ],
+   "keywordHitsLowStar12m": {
+    "quality_decline": 1,
+    "service": 5,
+    "price_hike": 1
+   },
+   "ownerReplies": {
+    "present": 0,
+    "of": 130,
+    "distinctOpenings40": 0,
+    "tone": null,
+    "examples": []
+   },
+   "scrapeSec": 24.8,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  },
+  {
+   "tag": "q24",
+   "name": "大都会",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d5df3a33ca3:0xa4d5ca13e95dc030?hl=ja&authuser=1",
+   "fid": "0x60188d5df3a33ca3:0xa4d5ca13e95dc030",
+   "category": "居酒屋",
+   "lifetime": {
+    "stars": 3.8,
+    "count": 1472
+   },
+   "measured": {
+    "last3m": {
+     "n": 40,
+     "avgStars": 3.83,
+     "withText": 24
+    },
+    "last12m": {
+     "n": 118,
+     "avgStars": 3.76,
+     "withText": 78
+    },
+    "older": {
+     "n": 92,
+     "avgStars": 3.77,
+     "withText": 58
+    },
+    "scrapedReviews": 210,
+    "reachedMonths": 18,
+    "editedReviews": 38
+   },
+   "deltaVsLifetime": {
+    "last3m": 0.03,
+    "last12m": -0.04
+   },
+   "group": "stable_control",
+   "story": "Cheap standing-bar style izakaya: 3.83 / 3.76 / 3.77 vs 3.8; several reviewers note food and drink prices rose but it is 'still cheap' — a control for the price classifier.",
+   "grade": "A",
+   "warnings": {
+    "service": [
+     {
+      "text": "[removed]",
+      "stars": 1,
+      "relDate": "最終編集: 11 か月前",
+      "lang": "ja",
+      "reviewId": "ChZDSUhNMG9nS0VJQ0FnSURWd1p6WEx3EAE"
+     }
+    ],
+    "price_hike": [
+     {
+      "text": "[removed]",
+      "stars": 4,
+      "relDate": "最終編集: 1 か月前",
+      "lang": "ja",
+      "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xGYWMxZzBjQzFNVmkxalZWcDFNMWhSTjJsd1VHYxAB"
+     }
+    ]
+   },
+   "nonComplaintSignals": [
+    {
+     "category": "improvement",
+     "text": "[removed]",
+     "stars": 2,
+     "relDate": "2 か月前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21KMWVIVTJhMkZrUXpGcVltRjBVM2hpWDBvd1JIYxAB"
+    },
+    {
+     "category": "price_hike",
+     "text": "[removed]",
+     "stars": 4,
+     "relDate": "3 か月前",
+     "lang": "ja",
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2xwcVFqSmxYMFpoTVRsa1RsZGhUMXAyYVVaWlNXYxAB"
+    },
+    {
+     "category": "price_hike",
+     "text": "[removed]",
+     "stars": 4,
+     "relDate": "最終編集: 6 か月前",
+     "lang": "ja",
+     "reviewId": "ChdDSUhNMG9nS0VJQ0FnTUNvN2ZhcjRRRRAB"
+    }
+   ],
+   "keywordHitsLowStar12m": {
+    "improvement": 1,
+    "service": 1
+   },
+   "ownerReplies": {
+    "present": 0,
+    "of": 210,
+    "distinctOpenings40": 0,
+    "tone": null,
+    "examples": []
+   },
+   "scrapeSec": 78.6,
+   "scrapeWindowMonths": 18,
+   "stopReason": "window",
+   "broke": null
+  }
+ ],
+ "extras": [
+  {
+   "tag": "p00",
+   "name": "鳥良商店 南池袋店",
+   "fid": "0x60188d681355b373:0x984160981caefe27",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d681355b373:0x984160981caefe27?hl=ja&authuser=1",
+   "kind": "canonical test store",
+   "lifetime": {
+    "stars": 3.6,
+    "count": 873
+   },
+   "last3m": {
+    "n": 37,
+    "avgStars": 4.57,
+    "withText": 24
+   },
+   "last12m": {
+    "n": 90,
+    "avgStars": 4.04,
+    "withText": 62
+   },
+   "note": "鳥良商店 南池袋店: last 3 months 4.57 (n=37) vs 3.6 lifetime; 43% of those reviewers have ≤2 reviews and up to 7 reviews landed on one day. Payload-only signals; text shows no reward wording. Owner replies to 165/170 with templates shared word-for-word with 磯丸水産 (same group); a zh-Hant complaint about an unannounced 前菜費 for foreigners got a generic Chinese template.",
+   "examples": [
+    {
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2todE4zcHFUMU41YWxSUVlVSlhSa0ZrUm1Vd04yYxAB",
+     "reviewStars": 1,
+     "reviewText": "[removed]",
+     "reviewRelDate": "8 か月前",
+     "replyText": "[removed]",
+     "replyRelDate": "8 か月前",
+     "replyLang": "zh-Hans"
+    }
+   ]
+  },
+  {
+   "tag": "q39",
+   "name": "鹿児島県霧島市 塚田農場 池袋西口公園店",
+   "fid": "0x60188d5c542ae4e9:0x1d6407a42ec11198",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d5c542ae4e9:0x1d6407a42ec11198?hl=ja&authuser=1",
+   "kind": "solicited-review burst",
+   "lifetime": {
+    "stars": 4.6,
+    "count": 629
+   },
+   "last3m": {
+    "n": 182,
+    "avgStars": 4.84,
+    "withText": 127
+   },
+   "last12m": {
+    "n": 230,
+    "avgStars": 4.81,
+    "withText": 161
+   },
+   "note": "塚田農場 池袋西口公園店 (4.6, 629 reviews): 182 reviews in the last 3 months (≈29% of its lifetime count), 87% 5★, 64% from accounts with ≤2 reviews, 17 on a single day, and 49/127 texts praise a named staff member. No reward wording found — a model-free 'campaign' signal.",
+   "examples": []
+  },
+  {
+   "tag": "q38",
+   "name": "良心的大衆酒場 鶴亀八番 池袋店",
+   "fid": "0x60188daedc454913:0xe2519b8e4c1d1728",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188daedc454913:0xe2519b8e4c1d1728?hl=ja&authuser=1",
+   "kind": "solicited-review burst",
+   "lifetime": {
+    "stars": 4.8,
+    "count": 1067
+   },
+   "last3m": {
+    "n": 55,
+    "avgStars": 4.89,
+    "withText": 31
+   },
+   "last12m": {
+    "n": 220,
+    "avgStars": 4.88,
+    "withText": 143
+   },
+   "note": "良心的大衆酒場 鶴亀八番 池袋店 (4.8, 1,067): 4.88 over 220 reviews in 12 months, 73% of last-3-month reviewers have ≤2 reviews, 11 on one day, owner replies to 219/220.",
+   "examples": []
+  },
+  {
+   "tag": "p10",
+   "name": "鉢鉢香",
+   "fid": "0x60188da366ae9217:0x27e46d1710d49dc6",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188da366ae9217:0x27e46d1710d49dc6?hl=ja&authuser=1",
+   "kind": "argumentative owner (too few reviews)",
+   "lifetime": {
+    "stars": 3.6,
+    "count": 234
+   },
+   "last3m": {
+    "n": 6,
+    "avgStars": 2.83,
+    "withText": 5
+   },
+   "last12m": {
+    "n": 23,
+    "avgStars": 3.3,
+    "withText": 17
+   },
+   "note": "鉢鉢香 (3.6, 234): only 23 reviews in 12 months, so below the size bar, but the clearest dismissive owner replies found (in Chinese).",
+   "examples": [
+    {
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2pNMFltcHlVV2xaZG1OemNVbElNRUZyY0ZrMk1tYxAB",
+     "reviewStars": 1,
+     "reviewText": "[removed]",
+     "reviewRelDate": "9 か月前",
+     "replyText": "[removed]",
+     "replyRelDate": "9 か月前",
+     "replyLang": "zh-Hans"
+    },
+    {
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT2twclJUWnhUSE5TVVVodGRWZHNjRjgwWXpSTU9VRRAB",
+     "reviewStars": 1,
+     "reviewText": "[removed]",
+     "reviewRelDate": "9 か月前",
+     "replyText": "[removed]",
+     "replyRelDate": "9 か月前",
+     "replyLang": "zh-Hans"
+    }
+   ]
+  },
+  {
+   "tag": "p01",
+   "name": "東京豚骨拉麺 ばんから 池袋東口店",
+   "fid": "0x60188d689e4d7d5f:0xd22b9f9237c1fb98",
+   "placeUrl": "https://www.google.com/maps/place/x/data=!4m2!3m1!1s0x60188d689e4d7d5f:0xd22b9f9237c1fb98?hl=ja&authuser=1",
+   "kind": "mismatched AI-style replies",
+   "lifetime": {
+    "stars": 3.5,
+    "count": 1185
+   },
+   "last3m": {
+    "n": 31,
+    "avgStars": 4.52,
+    "withText": 21
+   },
+   "last12m": {
+    "n": 89,
+    "avgStars": 3.82,
+    "withText": 67
+   },
+   "note": "東京豚骨拉麺 ばんから 池袋東口店 (3.5, 1,185): last 3 months 4.52 vs 3.5; very long, self-flagellating replies to complaints and a 1★ 'the chuka soba changed' thanked for its 'high rating'; a reviewer mentions touts handing out free-egg coupons outside.",
+   "examples": [
+    {
+     "reviewId": "ChdDSUhNMG9nS0VJQ0FnSURlcGZEeDNBRRAB",
+     "reviewStars": 1,
+     "reviewText": "[removed]",
+     "reviewRelDate": "最終編集: 4 か月前",
+     "replyText": "[removed]",
+     "replyRelDate": "5 か月前",
+     "replyLang": "ja"
+    },
+    {
+     "reviewId": "Ci9DQUlRQUNvZENodHljRjlvT21zM1JXSjFRVTk0T1Y5WmRIYzJNbVpsVVhORmFuYxAB",
+     "reviewStars": 3,
+     "reviewText": "[removed]",
+     "reviewRelDate": "6 か月前",
+     "replyText": "[removed]",
+     "replyRelDate": "5 か月前",
+     "replyLang": "ja"
+    }
+   ]
+  }
+ ],
+ "warningCategoryCounts": {
+  "$comment": "keywordHits = regex hits in ≤3★ reviews of the last 12 months over the 20 stores (noisy, overlapping); corpusComplaints = hand-labelled complaint items in direction2-corpus.json",
+  "keywordHits": {
+   "service": 134,
+   "quality_decline": 107,
+   "staff_or_owner_change": 4,
+   "hygiene": 27,
+   "improvement": 24,
+   "portion": 6,
+   "surprise_charge": 7,
+   "price_hike": 15
+  },
+  "corpusComplaints": {
+   "service": 71,
+   "portion": 5,
+   "none": 25,
+   "hygiene": 16,
+   "staff_or_owner_change": 5,
+   "quality_decline": 18,
+   "surprise_charge": 4,
+   "price_hike": 8
+  }
+ },
+ "surprises": [
+  "Passive payload works: exact µs timestamps, original language, original + translated text, sub-ratings, price band, owner reply + time, reviewer stats; 10 reviews per response.",
+  "Newest sort is by last-edit time; edited reviews (9%) jump to the top with their old publish date in r[1][2].",
+  "Owner-reply template banks are shared across stores of the same group word-for-word (ラーメン豚山 ↔ 横浜家系ラーメン 池袋商店: identical texts; 鳥良商店 ↔ 磯丸水産; ばんから 東口 ↔ 本店). Some templates ignore the content (hair in food → seasonal greeting; 2★ thanked for 'high rating').",
+  "Solicited-review bursts are visible without any language model: share of reviews from ≤2-review accounts, max reviews per day, share of 5★, staff names in text (塚田農場 64% / 17 per day / 49 staff-name texts in 3 months; 鶴亀八番 73% / 11 per day).",
+  "A Local Guide (349 reviews) pasted a chatbot answer verbatim, with a 'Googleマップ用' and a '食べログ用' version, as a 4★ review (武蔵家).",
+  "Guided-dining sub-ratings (food/service/atmosphere) exist on 82% of reviews: a 'service is slipping' trend can be computed from numbers alone.",
+  "No explicit 'review for a freebie' wording in ~7,000 reviews of 45 stores; the closest is touts handing out free-egg coupons (ばんから 東口).",
+  "Foreign-staff complaints are a frequent, sensitive pattern in low-star reviews; a classifier should not turn 'foreign staff' into a warning by itself."
+ ],
+ "didNotWork": [
+  "Maps search [142] snippets were a weak shortlist signal (mostly positive quotes): measuring every candidate was faster and better.",
+  "Newest-sort click sometimes did not apply (list stayed in relevance order) — detect by checking that edit times decrease, then re-click.",
+  "Review list sometimes not rendered until the panel scroller is nudged (Mo's Cafe).",
+  "Scrolling stalls on very active stores (鶴亀八番, 塚田農場 stopped at ~220 reviews / ~12 months).",
+  "Stores under ~500 lifetime reviews rarely reach 40 text reviews in 12 months (Mo's Cafe, カレーは飲み物, 鉢鉢香, アニメイトカフェ).",
+  "Claude-in-Chrome disconnected once mid-batch; recovered on retry."
+ ],
+ "screening": [
+  {
+   "tag": "p00",
+   "name": "鳥良商店 南池袋店",
+   "fid": "0x60188d681355b373:0x984160981caefe27",
+   "lifetime": [
+    3.6,
+    873
+   ],
+   "last3m": {
+    "n": 37,
+    "avgStars": 4.57,
+    "withText": 24
+   },
+   "last12m": {
+    "n": 90,
+    "avgStars": 4.04,
+    "withText": 62
+   },
+   "older": {
+    "n": 80,
+    "avgStars": 3.61,
+    "withText": 54
+   },
+   "replies": 165,
+   "scrapeSec": 20.8,
+   "n": 170
+  },
+  {
+   "tag": "p01",
+   "name": "東京豚骨拉麺 ばんから 池袋東口店",
+   "fid": "0x60188d689e4d7d5f:0xd22b9f9237c1fb98",
+   "lifetime": [
+    3.5,
+    1185
+   ],
+   "last3m": {
+    "n": 31,
+    "avgStars": 4.52,
+    "withText": 21
+   },
+   "last12m": {
+    "n": 89,
+    "avgStars": 3.82,
+    "withText": 67
+   },
+   "older": {
+    "n": 71,
+    "avgStars": 3.75,
+    "withText": 52
+   },
+   "replies": 115,
+   "scrapeSec": 37.5,
+   "n": 160
+  },
+  {
+   "tag": "p02",
+   "name": "天丼ふじ 池袋",
+   "fid": "0x60188d5decda05c3:0x560f375f0afaba56",
+   "lifetime": [
+    3.9,
+    1034
+   ],
+   "last3m": {
+    "n": 38,
+    "avgStars": 4.16,
+    "withText": 31
+   },
+   "last12m": {
+    "n": 106,
+    "avgStars": 4.25,
+    "withText": 85
+   },
+   "older": {
+    "n": 134,
+    "avgStars": 4.07,
+    "withText": 105
+   },
+   "replies": 0,
+   "scrapeSec": 53.1,
+   "n": 240
+  },
+  {
+   "tag": "p03",
+   "name": "魚金池袋店",
+   "fid": "0x60188d5ddf64fcc3:0x112270c5c92c0418",
+   "lifetime": [
+    3.7,
+    1082
+   ],
+   "last3m": {
+    "n": 12,
+    "avgStars": 3.5,
+    "withText": 9
+   },
+   "last12m": {
+    "n": 54,
+    "avgStars": 3.37,
+    "withText": 42
+   },
+   "older": {
+    "n": 76,
+    "avgStars": 3.3,
+    "withText": 47
+   },
+   "replies": 0,
+   "scrapeSec": 27.1,
+   "n": 130
+  },
+  {
+   "tag": "p04",
+   "name": "座・麻婆唐府 池袋店",
+   "fid": "0x60188d5e63b000f9:0x1e566d1845a4a857",
+   "lifetime": [
+    3.6,
+    514
+   ],
+   "last3m": {
+    "n": 64,
+    "avgStars": 4.53,
+    "withText": 59
+   },
+   "last12m": {
+    "n": 104,
+    "avgStars": 4.05,
+    "withText": 90
+   },
+   "older": {
+    "n": 56,
+    "avgStars": 3.57,
+    "withText": 43
+   },
+   "replies": 0,
+   "scrapeSec": 44.1,
+   "n": 160
+  },
+  {
+   "tag": "p05",
+   "name": "タイストリートフードbyクルン・サイアム 池袋店",
+   "fid": "0x60188d5d9e6fe2b5:0xd09eb7aa1ff0f7e5",
+   "lifetime": [
+    4,
+    537
+   ],
+   "last3m": {
+    "n": 19,
+    "avgStars": 4,
+    "withText": 14
+   },
+   "last12m": {
+    "n": 82,
+    "avgStars": 3.83,
+    "withText": 65
+   },
+   "older": {
+    "n": 88,
+    "avgStars": 4.19,
+    "withText": 62
+   },
+   "replies": 95,
+   "scrapeSec": 35.5,
+   "n": 170
+  },
+  {
+   "tag": "p06",
+   "name": "アニメイトカフェ 池袋店",
+   "fid": "0x60188d57e2cc0001:0x76d3c69502014ce4",
+   "lifetime": [
+    4,
+    360
+   ],
+   "last3m": {
+    "n": 2,
+    "avgStars": 3.5,
+    "withText": 1
+   },
+   "last12m": {
+    "n": 21,
+    "avgStars": 3.05,
+    "withText": 15
+   },
+   "older": {
+    "n": 29,
+    "avgStars": 2.93,
+    "withText": 20
+   },
+   "replies": 0,
+   "scrapeSec": 9.3,
+   "n": 50
+  },
+  {
+   "tag": "p07",
+   "name": "Mo’s Cafe",
+   "fid": "0x60188d14ee779425:0x416985a795d3a5ae",
+   "lifetime": [
+    4.4,
+    222
+   ],
+   "last3m": {
+    "n": 8,
+    "avgStars": 4.5,
+    "withText": 4
+   },
+   "last12m": {
+    "n": 19,
+    "avgStars": 4.63,
+    "withText": 10
+   },
+   "older": {
+    "n": 21,
+    "avgStars": 4.86,
+    "withText": 15
+   },
+   "replies": 0,
+   "scrapeSec": 7.1,
+   "n": 40
+  },
+  {
+   "tag": "p08",
+   "name": "麺屋武蔵 二天",
+   "fid": "0x60188d69c8711297:0x733c81b522675673",
+   "lifetime": [
+    3.8,
+    1425
+   ],
+   "last3m": {
+    "n": 40,
+    "avgStars": 3.98,
+    "withText": 30
+   },
+   "last12m": {
+    "n": 70,
+    "avgStars": 4.03,
+    "withText": 54
+   },
+   "older": {
+    "n": 0
+   },
+   "replies": 0,
+   "scrapeSec": 24.7,
+   "n": 70
+  },
+  {
+   "tag": "p09",
+   "name": "カレーは飲み物。池袋本店",
+   "fid": "0x60188dcac92cff21:0x9f9ffd9729c5639a",
+   "lifetime": [
+    4,
+    187
+   ],
+   "last3m": {
+    "n": 10,
+    "avgStars": 3.8,
+    "withText": 4
+   },
+   "last12m": {
+    "n": 47,
+    "avgStars": 3.98,
+    "withText": 29
+   },
+   "older": {
+    "n": 43,
+    "avgStars": 4,
+    "withText": 29
+   },
+   "replies": 0,
+   "scrapeSec": 10.6,
+   "n": 90
+  },
+  {
+   "tag": "p10",
+   "name": "鉢鉢香",
+   "fid": "0x60188da366ae9217:0x27e46d1710d49dc6",
+   "lifetime": [
+    3.6,
+    234
+   ],
+   "last3m": {
+    "n": 6,
+    "avgStars": 2.83,
+    "withText": 5
+   },
+   "last12m": {
+    "n": 23,
+    "avgStars": 3.3,
+    "withText": 17
+   },
+   "older": {
+    "n": 27,
+    "avgStars": 3.22,
+    "withText": 22
+   },
+   "replies": 4,
+   "scrapeSec": 17.4,
+   "n": 50
+  },
+  {
+   "tag": "q00",
+   "name": "皇綱家",
+   "fid": "0x60188dd45557a1db:0x2d8a48ffe196697a",
+   "lifetime": [
+    3.2,
+    1359
+   ],
+   "last3m": {
+    "n": 68,
+    "avgStars": 3.01,
+    "withText": 57
+   },
+   "last12m": {
+    "n": 232,
+    "avgStars": 2.97,
+    "withText": 192
+   },
+   "older": {
+    "n": 168,
+    "avgStars": 2.88,
+    "withText": 144
+   },
+   "replies": 0,
+   "scrapeSec": 125.8,
+   "n": 400
+  },
+  {
+   "tag": "q01",
+   "name": "東池袋 大勝軒 南池袋店",
+   "fid": "0x60188d686174e6af:0xdc40ba7a454c0b58",
+   "lifetime": [
+    3.2,
+    774
+   ],
+   "last3m": {
+    "n": 15,
+    "avgStars": 3.2,
+    "withText": 10
+   },
+   "last12m": {
+    "n": 51,
+    "avgStars": 2.82,
+    "withText": 36
+   },
+   "older": {
+    "n": 59,
+    "avgStars": 2.25,
+    "withText": 46
+   },
+   "replies": 0,
+   "scrapeSec": 20,
+   "n": 110
+  },
+  {
+   "tag": "q02",
+   "name": "伝説のすた丼屋 池袋店",
+   "fid": "0x60188d68bacaee6b:0x42a8688d3562744f",
+   "lifetime": [
+    3.6,
+    798
+   ],
+   "last3m": {
+    "n": 15,
+    "avgStars": 3.47,
+    "withText": 13
+   },
+   "last12m": {
+    "n": 55,
+    "avgStars": 3.42,
+    "withText": 41
+   },
+   "older": {
+    "n": 55,
+    "avgStars": 3.24,
+    "withText": 42
+   },
+   "replies": 52,
+   "scrapeSec": 21.2,
+   "n": 110
+  },
+  {
+   "tag": "q03",
+   "name": "横浜家系らーめん 武蔵家 池袋店",
+   "fid": "0x60188d5c11ebd17b:0x49547c56832ec67b",
+   "lifetime": [
+    3.5,
+    867
+   ],
+   "last3m": {
+    "n": 27,
+    "avgStars": 4.33,
+    "withText": 22
+   },
+   "last12m": {
+    "n": 124,
+    "avgStars": 3.4,
+    "withText": 104
+   },
+   "older": {
+    "n": 116,
+    "avgStars": 3.55,
+    "withText": 100
+   },
+   "replies": 0,
+   "scrapeSec": 51.7,
+   "n": 240
+  },
+  {
+   "tag": "q04",
+   "name": "旭川味噌ラーメン ばんから 池袋西口店",
+   "fid": "0x60188d5e74da437f:0x23fa4092a3513540",
+   "lifetime": [
+    3.4,
+    874
+   ],
+   "last3m": {
+    "n": 9,
+    "avgStars": 3.33,
+    "withText": 6
+   },
+   "last12m": {
+    "n": 45,
+    "avgStars": 3.56,
+    "withText": 33
+   },
+   "older": {
+    "n": 55,
+    "avgStars": 3.55,
+    "withText": 45
+   },
+   "replies": 26,
+   "scrapeSec": 18,
+   "n": 100
+  },
+  {
+   "tag": "q05",
+   "name": "東京豚骨拉麺ばんから 池袋本店",
+   "fid": "0x60188d429f4f11d9:0xc44bec48b1e01b21",
+   "lifetime": [
+    3.5,
+    766
+   ],
+   "last3m": {
+    "n": 15,
+    "avgStars": 3.33,
+    "withText": 9
+   },
+   "last12m": {
+    "n": 58,
+    "avgStars": 3.24,
+    "withText": 46
+   },
+   "older": {
+    "n": 52,
+    "avgStars": 3.62,
+    "withText": 39
+   },
+   "replies": 17,
+   "scrapeSec": 19,
+   "n": 110
+  },
+  {
+   "tag": "q06",
+   "name": "舎鈴 池袋東口店",
+   "fid": "0x60188d67e10701e9:0x10a5e2ec4361fbe0",
+   "lifetime": [
+    3.6,
+    740
+   ],
+   "last3m": {
+    "n": 17,
+    "avgStars": 3.35,
+    "withText": 17
+   },
+   "last12m": {
+    "n": 62,
+    "avgStars": 3.23,
+    "withText": 56
+   },
+   "older": {
+    "n": 38,
+    "avgStars": 3.18,
+    "withText": 28
+   },
+   "replies": 0,
+   "scrapeSec": 18.8,
+   "n": 100
+  },
+  {
+   "tag": "q07",
+   "name": "つけ麺専門店 三田製麺所 池袋西口店",
+   "fid": "0x60188d5e71838035:0x83f0a4735e25f9f7",
+   "lifetime": [
+    3.6,
+    604
+   ],
+   "last3m": {
+    "n": 12,
+    "avgStars": 3.67,
+    "withText": 8
+   },
+   "last12m": {
+    "n": 49,
+    "avgStars": 3.27,
+    "withText": 39
+   },
+   "older": {
+    "n": 21,
+    "avgStars": 3,
+    "withText": 19
+   },
+   "replies": 66,
+   "scrapeSec": 13,
+   "n": 70
+  },
+  {
+   "tag": "q08",
+   "name": "しんぱち食堂 池袋店",
+   "fid": "0x60188d2e7c219c9f:0xe9cc5f17338c4f4f",
+   "lifetime": [
+    3.6,
+    941
+   ],
+   "last3m": {
+    "n": 47,
+    "avgStars": 3.4,
+    "withText": 40
+   },
+   "last12m": {
+    "n": 154,
+    "avgStars": 3.44,
+    "withText": 125
+   },
+   "older": {
+    "n": 66,
+    "avgStars": 3.52,
+    "withText": 51
+   },
+   "replies": 0,
+   "scrapeSec": 49.1,
+   "n": 220
+  },
+  {
+   "tag": "q09",
+   "name": "頑者 TOKYO UNDERGROUND RAMEN 池袋",
+   "fid": "0x60188d5d98fb1af3:0x554ab43c8f29b7e6",
+   "lifetime": [
+    3.7,
+    954
+   ],
+   "last3m": {
+    "n": 29,
+    "avgStars": 3.69,
+    "withText": 23
+   },
+   "last12m": {
+    "n": 106,
+    "avgStars": 3.62,
+    "withText": 82
+   },
+   "older": {
+    "n": 64,
+    "avgStars": 3.67,
+    "withText": 41
+   },
+   "replies": 0,
+   "scrapeSec": 53.6,
+   "n": 170
+  },
+  {
+   "tag": "q10",
+   "name": "池袋 ひろちゃんラーメン！",
+   "fid": "0x60188df8524aabad:0x8fb24f40afce8cd8",
+   "lifetime": [
+    3.7,
+    1024
+   ],
+   "last3m": {
+    "n": 64,
+    "avgStars": 3.66,
+    "withText": 54
+   },
+   "last12m": {
+    "n": 243,
+    "avgStars": 3.6,
+    "withText": 196
+   },
+   "older": {
+    "n": 87,
+    "avgStars": 3.7,
+    "withText": 75
+   },
+   "replies": 1,
+   "scrapeSec": 156.6,
+   "n": 330
+  },
+  {
+   "tag": "q11",
+   "name": "環七土佐っ子ラーメン",
+   "fid": "0x60188d5e6fa80af5:0xd3acd7a40b2acb52",
+   "lifetime": [
+    3.7,
+    1434
+   ],
+   "last3m": {
+    "n": 36,
+    "avgStars": 3.64,
+    "withText": 29
+   },
+   "last12m": {
+    "n": 126,
+    "avgStars": 3.81,
+    "withText": 99
+   },
+   "older": {
+    "n": 74,
+    "avgStars": 3.91,
+    "withText": 61
+   },
+   "replies": 0,
+   "scrapeSec": 66.5,
+   "n": 200
+  },
+  {
+   "tag": "q12",
+   "name": "中華そば 青葉 池袋サンシャイン店",
+   "fid": "0x60188d6f1051deaf:0xbd0d17b9a624d287",
+   "lifetime": [
+    3.7,
+    729
+   ],
+   "last3m": {
+    "n": 16,
+    "avgStars": 3.62,
+    "withText": 14
+   },
+   "last12m": {
+    "n": 72,
+    "avgStars": 3.57,
+    "withText": 64
+   },
+   "older": {
+    "n": 38,
+    "avgStars": 3.37,
+    "withText": 31
+   },
+   "replies": 0,
+   "scrapeSec": 50.3,
+   "n": 110
+  },
+  {
+   "tag": "q13",
+   "name": "やよい軒 池袋劇場通り店",
+   "fid": "0x60188d5e5b175499:0xd2f37e821dd4a94e",
+   "lifetime": [
+    3.7,
+    812
+   ],
+   "last3m": {
+    "n": 17,
+    "avgStars": 3.82,
+    "withText": 8
+   },
+   "last12m": {
+    "n": 66,
+    "avgStars": 3.86,
+    "withText": 44
+   },
+   "older": {
+    "n": 34,
+    "avgStars": 4.15,
+    "withText": 20
+   },
+   "replies": 1,
+   "scrapeSec": 54.4,
+   "n": 100
+  },
+  {
+   "tag": "q14",
+   "name": "中国家庭料理 池袋 楊",
+   "fid": "0x60188d5c132a97d3:0xe0d68bdc8561d7b5",
+   "lifetime": [
+    3.7,
+    1452
+   ],
+   "last3m": {
+    "n": 25,
+    "avgStars": 4,
+    "withText": 18
+   },
+   "last12m": {
+    "n": 100,
+    "avgStars": 3.91,
+    "withText": 80
+   },
+   "older": {
+    "n": 60,
+    "avgStars": 3.6,
+    "withText": 46
+   },
+   "replies": 63,
+   "scrapeSec": 35.5,
+   "n": 160
+  },
+  {
+   "tag": "q15",
+   "name": "一軒め酒場 池袋南口店",
+   "fid": "0x60188d5cfe57a75d:0xc09886177a0f0588",
+   "lifetime": [
+    3.7,
+    1098
+   ],
+   "last3m": {
+    "n": 12,
+    "avgStars": 3.92,
+    "withText": 9
+   },
+   "last12m": {
+    "n": 65,
+    "avgStars": 3.78,
+    "withText": 36
+   },
+   "older": {
+    "n": 35,
+    "avgStars": 3.83,
+    "withText": 19
+   },
+   "replies": 96,
+   "scrapeSec": 17,
+   "n": 100
+  },
+  {
+   "tag": "q16",
+   "name": "磯丸水産 池袋西口店",
+   "fid": "0x60188d5e0dd19acd:0xb3f489a74fdf7b42",
+   "lifetime": [
+    3.6,
+    767
+   ],
+   "last3m": {
+    "n": 10,
+    "avgStars": 3.9,
+    "withText": 6
+   },
+   "last12m": {
+    "n": 39,
+    "avgStars": 4,
+    "withText": 21
+   },
+   "older": {
+    "n": 31,
+    "avgStars": 3.68,
+    "withText": 24
+   },
+   "replies": 62,
+   "scrapeSec": 14.2,
+   "n": 70
+  },
+  {
+   "tag": "q17",
+   "name": "はなの舞 池袋駅西口公園前店",
+   "fid": "0x60188d5c542ae4e9:0xd2d8726d43c202e8",
+   "lifetime": [
+    3.5,
+    672
+   ],
+   "last3m": {
+    "n": 14,
+    "avgStars": 3.86,
+    "withText": 6
+   },
+   "last12m": {
+    "n": 67,
+    "avgStars": 3.75,
+    "withText": 31
+   },
+   "older": {
+    "n": 33,
+    "avgStars": 3.64,
+    "withText": 12
+   },
+   "replies": 94,
+   "scrapeSec": 20.6,
+   "n": 100
+  },
+  {
+   "tag": "q18",
+   "name": "秋刀魚中華そば 生粋",
+   "fid": "0x60188d5ebed6b99b:0x5e99207c2dcebdfe",
+   "lifetime": [
+    3.8,
+    857
+   ],
+   "last3m": {
+    "n": 21,
+    "avgStars": 3.9,
+    "withText": 16
+   },
+   "last12m": {
+    "n": 64,
+    "avgStars": 3.89,
+    "withText": 46
+   },
+   "older": {
+    "n": 36,
+    "avgStars": 4.31,
+    "withText": 26
+   },
+   "replies": 59,
+   "scrapeSec": 15.5,
+   "n": 100
+  },
+  {
+   "tag": "q19",
+   "name": "滝野川 大勝軒",
+   "fid": "0x60188d6687daffff:0x6c6c041e53a2a364",
+   "lifetime": [
+    3.8,
+    841
+   ],
+   "last3m": {
+    "n": 23,
+    "avgStars": 3.35,
+    "withText": 18
+   },
+   "last12m": {
+    "n": 88,
+    "avgStars": 3.92,
+    "withText": 68
+   },
+   "older": {
+    "n": 42,
+    "avgStars": 3.9,
+    "withText": 32
+   },
+   "replies": 0,
+   "scrapeSec": 19.3,
+   "n": 130
+  },
+  {
+   "tag": "q20",
+   "name": "つけ麺屋 やすべえ 西池袋店",
+   "fid": "0x60188d5e639df543:0x347871d7bbc67517",
+   "lifetime": [
+    3.8,
+    660
+   ],
+   "last3m": {
+    "n": 4,
+    "avgStars": 4.5,
+    "withText": 3
+   },
+   "last12m": {
+    "n": 36,
+    "avgStars": 3.83,
+    "withText": 29
+   },
+   "older": {
+    "n": 34,
+    "avgStars": 4.09,
+    "withText": 29
+   },
+   "replies": 0,
+   "scrapeSec": 18.9,
+   "n": 70
+  },
+  {
+   "tag": "q21",
+   "name": "東京油組総本店 池袋組",
+   "fid": "0x60188d5ddcba113f:0xfbc0681f44f73aa3",
+   "lifetime": [
+    3.8,
+    715
+   ],
+   "last3m": {
+    "n": 18,
+    "avgStars": 3.22,
+    "withText": 16
+   },
+   "last12m": {
+    "n": 81,
+    "avgStars": 3.62,
+    "withText": 68
+   },
+   "older": {
+    "n": 39,
+    "avgStars": 3.77,
+    "withText": 35
+   },
+   "replies": 0,
+   "scrapeSec": 21,
+   "n": 120
+  },
+  {
+   "tag": "q22",
+   "name": "肉野菜炒めベジ郎 池袋東口店",
+   "fid": "0x60188d41ee93e55b:0x16b703f06a55ed81",
+   "lifetime": [
+    3.8,
+    694
+   ],
+   "last3m": {
+    "n": 21,
+    "avgStars": 4.43,
+    "withText": 15
+   },
+   "last12m": {
+    "n": 73,
+    "avgStars": 3.79,
+    "withText": 60
+   },
+   "older": {
+    "n": 57,
+    "avgStars": 3.54,
+    "withText": 50
+   },
+   "replies": 2,
+   "scrapeSec": 57.6,
+   "n": 130
+  },
+  {
+   "tag": "q23",
+   "name": "大戸屋ごはん処 池袋東口店",
+   "fid": "0x60188d67c8f4d177:0x363b5a4b8f64a7e0",
+   "lifetime": [
+    3.8,
+    1127
+   ],
+   "last3m": {
+    "n": 26,
+    "avgStars": 3.15,
+    "withText": 19
+   },
+   "last12m": {
+    "n": 100,
+    "avgStars": 3.6,
+    "withText": 77
+   },
+   "older": {
+    "n": 40,
+    "avgStars": 3.98,
+    "withText": 30
+   },
+   "replies": 0,
+   "scrapeSec": 71.3,
+   "n": 140
+  },
+  {
+   "tag": "q24",
+   "name": "大都会",
+   "fid": "0x60188d5df3a33ca3:0xa4d5ca13e95dc030",
+   "lifetime": [
+    3.8,
+    1472
+   ],
+   "last3m": {
+    "n": 40,
+    "avgStars": 3.83,
+    "withText": 24
+   },
+   "last12m": {
+    "n": 118,
+    "avgStars": 3.76,
+    "withText": 78
+   },
+   "older": {
+    "n": 92,
+    "avgStars": 3.77,
+    "withText": 58
+   },
+   "replies": 0,
+   "scrapeSec": 78.6,
+   "n": 210
+  },
+  {
+   "tag": "q25",
+   "name": "回し鮨 若貴 池袋サンシャイン60通り店",
+   "fid": "0x60188d68a3002651:0x3f4e976a7d83b9b0",
+   "lifetime": [
+    3.8,
+    997
+   ],
+   "last3m": {
+    "n": 18,
+    "avgStars": 3.56,
+    "withText": 14
+   },
+   "last12m": {
+    "n": 67,
+    "avgStars": 3.85,
+    "withText": 51
+   },
+   "older": {
+    "n": 43,
+    "avgStars": 3.93,
+    "withText": 33
+   },
+   "replies": 78,
+   "scrapeSec": 20.8,
+   "n": 110
+  },
+  {
+   "tag": "q26",
+   "name": "ラーメン豚山 池袋西口店",
+   "fid": "0x60188d7ef4235cd9:0xc09b541e56b551df",
+   "lifetime": [
+    3.8,
+    907
+   ],
+   "last3m": {
+    "n": 46,
+    "avgStars": 3.5,
+    "withText": 34
+   },
+   "last12m": {
+    "n": 162,
+    "avgStars": 3.68,
+    "withText": 123
+   },
+   "older": {
+    "n": 88,
+    "avgStars": 3.58,
+    "withText": 80
+   },
+   "replies": 231,
+   "scrapeSec": 74.6,
+   "n": 250
+  },
+  {
+   "tag": "q27",
+   "name": "中国ラーメン揚州商人 池袋西口店",
+   "fid": "0x60188d5c6cbc2afb:0xa2a5db2d3a585f00",
+   "lifetime": [
+    3.8,
+    659
+   ],
+   "last3m": {
+    "n": 10,
+    "avgStars": 3.6,
+    "withText": 7
+   },
+   "last12m": {
+    "n": 34,
+    "avgStars": 3.71,
+    "withText": 25
+   },
+   "older": {
+    "n": 26,
+    "avgStars": 3.65,
+    "withText": 22
+   },
+   "replies": 19,
+   "scrapeSec": 10.1,
+   "n": 60
+  },
+  {
+   "tag": "q28",
+   "name": "北前そば高田屋 池袋西口店",
+   "fid": "0x60188d5c317cd981:0x40e9a522cc317127",
+   "lifetime": [
+    3.8,
+    864
+   ],
+   "last3m": {
+    "n": 8,
+    "avgStars": 4.38,
+    "withText": 7
+   },
+   "last12m": {
+    "n": 80,
+    "avgStars": 4.16,
+    "withText": 71
+   },
+   "older": {
+    "n": 40,
+    "avgStars": 4.08,
+    "withText": 25
+   },
+   "replies": 120,
+   "scrapeSec": 26.2,
+   "n": 120
+  },
+  {
+   "tag": "q29",
+   "name": "横浜家系ラーメン 池袋商店",
+   "fid": "0x60188d5eba740381:0x534ef42104f4572a",
+   "lifetime": [
+    3.9,
+    972
+   ],
+   "last3m": {
+    "n": 31,
+    "avgStars": 3.52,
+    "withText": 24
+   },
+   "last12m": {
+    "n": 104,
+    "avgStars": 3.76,
+    "withText": 85
+   },
+   "older": {
+    "n": 66,
+    "avgStars": 3.59,
+    "withText": 58
+   },
+   "replies": 142,
+   "scrapeSec": 49.7,
+   "n": 170
+  },
+  {
+   "tag": "q30",
+   "name": "油そば春日亭 池袋本店",
+   "fid": "0x60188d5cdb4644c3:0xd1f096585f769575",
+   "lifetime": [
+    3.9,
+    664
+   ],
+   "last3m": {
+    "n": 13,
+    "avgStars": 3.77,
+    "withText": 8
+   },
+   "last12m": {
+    "n": 53,
+    "avgStars": 3.77,
+    "withText": 39
+   },
+   "older": {
+    "n": 27,
+    "avgStars": 4.19,
+    "withText": 22
+   },
+   "replies": 0,
+   "scrapeSec": 17.2,
+   "n": 80
+  },
+  {
+   "tag": "q31",
+   "name": "さかば ふくろ",
+   "fid": "0x60188d5daf4d6369:0xd7f44a17444ccbc2",
+   "lifetime": [
+    3.9,
+    1135
+   ],
+   "last3m": {
+    "n": 19,
+    "avgStars": 3.89,
+    "withText": 15
+   },
+   "last12m": {
+    "n": 83,
+    "avgStars": 3.93,
+    "withText": 62
+   },
+   "older": {
+    "n": 47,
+    "avgStars": 4,
+    "withText": 34
+   },
+   "replies": 0,
+   "scrapeSec": 24.8,
+   "n": 130
+  },
+  {
+   "tag": "q32",
+   "name": "シェーキーズ 池袋東口店",
+   "fid": "0x60188d662c9b8fb9:0x11384a9e46376abe",
+   "lifetime": [
+    3.9,
+    1303
+   ],
+   "last3m": {
+    "n": 35,
+    "avgStars": 4.14,
+    "withText": 29
+   },
+   "last12m": {
+    "n": 101,
+    "avgStars": 4.18,
+    "withText": 71
+   },
+   "older": {
+    "n": 49,
+    "avgStars": 3.84,
+    "withText": 28
+   },
+   "replies": 0,
+   "scrapeSec": 30.7,
+   "n": 150
+  },
+  {
+   "tag": "q33",
+   "name": "琥珀 池袋店",
+   "fid": "0x60188d5f9db60541:0xc13111f14ecfbd6c",
+   "lifetime": [
+    3.9,
+    747
+   ],
+   "last3m": {
+    "n": 48,
+    "avgStars": 3.85,
+    "withText": 34
+   },
+   "last12m": {
+    "n": 202,
+    "avgStars": 3.87,
+    "withText": 153
+   },
+   "older": {
+    "n": 108,
+    "avgStars": 4.11,
+    "withText": 81
+   },
+   "replies": 0,
+   "scrapeSec": 92.4,
+   "n": 310
+  },
+  {
+   "tag": "q34",
+   "name": "瞠 池袋本店",
+   "fid": "0x60188d6676951c19:0x7c4bfe6bb923fe82",
+   "lifetime": [
+    3.9,
+    903
+   ],
+   "last3m": {
+    "n": 18,
+    "avgStars": 3.72,
+    "withText": 11
+   },
+   "last12m": {
+    "n": 84,
+    "avgStars": 3.95,
+    "withText": 57
+   },
+   "older": {
+    "n": 46,
+    "avgStars": 4.28,
+    "withText": 34
+   },
+   "replies": 0,
+   "scrapeSec": 42.5,
+   "n": 130
+  },
+  {
+   "tag": "q38",
+   "name": "良心的大衆酒場 鶴亀八番 池袋店",
+   "fid": "0x60188daedc454913:0xe2519b8e4c1d1728",
+   "lifetime": [
+    4.8,
+    1067
+   ],
+   "last3m": {
+    "n": 55,
+    "avgStars": 4.89,
+    "withText": 31
+   },
+   "last12m": {
+    "n": 220,
+    "avgStars": 4.88,
+    "withText": 143
+   },
+   "older": {
+    "n": 0
+   },
+   "replies": 219,
+   "scrapeSec": 96.7,
+   "n": 220
+  },
+  {
+   "tag": "q39",
+   "name": "鹿児島県霧島市 塚田農場 池袋西口公園店",
+   "fid": "0x60188d5c542ae4e9:0x1d6407a42ec11198",
+   "lifetime": [
+    4.6,
+    629
+   ],
+   "last3m": {
+    "n": 182,
+    "avgStars": 4.84,
+    "withText": 127
+   },
+   "last12m": {
+    "n": 230,
+    "avgStars": 4.81,
+    "withText": 161
+   },
+   "older": {
+    "n": 0
+   },
+   "replies": 218,
+   "scrapeSec": 98.8,
+   "n": 230
+  },
+  {
+   "tag": "q40",
+   "name": "池袋っ子居酒屋 俺たちのとりとん",
+   "fid": "0x60188d686d11a391:0xadbebf3fbec9f36",
+   "lifetime": [
+    4.6,
+    939
+   ],
+   "last3m": {
+    "n": 90,
+    "avgStars": 4.94,
+    "withText": 66
+   },
+   "last12m": {
+    "n": 260,
+    "avgStars": 4.88,
+    "withText": 179
+   },
+   "older": {
+    "n": 0
+   },
+   "replies": 255,
+   "scrapeSec": 76.1,
+   "n": 260
+  }
+ ]
+}

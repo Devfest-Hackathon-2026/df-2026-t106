@@ -1,0 +1,19 @@
+{
+  "name": "g-map-extension",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev -w apps/web",
+    "build:web": "npm run build -w apps/web",
+    "dev:ext": "npm run dev -w apps/extension",
+    "build:ext": "npm run build -w apps/extension",
+    "zip:ext": "npm run zip -w apps/extension",
+    "test:ext": "npm run test -w apps/extension",
+    "deploy": "npm run build:site && firebase deploy",
+    "deploy:rules": "firebase deploy --only firestore",
+    "build:site": "npm run zip:ext && npm run build:web"
+  }
+}

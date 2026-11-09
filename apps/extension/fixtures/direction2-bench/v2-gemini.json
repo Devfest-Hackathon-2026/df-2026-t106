@@ -1,0 +1,451 @@
+{
+ "corpus": {
+  "total": 968,
+  "ja_with_en": 910
+ },
+ "minpos": 5,
+ "boot": 1000,
+ "probe_C": 10.0,
+ "models": {
+  "vertex:gemini-embedding-001": {
+   "run": {
+    "tag": "ja originals + Google English translation",
+    "n": 910,
+    "categories": [
+     "price_hike",
+     "portion",
+     "quality_decline",
+     "staff_or_owner_change",
+     "service",
+     "hygiene",
+     "surprise_charge",
+     "improvement"
+    ],
+    "label_counts": {
+     "service": 108,
+     "portion": 29,
+     "none": 463,
+     "hygiene": 60,
+     "staff_or_owner_change": 25,
+     "quality_decline": 71,
+     "improvement": 30,
+     "surprise_charge": 44,
+     "price_hike": 80
+    },
+    "rows": [
+     {
+      "review": "ja",
+      "instr": "none",
+      "mode": "zs_none",
+      "macro_ap": 0.5993,
+      "ci95": [
+       0.5668,
+       0.6413
+      ],
+      "per_class": {
+       "price_hike": 0.8041,
+       "portion": 0.2442,
+       "quality_decline": 0.704,
+       "staff_or_owner_change": 0.2935,
+       "service": 0.7327,
+       "hygiene": 0.6419,
+       "surprise_charge": 0.8874,
+       "improvement": 0.4869
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0144,
+       "portion": 0.0326,
+       "quality_decline": 0.0258,
+       "staff_or_owner_change": 0.241,
+       "service": 0.0494,
+       "hygiene": 0.0696,
+       "surprise_charge": 0.0036,
+       "improvement": 0.3442
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "none",
+      "mode": "pr_none",
+      "macro_ap": 0.8,
+      "ci95": [
+       0.7662,
+       0.8384
+      ],
+      "per_class": {
+       "price_hike": 0.8929,
+       "portion": 0.5327,
+       "quality_decline": 0.8256,
+       "staff_or_owner_change": 0.6368,
+       "service": 0.9118,
+       "hygiene": 0.9217,
+       "surprise_charge": 0.9409,
+       "improvement": 0.7379
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0,
+       "portion": 0.0145,
+       "quality_decline": 0.0037,
+       "staff_or_owner_change": 0.0072,
+       "service": 0.0,
+       "hygiene": 0.0,
+       "surprise_charge": 0.0,
+       "improvement": 0.0181
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "CLASSIFICATION",
+      "mode": "zs_gen",
+      "macro_ap": 0.5531,
+      "ci95": [
+       0.5187,
+       0.5914
+      ],
+      "per_class": {
+       "price_hike": 0.7388,
+       "portion": 0.2962,
+       "quality_decline": 0.604,
+       "staff_or_owner_change": 0.219,
+       "service": 0.697,
+       "hygiene": 0.5062,
+       "surprise_charge": 0.7252,
+       "improvement": 0.6379
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0108,
+       "portion": 0.0181,
+       "quality_decline": 0.0738,
+       "staff_or_owner_change": 0.1691,
+       "service": 0.0494,
+       "hygiene": 0.0952,
+       "surprise_charge": 0.0361,
+       "improvement": 0.1304
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "CLASSIFICATION",
+      "mode": "pr_gen",
+      "macro_ap": 0.7793,
+      "ci95": [
+       0.7418,
+       0.8201
+      ],
+      "per_class": {
+       "price_hike": 0.8582,
+       "portion": 0.5117,
+       "quality_decline": 0.7827,
+       "staff_or_owner_change": 0.562,
+       "service": 0.9117,
+       "hygiene": 0.9289,
+       "surprise_charge": 0.9244,
+       "improvement": 0.7547
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0,
+       "portion": 0.0399,
+       "quality_decline": 0.0074,
+       "staff_or_owner_change": 0.0108,
+       "service": 0.0076,
+       "hygiene": 0.0,
+       "surprise_charge": 0.0,
+       "improvement": 0.0471
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "SEMANTIC_SIMILARITY",
+      "mode": "zs_gen",
+      "macro_ap": 0.619,
+      "ci95": [
+       0.5811,
+       0.6613
+      ],
+      "per_class": {
+       "price_hike": 0.843,
+       "portion": 0.2746,
+       "quality_decline": 0.6906,
+       "staff_or_owner_change": 0.4676,
+       "service": 0.7131,
+       "hygiene": 0.5717,
+       "surprise_charge": 0.7476,
+       "improvement": 0.6435
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0036,
+       "portion": 0.0326,
+       "quality_decline": 0.0295,
+       "staff_or_owner_change": 0.018,
+       "service": 0.0494,
+       "hygiene": 0.0586,
+       "surprise_charge": 0.0397,
+       "improvement": 0.0399
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "SEMANTIC_SIMILARITY",
+      "mode": "pr_gen",
+      "macro_ap": 0.7989,
+      "ci95": [
+       0.7631,
+       0.8374
+      ],
+      "per_class": {
+       "price_hike": 0.8899,
+       "portion": 0.5184,
+       "quality_decline": 0.7942,
+       "staff_or_owner_change": 0.6632,
+       "service": 0.8924,
+       "hygiene": 0.9378,
+       "surprise_charge": 0.9037,
+       "improvement": 0.792
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0,
+       "portion": 0.0145,
+       "quality_decline": 0.0111,
+       "staff_or_owner_change": 0.0072,
+       "service": 0.0038,
+       "hygiene": 0.0,
+       "surprise_charge": 0.0,
+       "improvement": 0.029
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "RETRIEVAL_DOCUMENT",
+      "mode": "zs_gen",
+      "macro_ap": 0.6064,
+      "ci95": [
+       0.5737,
+       0.6476
+      ],
+      "per_class": {
+       "price_hike": 0.807,
+       "portion": 0.233,
+       "quality_decline": 0.7148,
+       "staff_or_owner_change": 0.2998,
+       "service": 0.7513,
+       "hygiene": 0.6765,
+       "surprise_charge": 0.8761,
+       "improvement": 0.493
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0144,
+       "portion": 0.0326,
+       "quality_decline": 0.0221,
+       "staff_or_owner_change": 0.1906,
+       "service": 0.0494,
+       "hygiene": 0.0513,
+       "surprise_charge": 0.0036,
+       "improvement": 0.221
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "RETRIEVAL_DOCUMENT",
+      "mode": "pr_gen",
+      "macro_ap": 0.7897,
+      "ci95": [
+       0.7539,
+       0.8284
+      ],
+      "per_class": {
+       "price_hike": 0.8693,
+       "portion": 0.5207,
+       "quality_decline": 0.8235,
+       "staff_or_owner_change": 0.6347,
+       "service": 0.9036,
+       "hygiene": 0.9224,
+       "surprise_charge": 0.943,
+       "improvement": 0.7007
+      },
+      "false_alarm_at_recall80": {
+       "price_hike": 0.0,
+       "portion": 0.0145,
+       "quality_decline": 0.0037,
+       "staff_or_owner_change": 0.0072,
+       "service": 0.0076,
+       "hygiene": 0.0,
+       "surprise_charge": 0.0,
+       "improvement": 0.0543
+      }
+     }
+    ],
+    "diffs": [
+     {
+      "a": [
+       "ja",
+       "CLASSIFICATION",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.0463,
+      "ci95": [
+       -0.0675,
+       -0.0233
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "SEMANTIC_SIMILARITY",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.0196,
+      "ci95": [
+       -0.0044,
+       0.0409
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "RETRIEVAL_DOCUMENT",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.0071,
+      "ci95": [
+       -0.0061,
+       0.0197
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "CLASSIFICATION",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": -0.0207,
+      "ci95": [
+       -0.0404,
+       -0.0024
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "SEMANTIC_SIMILARITY",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": -0.0011,
+      "ci95": [
+       -0.0212,
+       0.0186
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "RETRIEVAL_DOCUMENT",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": -0.0103,
+      "ci95": [
+       -0.0258,
+       0.0049
+      ]
+     }
+    ]
+   },
+   "stance_price_hike": {
+    "n": 80,
+    "unhappy": 35,
+    "accepting": 45,
+    "rows": [
+     {
+      "review": "ja",
+      "instr": "none",
+      "zs_auc": 0.909,
+      "zs_ci95": [
+       0.836,
+       0.966
+      ],
+      "probe_auc": 0.961,
+      "probe_ci95": [
+       0.921,
+       0.991
+      ]
+     },
+     {
+      "review": "ja",
+      "instr": "CLASSIFICATION",
+      "zs_auc": 0.914,
+      "zs_ci95": [
+       0.846,
+       0.968
+      ],
+      "probe_auc": 0.958,
+      "probe_ci95": [
+       0.913,
+       0.989
+      ]
+     },
+     {
+      "review": "ja",
+      "instr": "SEMANTIC_SIMILARITY",
+      "zs_auc": 0.931,
+      "zs_ci95": [
+       0.869,
+       0.973
+      ],
+      "probe_auc": 0.959,
+      "probe_ci95": [
+       0.913,
+       0.988
+      ]
+     },
+     {
+      "review": "ja",
+      "instr": "RETRIEVAL_DOCUMENT",
+      "zs_auc": 0.922,
+      "zs_ci95": [
+       0.856,
+       0.976
+      ],
+      "probe_auc": 0.961,
+      "probe_ci95": [
+       0.92,
+       0.992
+      ]
+     }
+    ]
+   },
+   "texts_per_sec": 15925.8,
+   "texts": 4000,
+   "dim": 3072,
+   "vertex_chars_billed": 0
+  }
+ }
+}

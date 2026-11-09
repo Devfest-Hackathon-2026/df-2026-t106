@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "@gmap/ui/fonts.css";
+@import "@gmap/ui/styles.css";
+@source "../entrypoints";

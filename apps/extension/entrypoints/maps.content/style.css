@@ -1,0 +1,5 @@
+/* Shadow-DOM entry: no fonts.css here (registered on the page by index.tsx). */
+@import "tailwindcss";
+@import "@gmap/ui/styles.css";
+@source "./";
+@source "../../lib";

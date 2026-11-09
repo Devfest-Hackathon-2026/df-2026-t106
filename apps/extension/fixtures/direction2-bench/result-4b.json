@@ -1,0 +1,1744 @@
+{
+ "corpus": {
+  "total": 256,
+  "ja_with_en": 240
+ },
+ "minpos": 5,
+ "boot": 1000,
+ "probe_C": 10.0,
+ "models": {
+  "Qwen/Qwen3-Embedding-4B": {
+   "run": {
+    "tag": "ja originals + Google English translation",
+    "n": 240,
+    "categories": [
+     "price_hike",
+     "portion",
+     "quality_decline",
+     "staff_or_owner_change",
+     "service",
+     "hygiene",
+     "improvement"
+    ],
+    "label_counts": {
+     "service": 69,
+     "portion": 6,
+     "none": 96,
+     "hygiene": 14,
+     "staff_or_owner_change": 5,
+     "quality_decline": 18,
+     "improvement": 11,
+     "surprise_charge": 2,
+     "price_hike": 19
+    },
+    "rows": [
+     {
+      "review": "ja",
+      "instr": "none",
+      "mode": "zs_none",
+      "macro_ap": 0.5335,
+      "ci95": [
+       0.4715,
+       0.6479
+      ],
+      "per_class": {
+       "price_hike": 0.6146,
+       "portion": 0.1911,
+       "quality_decline": 0.7212,
+       "staff_or_owner_change": 0.4604,
+       "service": 0.8379,
+       "hygiene": 0.6535,
+       "improvement": 0.256
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "none",
+      "mode": "pr_none",
+      "macro_ap": 0.6944,
+      "ci95": [
+       0.6223,
+       0.8085
+      ],
+      "per_class": {
+       "price_hike": 0.7769,
+       "portion": 0.4294,
+       "quality_decline": 0.7375,
+       "staff_or_owner_change": 0.2747,
+       "service": 0.9188,
+       "hygiene": 0.9157,
+       "improvement": 0.8078
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "zs_cat",
+      "macro_ap": 0.5398,
+      "ci95": [
+       0.4806,
+       0.6371
+      ],
+      "per_class": {
+       "price_hike": 0.6481,
+       "portion": 0.1168,
+       "quality_decline": 0.7333,
+       "staff_or_owner_change": 0.4842,
+       "service": 0.8688,
+       "hygiene": 0.6206,
+       "improvement": 0.3068
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "zs_gen",
+      "macro_ap": 0.7647,
+      "ci95": [
+       0.6861,
+       0.873
+      ],
+      "per_class": {
+       "price_hike": 0.8878,
+       "portion": 0.4811,
+       "quality_decline": 0.8671,
+       "staff_or_owner_change": 0.3965,
+       "service": 0.955,
+       "hygiene": 0.9117,
+       "improvement": 0.8537
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "pr_gen",
+      "macro_ap": 0.7649,
+      "ci95": [
+       0.7104,
+       0.8588
+      ],
+      "per_class": {
+       "price_hike": 0.9151,
+       "portion": 0.5494,
+       "quality_decline": 0.876,
+       "staff_or_owner_change": 0.1126,
+       "service": 0.9667,
+       "hygiene": 0.9592,
+       "improvement": 0.9751
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "zs_spec",
+      "macro_ap": 0.6359,
+      "ci95": [
+       0.5823,
+       0.7193
+      ],
+      "per_class": {
+       "price_hike": 0.9484,
+       "portion": 0.3532,
+       "quality_decline": 0.5622,
+       "staff_or_owner_change": 0.0995,
+       "service": 0.9102,
+       "hygiene": 0.7863,
+       "improvement": 0.7918
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "mode": "pr_spec",
+      "macro_ap": 0.7102,
+      "ci95": [
+       0.6741,
+       0.808
+      ],
+      "per_class": {
+       "price_hike": 0.9556,
+       "portion": 0.3189,
+       "quality_decline": 0.7569,
+       "staff_or_owner_change": 0.123,
+       "service": 0.9604,
+       "hygiene": 0.9735,
+       "improvement": 0.8827
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "en",
+      "mode": "zs_cat",
+      "macro_ap": 0.5498,
+      "ci95": [
+       0.4936,
+       0.6514
+      ],
+      "per_class": {
+       "price_hike": 0.6262,
+       "portion": 0.1157,
+       "quality_decline": 0.688,
+       "staff_or_owner_change": 0.5396,
+       "service": 0.8428,
+       "hygiene": 0.6818,
+       "improvement": 0.3548
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "en",
+      "mode": "zs_gen",
+      "macro_ap": 0.7309,
+      "ci95": [
+       0.6617,
+       0.8345
+      ],
+      "per_class": {
+       "price_hike": 0.8765,
+       "portion": 0.6394,
+       "quality_decline": 0.7485,
+       "staff_or_owner_change": 0.2541,
+       "service": 0.938,
+       "hygiene": 0.8719,
+       "improvement": 0.7879
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "en",
+      "mode": "pr_gen",
+      "macro_ap": 0.7566,
+      "ci95": [
+       0.6855,
+       0.8618
+      ],
+      "per_class": {
+       "price_hike": 0.8942,
+       "portion": 0.529,
+       "quality_decline": 0.8211,
+       "staff_or_owner_change": 0.2464,
+       "service": 0.9554,
+       "hygiene": 0.9399,
+       "improvement": 0.9104
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "en",
+      "mode": "zs_spec",
+      "macro_ap": 0.5145,
+      "ci95": [
+       0.4542,
+       0.6098
+      ],
+      "per_class": {
+       "price_hike": 0.6183,
+       "portion": 0.5185,
+       "quality_decline": 0.3029,
+       "staff_or_owner_change": 0.0457,
+       "service": 0.7185,
+       "hygiene": 0.6114,
+       "improvement": 0.7864
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "en",
+      "mode": "pr_spec",
+      "macro_ap": 0.7226,
+      "ci95": [
+       0.6731,
+       0.8223
+      ],
+      "per_class": {
+       "price_hike": 0.9034,
+       "portion": 0.3947,
+       "quality_decline": 0.848,
+       "staff_or_owner_change": 0.1097,
+       "service": 0.9541,
+       "hygiene": 0.9615,
+       "improvement": 0.8871
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "zh",
+      "mode": "zs_cat",
+      "macro_ap": 0.5021,
+      "ci95": [
+       0.4438,
+       0.6068
+      ],
+      "per_class": {
+       "price_hike": 0.5437,
+       "portion": 0.1198,
+       "quality_decline": 0.6902,
+       "staff_or_owner_change": 0.3544,
+       "service": 0.8519,
+       "hygiene": 0.6224,
+       "improvement": 0.3321
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "zh",
+      "mode": "zs_gen",
+      "macro_ap": 0.7722,
+      "ci95": [
+       0.7019,
+       0.8761
+      ],
+      "per_class": {
+       "price_hike": 0.9121,
+       "portion": 0.5144,
+       "quality_decline": 0.9171,
+       "staff_or_owner_change": 0.2992,
+       "service": 0.9265,
+       "hygiene": 0.8505,
+       "improvement": 0.986
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "zh",
+      "mode": "pr_gen",
+      "macro_ap": 0.7779,
+      "ci95": [
+       0.7153,
+       0.8815
+      ],
+      "per_class": {
+       "price_hike": 0.9304,
+       "portion": 0.5475,
+       "quality_decline": 0.8538,
+       "staff_or_owner_change": 0.2188,
+       "service": 0.9579,
+       "hygiene": 0.9529,
+       "improvement": 0.9842
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "zh",
+      "mode": "zs_spec",
+      "macro_ap": 0.5597,
+      "ci95": [
+       0.5123,
+       0.6584
+      ],
+      "per_class": {
+       "price_hike": 0.8504,
+       "portion": 0.3201,
+       "quality_decline": 0.7172,
+       "staff_or_owner_change": 0.1214,
+       "service": 0.7579,
+       "hygiene": 0.3801,
+       "improvement": 0.7709
+      }
+     },
+     {
+      "review": "ja",
+      "instr": "zh",
+      "mode": "pr_spec",
+      "macro_ap": 0.7213,
+      "ci95": [
+       0.6768,
+       0.8186
+      ],
+      "per_class": {
+       "price_hike": 0.9531,
+       "portion": 0.3772,
+       "quality_decline": 0.8188,
+       "staff_or_owner_change": 0.189,
+       "service": 0.9579,
+       "hygiene": 0.9557,
+       "improvement": 0.7975
+      }
+     },
+     {
+      "review": "en",
+      "instr": "none",
+      "mode": "zs_none",
+      "macro_ap": 0.5132,
+      "ci95": [
+       0.4383,
+       0.6279
+      ],
+      "per_class": {
+       "price_hike": 0.7268,
+       "portion": 0.1511,
+       "quality_decline": 0.5491,
+       "staff_or_owner_change": 0.5149,
+       "service": 0.8249,
+       "hygiene": 0.5209,
+       "improvement": 0.3048
+      }
+     },
+     {
+      "review": "en",
+      "instr": "none",
+      "mode": "pr_none",
+      "macro_ap": 0.6745,
+      "ci95": [
+       0.6087,
+       0.7993
+      ],
+      "per_class": {
+       "price_hike": 0.7984,
+       "portion": 0.4127,
+       "quality_decline": 0.7164,
+       "staff_or_owner_change": 0.2247,
+       "service": 0.9211,
+       "hygiene": 0.9288,
+       "improvement": 0.7197
+      }
+     },
+     {
+      "review": "en",
+      "instr": "ja",
+      "mode": "zs_cat",
+      "macro_ap": 0.5252,
+      "ci95": [
+       0.4739,
+       0.6296
+      ],
+      "per_class": {
+       "price_hike": 0.767,
+       "portion": 0.0556,
+       "quality_decline": 0.8204,
+       "staff_or_owner_change": 0.315,
+       "service": 0.875,
+       "hygiene": 0.6008,
+       "improvement": 0.2425
+      }
+     },
+     {
+      "review": "en",
+      "instr": "ja",
+      "mode": "zs_gen",
+      "macro_ap": 0.7516,
+      "ci95": [
+       0.6802,
+       0.8537
+      ],
+      "per_class": {
+       "price_hike": 0.8821,
+       "portion": 0.4872,
+       "quality_decline": 0.8084,
+       "staff_or_owner_change": 0.2407,
+       "service": 0.941,
+       "hygiene": 0.9448,
+       "improvement": 0.9567
+      }
+     },
+     {
+      "review": "en",
+      "instr": "ja",
+      "mode": "pr_gen",
+      "macro_ap": 0.7417,
+      "ci95": [
+       0.6901,
+       0.8281
+      ],
+      "per_class": {
+       "price_hike": 0.9013,
+       "portion": 0.5502,
+       "quality_decline": 0.7766,
+       "staff_or_owner_change": 0.0944,
+       "service": 0.9706,
+       "hygiene": 0.9571,
+       "improvement": 0.9414
+      }
+     },
+     {
+      "review": "en",
+      "instr": "ja",
+      "mode": "zs_spec",
+      "macro_ap": 0.6333,
+      "ci95": [
+       0.5887,
+       0.7194
+      ],
+      "per_class": {
+       "price_hike": 0.8364,
+       "portion": 0.2522,
+       "quality_decline": 0.6773,
+       "staff_or_owner_change": 0.1361,
+       "service": 0.8789,
+       "hygiene": 0.7678,
+       "improvement": 0.8843
+      }
+     },
+     {
+      "review": "en",
+      "instr": "ja",
+      "mode": "pr_spec",
+      "macro_ap": 0.7,
+      "ci95": [
+       0.6535,
+       0.8096
+      ],
+      "per_class": {
+       "price_hike": 0.8734,
+       "portion": 0.3932,
+       "quality_decline": 0.7012,
+       "staff_or_owner_change": 0.1639,
+       "service": 0.9536,
+       "hygiene": 0.9193,
+       "improvement": 0.895
+      }
+     },
+     {
+      "review": "en",
+      "instr": "en",
+      "mode": "zs_cat",
+      "macro_ap": 0.5582,
+      "ci95": [
+       0.4976,
+       0.647
+      ],
+      "per_class": {
+       "price_hike": 0.7071,
+       "portion": 0.0603,
+       "quality_decline": 0.8074,
+       "staff_or_owner_change": 0.4848,
+       "service": 0.8567,
+       "hygiene": 0.6725,
+       "improvement": 0.3187
+      }
+     },
+     {
+      "review": "en",
+      "instr": "en",
+      "mode": "zs_gen",
+      "macro_ap": 0.7302,
+      "ci95": [
+       0.6659,
+       0.8145
+      ],
+      "per_class": {
+       "price_hike": 0.8849,
+       "portion": 0.6476,
+       "quality_decline": 0.742,
+       "staff_or_owner_change": 0.1568,
+       "service": 0.9209,
+       "hygiene": 0.9149,
+       "improvement": 0.8446
+      }
+     },
+     {
+      "review": "en",
+      "instr": "en",
+      "mode": "pr_gen",
+      "macro_ap": 0.7472,
+      "ci95": [
+       0.6699,
+       0.8484
+      ],
+      "per_class": {
+       "price_hike": 0.8879,
+       "portion": 0.5621,
+       "quality_decline": 0.7631,
+       "staff_or_owner_change": 0.2682,
+       "service": 0.9711,
+       "hygiene": 0.9538,
+       "improvement": 0.8245
+      }
+     },
+     {
+      "review": "en",
+      "instr": "en",
+      "mode": "zs_spec",
+      "macro_ap": 0.4279,
+      "ci95": [
+       0.3672,
+       0.541
+      ],
+      "per_class": {
+       "price_hike": 0.6288,
+       "portion": 0.4369,
+       "quality_decline": 0.1908,
+       "staff_or_owner_change": 0.0356,
+       "service": 0.6182,
+       "hygiene": 0.5218,
+       "improvement": 0.5633
+      }
+     },
+     {
+      "review": "en",
+      "instr": "en",
+      "mode": "pr_spec",
+      "macro_ap": 0.6653,
+      "ci95": [
+       0.6132,
+       0.7612
+      ],
+      "per_class": {
+       "price_hike": 0.7807,
+       "portion": 0.3093,
+       "quality_decline": 0.7895,
+       "staff_or_owner_change": 0.0724,
+       "service": 0.9597,
+       "hygiene": 0.9013,
+       "improvement": 0.8441
+      }
+     },
+     {
+      "review": "en",
+      "instr": "zh",
+      "mode": "zs_cat",
+      "macro_ap": 0.5436,
+      "ci95": [
+       0.4873,
+       0.6433
+      ],
+      "per_class": {
+       "price_hike": 0.7503,
+       "portion": 0.0652,
+       "quality_decline": 0.7516,
+       "staff_or_owner_change": 0.4046,
+       "service": 0.8781,
+       "hygiene": 0.6798,
+       "improvement": 0.2754
+      }
+     },
+     {
+      "review": "en",
+      "instr": "zh",
+      "mode": "zs_gen",
+      "macro_ap": 0.7542,
+      "ci95": [
+       0.6853,
+       0.8611
+      ],
+      "per_class": {
+       "price_hike": 0.8937,
+       "portion": 0.5379,
+       "quality_decline": 0.8335,
+       "staff_or_owner_change": 0.2837,
+       "service": 0.9069,
+       "hygiene": 0.8671,
+       "improvement": 0.9563
+      }
+     },
+     {
+      "review": "en",
+      "instr": "zh",
+      "mode": "pr_gen",
+      "macro_ap": 0.7508,
+      "ci95": [
+       0.6873,
+       0.8551
+      ],
+      "per_class": {
+       "price_hike": 0.9173,
+       "portion": 0.5609,
+       "quality_decline": 0.7662,
+       "staff_or_owner_change": 0.1953,
+       "service": 0.9695,
+       "hygiene": 0.9376,
+       "improvement": 0.9089
+      }
+     },
+     {
+      "review": "en",
+      "instr": "zh",
+      "mode": "zs_spec",
+      "macro_ap": 0.4781,
+      "ci95": [
+       0.436,
+       0.5702
+      ],
+      "per_class": {
+       "price_hike": 0.7239,
+       "portion": 0.2706,
+       "quality_decline": 0.6471,
+       "staff_or_owner_change": 0.1242,
+       "service": 0.4486,
+       "hygiene": 0.2858,
+       "improvement": 0.8467
+      }
+     },
+     {
+      "review": "en",
+      "instr": "zh",
+      "mode": "pr_spec",
+      "macro_ap": 0.6604,
+      "ci95": [
+       0.6106,
+       0.7502
+      ],
+      "per_class": {
+       "price_hike": 0.7641,
+       "portion": 0.3076,
+       "quality_decline": 0.7237,
+       "staff_or_owner_change": 0.117,
+       "service": 0.9583,
+       "hygiene": 0.9009,
+       "improvement": 0.8512
+      }
+     }
+    ],
+    "diffs": [
+     {
+      "a": [
+       "ja",
+       "ja",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.0063,
+      "ci95": [
+       -0.0767,
+       0.0754
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_cat"
+      ],
+      "diff": 0.01,
+      "ci95": [
+       -0.0231,
+       0.058
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.0163,
+      "ci95": [
+       -0.0801,
+       0.1092
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_cat"
+      ],
+      "diff": -0.0377,
+      "ci95": [
+       -0.0703,
+       0.0039
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.0314,
+      "ci95": [
+       -0.1195,
+       0.065
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "ja",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_cat"
+      ],
+      "diff": -0.0146,
+      "ci95": [
+       -0.0842,
+       0.0532
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "ja",
+       "zs_cat"
+      ],
+      "b": [
+       "en",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.012,
+      "ci95": [
+       -0.0812,
+       0.1167
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "en",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_cat"
+      ],
+      "diff": 0.0184,
+      "ci95": [
+       -0.051,
+       0.0752
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "en",
+       "zs_cat"
+      ],
+      "b": [
+       "en",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.045,
+      "ci95": [
+       -0.0346,
+       0.1068
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "zh",
+       "zs_cat"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_cat"
+      ],
+      "diff": 0.0038,
+      "ci95": [
+       -0.0652,
+       0.0706
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "zh",
+       "zs_cat"
+      ],
+      "b": [
+       "en",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.0303,
+      "ci95": [
+       -0.0617,
+       0.1057
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "ja",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.2312,
+      "ci95": [
+       0.1519,
+       0.3043
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_gen"
+      ],
+      "diff": -0.0338,
+      "ci95": [
+       -0.1073,
+       0.0349
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.1973,
+      "ci95": [
+       0.1068,
+       0.2817
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_gen"
+      ],
+      "diff": 0.0075,
+      "ci95": [
+       -0.0605,
+       0.0647
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.2387,
+      "ci95": [
+       0.1514,
+       0.3152
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "ja",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_gen"
+      ],
+      "diff": -0.0131,
+      "ci95": [
+       -0.0707,
+       0.0373
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "ja",
+       "zs_gen"
+      ],
+      "b": [
+       "en",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.2383,
+      "ci95": [
+       0.1428,
+       0.321
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "en",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_gen"
+      ],
+      "diff": -0.0345,
+      "ci95": [
+       -0.117,
+       0.032
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "en",
+       "zs_gen"
+      ],
+      "b": [
+       "en",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.217,
+      "ci95": [
+       0.1176,
+       0.2968
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "zh",
+       "zs_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_gen"
+      ],
+      "diff": -0.0106,
+      "ci95": [
+       -0.0712,
+       0.052
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "zh",
+       "zs_gen"
+      ],
+      "b": [
+       "en",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.2409,
+      "ci95": [
+       0.1488,
+       0.3311
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "ja",
+       "zs_spec"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.1024,
+      "ci95": [
+       0.0144,
+       0.1872
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "zs_spec"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_spec"
+      ],
+      "diff": -0.1214,
+      "ci95": [
+       -0.1844,
+       -0.0504
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "zs_spec"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.019,
+      "ci95": [
+       -0.1328,
+       0.0893
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "zs_spec"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_spec"
+      ],
+      "diff": -0.0762,
+      "ci95": [
+       -0.1398,
+       -0.0023
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "zs_spec"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.0262,
+      "ci95": [
+       -0.0765,
+       0.1277
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "ja",
+       "zs_spec"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_spec"
+      ],
+      "diff": -0.0027,
+      "ci95": [
+       -0.0527,
+       0.06
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "ja",
+       "zs_spec"
+      ],
+      "b": [
+       "en",
+       "none",
+       "zs_none"
+      ],
+      "diff": 0.12,
+      "ci95": [
+       0.0434,
+       0.2107
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "en",
+       "zs_spec"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_spec"
+      ],
+      "diff": -0.208,
+      "ci95": [
+       -0.2814,
+       -0.1188
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "en",
+       "zs_spec"
+      ],
+      "b": [
+       "en",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.0853,
+      "ci95": [
+       -0.1736,
+       0.0338
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "zh",
+       "zs_spec"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "zs_spec"
+      ],
+      "diff": -0.1578,
+      "ci95": [
+       -0.2125,
+       -0.0817
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "zh",
+       "zs_spec"
+      ],
+      "b": [
+       "en",
+       "none",
+       "zs_none"
+      ],
+      "diff": -0.0351,
+      "ci95": [
+       -0.1192,
+       0.0633
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "ja",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": 0.0705,
+      "ci95": [
+       -0.0154,
+       0.1558
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_gen"
+      ],
+      "diff": -0.0082,
+      "ci95": [
+       -0.0511,
+       0.0328
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": 0.0622,
+      "ci95": [
+       -0.0221,
+       0.1393
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_gen"
+      ],
+      "diff": 0.0131,
+      "ci95": [
+       -0.0098,
+       0.0513
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": 0.0835,
+      "ci95": [
+       -0.0041,
+       0.1736
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "ja",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_gen"
+      ],
+      "diff": -0.0232,
+      "ci95": [
+       -0.0941,
+       0.0451
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "ja",
+       "pr_gen"
+      ],
+      "b": [
+       "en",
+       "none",
+       "pr_none"
+      ],
+      "diff": 0.0671,
+      "ci95": [
+       -0.0392,
+       0.1503
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "en",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_gen"
+      ],
+      "diff": -0.0176,
+      "ci95": [
+       -0.1293,
+       0.0761
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "en",
+       "pr_gen"
+      ],
+      "b": [
+       "en",
+       "none",
+       "pr_none"
+      ],
+      "diff": 0.0727,
+      "ci95": [
+       -0.0517,
+       0.1572
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "zh",
+       "pr_gen"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_gen"
+      ],
+      "diff": -0.014,
+      "ci95": [
+       -0.094,
+       0.0668
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "zh",
+       "pr_gen"
+      ],
+      "b": [
+       "en",
+       "none",
+       "pr_none"
+      ],
+      "diff": 0.0763,
+      "ci95": [
+       -0.0346,
+       0.1545
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "ja",
+       "pr_spec"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": 0.0157,
+      "ci95": [
+       -0.0657,
+       0.0999
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "pr_spec"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_spec"
+      ],
+      "diff": 0.0125,
+      "ci95": [
+       -0.0326,
+       0.0646
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "en",
+       "pr_spec"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": 0.0282,
+      "ci95": [
+       -0.0601,
+       0.1244
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "pr_spec"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_spec"
+      ],
+      "diff": 0.0112,
+      "ci95": [
+       -0.0307,
+       0.0579
+      ]
+     },
+     {
+      "a": [
+       "ja",
+       "zh",
+       "pr_spec"
+      ],
+      "b": [
+       "ja",
+       "none",
+       "pr_none"
+      ],
+      "diff": 0.0269,
+      "ci95": [
+       -0.0584,
+       0.1231
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "ja",
+       "pr_spec"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_spec"
+      ],
+      "diff": -0.0102,
+      "ci95": [
+       -0.0568,
+       0.0503
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "ja",
+       "pr_spec"
+      ],
+      "b": [
+       "en",
+       "none",
+       "pr_none"
+      ],
+      "diff": 0.0254,
+      "ci95": [
+       -0.0811,
+       0.1248
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "en",
+       "pr_spec"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_spec"
+      ],
+      "diff": -0.0449,
+      "ci95": [
+       -0.1045,
+       0.012
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "en",
+       "pr_spec"
+      ],
+      "b": [
+       "en",
+       "none",
+       "pr_none"
+      ],
+      "diff": -0.0093,
+      "ci95": [
+       -0.1056,
+       0.0693
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "zh",
+       "pr_spec"
+      ],
+      "b": [
+       "ja",
+       "ja",
+       "pr_spec"
+      ],
+      "diff": -0.0497,
+      "ci95": [
+       -0.1126,
+       0.0116
+      ]
+     },
+     {
+      "a": [
+       "en",
+       "zh",
+       "pr_spec"
+      ],
+      "b": [
+       "en",
+       "none",
+       "pr_none"
+      ],
+      "diff": -0.0141,
+      "ci95": [
+       -0.1112,
+       0.0672
+      ]
+     }
+    ]
+   },
+   "stance_price_hike": {
+    "n": 19,
+    "unhappy": 8,
+    "accepting": 11,
+    "rows": [
+     {
+      "review": "ja",
+      "instr": "none",
+      "zs_auc": 0.841,
+      "zs_ci95": [
+       0.615,
+       1.0
+      ],
+      "probe_auc": 0.659,
+      "probe_ci95": [
+       0.381,
+       0.905
+      ]
+     },
+     {
+      "review": "ja",
+      "instr": "ja",
+      "zs_auc": 0.977,
+      "zs_ci95": [
+       0.911,
+       1.0
+      ],
+      "probe_auc": 0.977,
+      "probe_ci95": [
+       0.889,
+       1.0
+      ]
+     },
+     {
+      "review": "ja",
+      "instr": "en",
+      "zs_auc": 0.977,
+      "zs_ci95": [
+       0.898,
+       1.0
+      ],
+      "probe_auc": 0.977,
+      "probe_ci95": [
+       0.897,
+       1.0
+      ]
+     },
+     {
+      "review": "ja",
+      "instr": "zh",
+      "zs_auc": 0.966,
+      "zs_ci95": [
+       0.872,
+       1.0
+      ],
+      "probe_auc": 0.977,
+      "probe_ci95": [
+       0.889,
+       1.0
+      ]
+     },
+     {
+      "review": "en",
+      "instr": "none",
+      "zs_auc": 0.739,
+      "zs_ci95": [
+       0.5,
+       0.938
+      ],
+      "probe_auc": 0.659,
+      "probe_ci95": [
+       0.372,
+       0.889
+      ]
+     },
+     {
+      "review": "en",
+      "instr": "ja",
+      "zs_auc": 0.955,
+      "zs_ci95": [
+       0.828,
+       1.0
+      ],
+      "probe_auc": 0.92,
+      "probe_ci95": [
+       0.75,
+       1.0
+      ]
+     },
+     {
+      "review": "en",
+      "instr": "en",
+      "zs_auc": 0.966,
+      "zs_ci95": [
+       0.867,
+       1.0
+      ],
+      "probe_auc": 0.955,
+      "probe_ci95": [
+       0.841,
+       1.0
+      ]
+     },
+     {
+      "review": "en",
+      "instr": "zh",
+      "zs_auc": 0.932,
+      "zs_ci95": [
+       0.8,
+       1.0
+      ],
+      "probe_auc": 0.886,
+      "probe_ci95": [
+       0.682,
+       1.0
+      ]
+     }
+    ]
+   },
+   "texts_per_sec": 160.4,
+   "texts": 12266,
+   "dim": 2560
+  }
+ }
+}

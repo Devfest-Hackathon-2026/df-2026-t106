@@ -1,0 +1,303 @@
+{
+  "$comment": "Ask-Maps-anything feasibility research, 2026-10-31, 池袋 @35.7295,139.7125,17z, hl=ja authuser=1. Goal: can one question template light up the map from Maps data only (no Places API, no third-party sites)?",
+  "lightSearchRecord": {
+    "$comment": "J[64][i] from /search preload — the record every area search already returns (100 per page). Measured on 20 池袋 ランチ results.",
+    "100_attributes": "FULL attribute set is present in the LIGHT record (77–113 per place) → attribute templates need ZERO detail fetches. Entry: ['/geo/type/establishment_poi/<id>', labelJa, [1,[[1|0,...]]]] (1=yes, 0=no).",
+    "attributeLabelsSeen": [
+      "一人での食事",
+      "静か",
+      "落ち着く",
+      "カジュアル",
+      "子ども向き",
+      "家族向き",
+      "ベビーチェア",
+      "キッズメニュー",
+      "おむつの交換台あり",
+      "車椅子対応の入り口",
+      "車椅子対応のトイレ",
+      "車椅子対応の座席",
+      "車椅子対応の駐車場",
+      "ベジタリアンメニュー",
+      "ビーガンメニュー",
+      "ハラルメニュー",
+      "グルテンフリー メニューのあるお店",
+      "Wi-Fi",
+      "個室",
+      "カウンター席",
+      "テラス席",
+      "禁煙",
+      "犬の同伴可",
+      "予約可",
+      "要予約",
+      "現金のみ",
+      "クレジットカード",
+      "デビットカード",
+      "NFC モバイル決済",
+      "PayPay",
+      "d払い",
+      "楽天ペイ",
+      "au PAY",
+      "交通系 IC カード",
+      "深夜の食事可",
+      "朝食",
+      "ブランチ",
+      "ランチ",
+      "ディナー",
+      "テイクアウト",
+      "宅配",
+      "大学生に人気",
+      "旅行者に人気",
+      "LGBTQ フレンドリー",
+      "トランスジェンダー対応",
+      "女性オーナー",
+      "点字メニュー",
+      "集団補聴用のヒアリングループ",
+      "価格帯",
+      "デート",
+      "記念日",
+      "グループ客",
+      "飲み放題",
+      "食べ放題"
+    ],
+    "attributesMissing": [
+      "電源/コンセント (power outlets) — no such attribute",
+      "英語メニュー / English menu — no such attribute",
+      "長居OK — no such attribute"
+    ],
+    "142_reviewSnippet": "p[142][1][0][1][0][0] = ONE review quote Maps picked for the query. Present on ~every result, but it only matches the keyword when Maps found a review hit. Gate: snippet must contain the template keyword (regex) before Nano sees it.",
+    "142_hitRates": {
+      "池袋 電源 カフェ": "7/20 snippets contain 電源 (e.g. 全席電源がある / 電源も多数あり / 色々なところに電源があってPC作業もしやすい)",
+      "池袋 Wi-Fi カフェ": "3/20 contain Wi-Fi",
+      "池袋 子連れ ランチ": "7/20 contain 子連れ/子供 (e.g. ベビーチェア、お子様ランチがあり、子連れでも安心です)",
+      "池袋 静か カフェ": "1/20 contain 静か",
+      "池袋 ベジタリアン": "3/20 contain ベジ/ヴィーガン",
+      "池袋 英語 メニュー レストラン": "5/20 contain 英語 but 14/20 results are 英語学校 (category drift) → filter by food categories first; keyword too weak",
+      "池袋 一人 ランチ / 池袋 一人でも ランチ": "0/20 snippets contain 一人 → use the attribute 一人での食事 instead",
+      "池袋 車椅子 レストラン": "0/20 → attribute 車椅子対応の入り口 instead",
+      "池袋 おひとりさま": "0 results"
+    },
+    "ratingFields": "[4][7] rating, [4][8] review count (for 方向二 lifetime vs recent: recent needs the DOM review scrape, scraper.ts, newest sort)"
+  },
+  "detailRecord": {
+    "175_featuredReviews": "Only ~10 reviews (8–15, ~2–5k chars) incl. owner replies/translations; ~1 of 10 mentions any template keyword → too thin for review-based templates at area scale. Review entries: arrays whose [0][0] is a 'Ci…' review id; path 175.7.0.0 on ハース池袋.",
+    "153_topics": "dish-centric (ガレット:212, 席:71, デート:17, 学生証:8) — occasionally useful (席, 個室, 子供) but not reliable for templates.",
+    "reviewSearchEndpoint": "The Maps UI review search (クチコミを検索) could not be captured: /maps/rpc/listugcposts replied 403 to hand-built pb; the UI's own call was not visible to fetch/XHR hooks, performance entries or the network tool (only batchexecute qv9Egd logging). NOT usable. Alternatives: the [142] snippet via Maps search (area), or the DOM review scrape on the open place (scraper.ts)."
+  },
+  "nano": {
+    "intentToTemplate": "32/32 correct (zh/ja/en free text → enum of 8 templates + none), 1.7–3.5 s each, responseConstraint enum, expectedInputs ja/en (zh NOT accepted as expectedInputs language, zh text still works).",
+    "intentCases": "一個人吃不尷尬→solo, 有插座可以工作兩小時→work, 小孩哭也不會被瞪→kids, 輪椅進得去→wheelchair, 素食者有主餐→vegetarian, my parents don't speak Japanese→english_menu, 可以用 Suica 付→cashless, 終電後に食べられる→late_night, 便宜的午餐/犬同伴OK/要停車/禁煙の店→none",
+    "snippetJudge_work": "Template 'work' on 20 [142] snippets of 池袋 電源 カフェ + 5 synthetic controls. Keyword snippets (電源/充電/PC作業): 8 yes with exact quotes (全席電源がある, 電源も多数あり, 席ごとに電源タップ, 充電できるソファ席, パソコン作業している人などもいて), 1 unsure (PRONTO 電源席の増設が必要 — right call). Non-keyword snippets: 11/11 unsure (no false positives). Controls: 電源はありません→no, コンセントは使えない→no, 騒がしかった→no, 美味しくて親切→unsure, 電源ドリルの音→no. 4–6 s per prompt alone (12–18 s while another Nano job shared the queue). Add 充電/PC作業/パソコン to the keyword gate.",
+    "fullReviewJudge_work": "Same question with ALL featured reviews of 6 ランチ places (2–4k chars): 5 unsure, 1 no (キッチンABC: 行列/回転), 8–18 s each; quotes on 'unsure' are sometimes not in the input → only trust quotes on yes/no (same gate as nanoLunch.ts)."
+  },
+  "conclusion": {
+    "tierA_attributes": "solo, kids, wheelchair, vegetarian/vegan/halal, cashless (PayPay/IC/card vs 現金のみ), quiet(静か), late_night(深夜の食事可 + hours), wifi, private room, dog OK, non-smoking: all deterministic from the LIGHT search record → whole area in 1–2 requests, no Nano.",
+    "tierB_snippets": "work(電源/コンセント/Wi-Fi), kids (子連れ), vegetarian (ヴィーガン) can ALSO be found via Maps keyword search + [142] snippet + keyword gate + Nano polarity judge + quote-in-input gate.",
+    "notFeasibleAtAreaScale": "english_menu (no attribute, weak keyword, category drift) → place-page only (DOM review scrape). 'not awkward alone' nuance → use attribute 一人での食事 + カウンター席.",
+    "templates8": [
+      "solo",
+      "work",
+      "kids",
+      "wheelchair",
+      "vegetarian",
+      "cashless",
+      "late_night",
+      "lunch_budget (existing)"
+    ]
+  },
+  "attributeIds_2026-10-31": {
+    "$comment": "Verified on 20 池袋 カフェ light records (hl=ja). Flag entries: n[2] = [1, [[1|0, ...]]] (1 yes, 0 no). Enum/list twins with the same label carry no flag: wi_fi ('無料 Wi-Fi あり'), pay_credit_card_types_accepted (card brands), price range, parking. counts = y/n over 20 cafes.",
+    "suitable_for_solo_dining": "一人での食事 y11",
+    "has_counter_seating": "カウンター席 y4",
+    "suitable_for_working_on_laptop": "ノートパソコンでの作業 y4 n1",
+    "feels_quiet": "静か y12",
+    "has_wi_fi": "Wi-Fi y8 (twin wi_fi = enum)",
+    "serves_dessert": "デザート y15",
+    "serves_dessert_notable": "デザートがおいしい y9",
+    "suitable_for_groups": "グループ客 n2",
+    "has_private_dining_room": "個室 n18",
+    "popular_with_students": "大学生に人気 y2",
+    "suitable_for_dates": "デート y11 n1",
+    "feels_romantic": "ロマンチック y2 n3",
+    "suitable_for_special_occasions": "記念日 y1 n8",
+    "serves_vegetarian": "ベジタリアンメニュー n18",
+    "serves_vegan": "ビーガンメニュー n18",
+    "pay_credit_card": "クレジットカード y13 n1",
+    "pay_debit_card": "デビットカード y8 n2",
+    "pay_mobile_nfc": "NFC モバイル決済 y11 n2",
+    "pay_epayment_paypay": "PayPay y14",
+    "pay_epayment_rakuten_pay": "楽天ペイ y10 n1",
+    "pay_epayment_aupay": "au PAY y4 n2",
+    "pay_epayment_dbarai": "d払い y3 n2",
+    "pay_epayment_transit_ic": "交通系 IC カード y5 n2",
+    "requires_cash_only": "現金のみ n18"
+  },
+  "harness_2026-10-31": {
+    "$comment": "scripts/ask-harness.ts on 池袋 @35.7295,139.7125,17z, one template at a time, round 0 queries (3 queries x 2 pages of 100), memory stores. kw = places whose [142] quote matches the template keyword. Nano ms = per judgment.",
+    "solo": {
+      "found": 485,
+      "menu": 171,
+      "likely": 55,
+      "none": 2,
+      "unsure": 256,
+      "fetches": 0,
+      "nano": 0,
+      "sec": 18
+    },
+    "cashless": {
+      "found": 485,
+      "menu": 410,
+      "none(cash only)": 24,
+      "unsure": 50,
+      "fetches": 0,
+      "sec": 19,
+      "note": "weak filter: most places take some cashless payment; value is flagging the cash-only ones"
+    },
+    "date": {
+      "found": 332,
+      "kw": 45,
+      "menu": 140,
+      "likely": 21,
+      "none": 8,
+      "unsure": 162,
+      "nano": 18,
+      "nanoMs": 4334,
+      "sec": 97,
+      "review": "18 judgments all reasonable; 2 were parks (南池袋公園, 池袋西口公園) → FOOD_PLACE category gate added"
+    },
+    "chat": {
+      "found": 369,
+      "kw": 82,
+      "menu": 172,
+      "likely": 47,
+      "none": 10,
+      "unsure": 140,
+      "nano": 21,
+      "nanoMs": 3273,
+      "sec": 86,
+      "review": "reasonable; borderline: 永坂更科 'customers chat too much' → no"
+    },
+    "tea": {
+      "found": 225,
+      "kw": 91,
+      "menu": 200,
+      "likely": 20,
+      "unsure": 5,
+      "nano": 3,
+      "nanoMs": 2302,
+      "sec": 25,
+      "note": "cafe category + open 14-17 settles almost all"
+    },
+    "work_v1": {
+      "found": 215,
+      "kw": 90,
+      "menu": 57,
+      "likely": 85,
+      "none": 9,
+      "unsure": 64,
+      "nano": 33,
+      "nanoMs": 3505,
+      "sec": 132,
+      "review": "FLAW: 'Wi-Fiがある' alone gave yes for くら寿司 / はなまるうどん → Wi-Fi removed from keyword, attrs and query; shot added (Wi-Fi only → unsure)"
+    },
+    "vegetarian": {
+      "found": 214,
+      "kw": 27,
+      "menu": 17,
+      "likely": 15,
+      "none": 99,
+      "unsure": 83,
+      "nano": 22,
+      "nanoMs": 2059,
+      "sec": 58,
+      "review": "yes when a review says the place accommodated a vegetarian/vegan; partial cases unsure; vague + quote-not-in-input gates fired"
+    },
+    "outlet": {
+      "found": 211,
+      "kw": 82,
+      "review": "yes 59, no 8 (e.g. Starbucks 'no seats with outlets'), unsure 4 of 72 judged so far; borderline: ガスト 'outlet seats are limited' → no",
+      "speed": "~4 s per judgment → ~5 min for 82 keyword places in one area"
+    }
+  },
+  "intent_2026-10-31": {
+    "multiTemplate": "array schema (1-3 ids + none), 10 templates, few-shot 6: 35/36 on zh/ja/en incl. multi-template sentences, median 1.8 s, max 3.7 s. Miss: '和朋友吃素食下午茶' → chat,tea (vegetarian dropped). v1 prompt over-selected outlet for laptop work → 'fewer is better' + outlet only when charging is mentioned + laptop shot."
+  },
+  "compound_conditions_2026-11-01": {
+    "$comment": "Can one request carry several conditions (安靜的約會 = date + quiet)? 池袋 @35.7295,139.7125,17z, hl=ja.",
+    "R1_attribute_modifiers": {
+      "sample": "522 places from レストラン/カフェ/居酒屋/バー/イタリアン/和食 (100 each)",
+      "flags_yes/no": {
+        "feels_casual": "246/4",
+        "feels_cozy 落ち着く": "232/0",
+        "feels_contemporary": "206/13",
+        "suitable_for_groups": "200/10",
+        "suitable_for_dates": "176/26",
+        "feels_quiet 静か": "106/61",
+        "has_private_dining_room 個室": "79/342",
+        "feels_hip 今っぽい": "76/87",
+        "suitable_for_special_occasions 記念日": "65/94",
+        "welcomes_children": "55/373",
+        "feels_romantic": "46/212",
+        "serves_late_night_food": "86/198",
+        "suitable_for_working_on_laptop": "23/14"
+      },
+      "intersections_from_attributes_only": {
+        "date": 177,
+        "date∩quiet": 69,
+        "date∩cozy": 131,
+        "date∩romantic": 45,
+        "date∩private": 32,
+        "solo∩quiet": 44,
+        "laptop∩quiet": 11,
+        "groups∩private": 49,
+        "date∩quiet∩romantic": 32
+      }
+    },
+    "R2_compound_query_snippets": {
+      "$comment": "40 results per query; a = modifier keyword in the [142] quote, b = base keyword, both = both",
+      "静か デート": "a24 b14 both4",
+      "雰囲気 デート": "a27 b7 both4",
+      "夜景 デート": "a27 b1 both0",
+      "個室 デート": "a36 b1 both0",
+      "静か カフェ": "a26 b15 both6",
+      "静か 作業 カフェ": "a24 b16 both4",
+      "にぎやか 居酒屋": "a3 both3",
+      "finding": "Maps picks the quote for the more specific word (the modifier); one quote rarely covers both → answer each condition separately and intersect, don't expect one sentence to prove a compound."
+    },
+    "R3_multi_aspect_nano": {
+      "cases": "12 crafted sentences with known date/quiet labels (all yes/no/unsure combos)",
+      "one_prompt_two_aspects": "10/12 both right, 1.6 s/place; errors: 'パスタが美味しい' → date yes (false positive), 'ワイワイ' → quiet unsure",
+      "two_prompts_one_aspect": "10/12 both right, 2.0 s/place; errors: 'BGMが大きくて会話がしづらい' → date no, '静かすぎて…デートには微妙' → quiet no",
+      "finding": "same accuracy, one prompt ~20% faster; keep the per-aspect quote/keyword gate either way"
+    },
+    "R4_intent_vocabulary": {
+      "flat_10": "20/20 (modifiers correctly dropped), 1.1 s",
+      "flat_20 (10 bases + 10 modifiers)": "17/20, 1.5 s: drops the base (安靜可以讀書 → quiet only; おしゃれな雰囲気のデート → mood only), confuses chat/groups",
+      "structured purpose + ≤2 modifiers": "purpose 19/20 (only any/none mix-up) incl. every compound; modifiers over-added 3/20 (作業→lively, 午餐→casual, 蛋糕→quiet), 1.3 s",
+      "fix": "structured schema + a deterministic cue gate per modifier (modifier kept only if its word appears in the sentence, e.g. quiet needs 安靜|靜|静か|落ち着|quiet)"
+    }
+  },
+  "modifiers_2026-11-01": {
+    "$comment": "8 modifiers built in lib/questions.ts (MODIFIER_ORDER), validated with scripts/ask-harness.ts on 池袋 (one template at a time).",
+    "late_night": "attr serves_late_night_food + hours past 23:30: 512 places, 130 sure / 206 likely / 158 none, no Nano, 17 s",
+    "casual": "attr feels_casual: 223 sure, no Nano, 16 s",
+    "quiet": "attr feels_quiet (+ feels_cozy likely) + snippet: 297 found, 193 keyword quotes, 88 Nano → 80 yes / 1 no / 7 unsure, all sampled right; 217 s uncapped",
+    "private_room": "attr has_private_dining_room + snippet: right incl. '簡易な仕切り' → no",
+    "view": "snippet only (+ rooftop label): 26 keyword quotes, high floors/window seats yes, 'watching passers-by' unsure",
+    "lively": "feels_quiet=0 counts as likely + snippet: few results (2 queries returned 86 places), judgments right",
+    "mood_v1": "keyword incl. bare 雰囲気 → 218/303 hits, Nano yes to generic praise → too broad",
+    "mood_v2": "specific words only → 99 hits, but おしゃれ of plating / gift boxes / drinks still yes",
+    "mood_v3": "おしゃれ only next to a word for the space (店内/内装/空間/雰囲気/お店…) + ムード/ロマンチック/隠れ家: 82 hits, plating/gift/drink gone",
+    "upscale_v1": "高級 = ingredients (高級寿司がお手頃, 高級部位の食べ放題, A5和牛) → false yes",
+    "upscale_v2": "高級感/高級店/接待/特別な日/格式 only + shot: 14 yes / 8 unsure, the unsure ones are 'not an upscale place' or ambiguous",
+    "intent_real_code": "scripts/intent-harness.ts, 24 sentences: Nano alone 21/24 (all misses dropped a condition), rules alone 23/24 (missed 飲み会), union (shipped) 24/24, median 1.5 s",
+    "nano_budget": "Nano filter (skip places another selected condition already rules out) + 40 judgments per scan, nearest first; skipped places are judged again when a condition is removed or on 載入更多"
+  },
+  "place_types_2026-11-01": {
+    "$comment": "Place type (咖啡廳, 拉麵 …) as a hard condition. 池袋 @35.7295,139.7125,17z, 19 type searches × 200 results, 2669 distinct places (scripts/category-harness.ts).",
+    "categories": "A light record carries several hl=ja categories (寿司店 + 和食店 + 居酒屋); a type matches any of them. Most common: 居酒屋 500, レストラン 425, カフェ・喫茶 242, 和食店 231, バー 220, 中華料理店 178, ラーメン屋 166, 焼肉店 163, イタリア料理店 155, 寿司店 124, インド料理店 124, 韓国料理店 122, 定食屋 112, 洋菓子店 110, カレー店 96, コーヒーショップ・喫茶店 94, ベーカリー 88, 洋食レストラン 86, フランス料理店 76, タイ料理店 69.",
+    "precision_of_type_search": "share of the 200 results carrying the type's own category: カフェ 136+69 (カフェ・喫茶 / コーヒーショップ・喫茶店), 居酒屋 199, バー 156, ラーメン 161, 寿司 122, 焼肉 153, イタリアン 142, 中華料理 167, ベーカリー 83 (+洋菓子店 81).",
+    "noise": "バー search: カラオケ バー 32, ガールズバー 25 → ガールズバー excluded; カフェ search: コスプレカフェ 19 → excluded (also 猫/ネット/漫画); フレンチ search: ネイルサロン 26 (French nails) → removed by the FOOD_PLACE gate; 油そば is ramen not 和食 (そば).",
+    "intent": "37–38 sentences (scripts/intent-harness.ts). Nano with a `type` field: added a type the sentence never named in 9/37 (ラーメン ×4, カフェ ×2 …), after a stricter prompt in 17/37 (copied the last shot's バー, even 要停車 → bar). → type comes from the word table only (latest-ending match wins: 法式甜點 → sweets); Nano prompt unchanged. Final run: 36/38 (misses: 便宜的燒肉 → Nano adds lunch; 吃點日本料理以外的 → negation → washoku). Words added from Nano's two good guesses: bare 麵/麺 → ramen, 喝一杯/喝酒 → bar.",
+    "queries": "With a type, other questions' searches are aimed: '静か カフェ' → '静か 居酒屋', 'レストラン' → 'ラーメン', type-named queries of another type dropped (ワインバー with 拉麵), keywords get the noun ('ベジタリアン ラーメン'); a query runs once, empty rounds skipped."
+  }
+}

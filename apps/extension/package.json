@@ -1,0 +1,29 @@
+{
+  "name": "@gmap/extension",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "wxt",
+    "build": "wxt build",
+    "zip": "wxt zip",
+    "compile": "tsc --noEmit",
+    "postinstall": "wxt prepare",
+    "test": "esbuild \"tests/*.test.ts\" --bundle --platform=node --format=esm --outdir=.output/tests --out-extension:.js=.mjs --log-level=warning && node --test \".output/tests/*.test.mjs\""
+  },
+  "dependencies": {
+    "@gmap/ui": "*",
+    "firebase": "^13.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@wxt-dev/module-react": "^1.1.3",
+    "tailwindcss": "^4.1.11",
+    "typescript": "~5.8.3",
+    "wxt": "^0.20.7"
+  }
+}

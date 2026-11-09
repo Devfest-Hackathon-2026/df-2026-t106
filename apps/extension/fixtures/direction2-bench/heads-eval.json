@@ -1,0 +1,65 @@
+{
+ "price": {
+  "n": 109,
+  "cv_ap": 0.87,
+  "threshold": 0.668,
+  "cv_precision_at_threshold": 0.822,
+  "cv_recall_at_threshold": 0.8,
+  "false_alarm_on_random": 0.0
+ },
+ "surprise_charge": {
+  "n": 52,
+  "cv_ap": 0.944,
+  "threshold": 0.649,
+  "cv_precision_at_threshold": 0.913,
+  "cv_recall_at_threshold": 0.8,
+  "false_alarm_on_random": 0.0
+ },
+ "quality_decline": {
+  "n": 71,
+  "cv_ap": 0.833,
+  "threshold": 0.648,
+  "cv_precision_at_threshold": 0.704,
+  "cv_recall_at_threshold": 0.8,
+  "false_alarm_on_random": 0.0032
+ },
+ "hygiene": {
+  "n": 63,
+  "cv_ap": 0.93,
+  "threshold": 0.628,
+  "cv_precision_at_threshold": 0.864,
+  "cv_recall_at_threshold": 0.8,
+  "false_alarm_on_random": 0.0032
+ },
+ "service": {
+  "n": 113,
+  "cv_ap": 0.916,
+  "threshold": 0.684,
+  "cv_precision_at_threshold": 0.827,
+  "cv_recall_at_threshold": 0.8,
+  "false_alarm_on_random": 0.0
+ },
+ "improvement": {
+  "n": 32,
+  "cv_ap": 0.735,
+  "threshold": 0.312,
+  "cv_precision_at_threshold": 0.553,
+  "cv_recall_at_threshold": 0.8,
+  "false_alarm_on_random": 0.0126
+ },
+ "staff_change": {
+  "n": 25,
+  "cv_ap": 0.587,
+  "threshold": 0.292,
+  "cv_precision_at_threshold": 0.362,
+  "cv_recall_at_threshold": 0.8,
+  "false_alarm_on_random": 0.0063
+ },
+ "macro_ap": 0.831,
+ "price_stance": {
+  "n": 109,
+  "unhappy": 60,
+  "accepting": 49,
+  "cv_auroc": 0.961
+ }
+}
