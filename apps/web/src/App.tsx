@@ -15,7 +15,7 @@ import {
  * Numbers come from our own measurements (2026-11-09 in Shibuya for the demo and the 権八 / 道玄坂 漁 comparison; 2026-11-08 for the general-AI comparison).
  */
 const REPO_URL = "https://github.com/Devfest-Hackathon-2026/df-2026-t106";
-const DEMO_VIDEO = "/video/joren-demo.mp4"; // 1:45, H.264 1080p, no sound: submission/joren-demo-shibuya-v2.mp4 (already +faststart)
+const DEMO_VIDEO = "/video/joren-demo.mp4"; // 1:33, H.264 1080p, no sound: submission/joren-demo-shibuya-v3.mp4 re-encoded (crf 24, +faststart)
 const MAPS_URL = "https://www.google.com/maps/@35.6578,139.6978,17z?hl=ja"; // 渋谷駅西側: the demo's view
 const EXAMPLES = ["静かなデート", "一人で電源が使えるカフェ", "深夜に一人でごはん"]; // = the panel's examples (i18n/ja.ts)
 
@@ -55,9 +55,9 @@ function Header({ page }: { page: Page }) {
 
 const ASK_STEPS: Step[] = [
   { label: "理解", sub: "ランチ + 和食", state: "done" },
-  { label: "検索", sub: "388 店", state: "done" },
-  { label: "判断", sub: "26 店に印", state: "done" },
-  { label: "表示", sub: "≤ ¥1,000", state: "active" },
+  { label: "検索", sub: "380 店", state: "done" },
+  { label: "判断", sub: "26 店が該当", state: "done" },
+  { label: "表示", sub: "≤ ¥1,000 · 10 店", state: "active" },
 ];
 const PICKS = [
   { mark: "A", tone: "bg-yellow-soft", name: "権八", price: "¥900 · 焼き鳥丼", pill: "外国語 73%", bad: true },
@@ -87,7 +87,7 @@ function AskPanel() {
           </div>
         ))}
       </div>
-      <p className="m-0 text-[13px] leading-relaxed text-body">388 店を判断して 26 店に印。どちらも 1,000 円以下ですが、クチコミの言語がまったく違います。</p>
+      <p className="m-0 text-[13px] leading-relaxed text-body">380 店を判断して、1,000 円以下の和食ランチは 10 店。この 2 店はどちらも 1,000 円以下ですが、クチコミの言語がまったく違います。</p>
     </div>
   );
 }
@@ -144,10 +144,10 @@ function Hero() {
 }
 
 const CHAPTERS = [
-  { t: "0:00", s: 0, tone: "bg-blue-soft", title: "ひと言で聞く", sub: "Gemini Nano が文を条件に置き換える" },
-  { t: "0:28", s: 28, tone: "bg-red-soft", title: "印と理由を見る", sub: "388 店を判断して 26 店に印。黄色は Gemini Nano がクチコミを読んだ判断" },
-  { t: "0:47", s: 47, tone: "bg-yellow-soft", title: "お店の今", sub: "クチコミの急増、警告サイン、外国語の割合" },
-  { t: "1:12", s: 72, tone: "bg-green-soft", title: "地元の人が通うお店", sub: "道玄坂 漁：評価は安定、クチコミの 97% が日本語" },
+  { t: "0:00", s: 0, tone: "bg-blue-soft", title: "ひと言で聞く", sub: "Gemini Nano と規則が、文を 3 つの条件に置き換える" },
+  { t: "0:14", s: 14, tone: "bg-red-soft", title: "印と理由を見る", sub: "380 店を判断して、1,000 円以下は 10 店。黄色は Gemini Nano がクチコミを読んだ判断" },
+  { t: "0:51", s: 51, tone: "bg-yellow-soft", title: "お店の今", sub: "クチコミの急増、警告サイン、外国語の割合" },
+  { t: "1:17", s: 77, tone: "bg-green-soft", title: "地元の人が通うお店", sub: "権八と道玄坂 漁を並べる：外国語 73% と日本語 97%" },
 ];
 
 /** The demo video plays in place: the yellow button starts it, a chapter card jumps to its time. */
@@ -167,17 +167,17 @@ function Demo() {
       <div className="container">
         <SectionHeading
           index="01" kicker="Demo"
-          title={<>2 分で、<br />使い方がわかる。</>}
-          desc="はじめて東京に来た日、渋谷で「1000円以下の和食ランチ」と聞いてみました。画面はすべて実際の動作の録画です（編集は待ち時間のカットと、画面に「早送り」と出る区間だけ）。"
+          title={<>1 分半で、<br />使い方がわかる。</>}
+          desc="はじめて東京に来た日、渋谷で「1000円以下の和食ランチ」と聞いてみました。画面はすべて実際の動作の録画です（編集は待ち時間のカット、拡大と説明の重ね表示、画面に「早送り」と出る区間、2 店を横に並べた比較だけ）。"
         />
         <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
           <div className="relative aspect-video overflow-hidden rounded-[36px] border-2 border-ink bg-ink">
             <video ref={video} src={DEMO_VIDEO} poster="/img/demo-poster.webp" preload="none" playsInline muted controls={started}
               onPlay={() => setStarted(true)} className="block h-full w-full object-contain"
-              aria-label="デモ動画：渋谷で「1000円以下の和食ランチ」と聞く（1 分 45 秒、音声なし、字幕つき）" />
+              aria-label="デモ動画：渋谷で「1000円以下の和食ランチ」と聞く（1 分 33 秒、音声なし、字幕つき）" />
             {!started && (
               <>
-                <div className="pointer-events-none absolute top-5 left-5"><Chip variant="ink">Video 1:45</Chip></div>
+                <div className="pointer-events-none absolute top-5 left-5"><Chip variant="ink">Video 1:33</Chip></div>
                 <button type="button" onClick={() => playAt(0)} aria-label="デモ動画を再生"
                   className="absolute top-1/2 left-1/2 grid h-[104px] w-[104px] -translate-x-1/2 -translate-y-1/2 cursor-pointer place-items-center rounded-full border-2 border-ink bg-yellow-soft transition-colors hover:bg-yellow-half">
                   <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden><path d="M8 5l11 7-11 7z" fill="#1e1e1e" stroke="#1e1e1e" strokeWidth={2.5} strokeLinejoin="round" /></svg>
