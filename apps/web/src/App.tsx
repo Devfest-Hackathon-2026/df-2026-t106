@@ -344,7 +344,7 @@ function How() {
         <SectionHeading
           index="04" kicker="How it works"
           title={<>判断は、<br />パソコンの中で。</>}
-          desc="判断はすべて、Chrome に内蔵された Gemini Nano と規則で、あなたのパソコンの中で行います。当チームのクラウドを使う拡張機能は、ポップアップのスイッチをオンにしたときだけ動きます。"
+          desc="判断はすべて、Chrome に内蔵されたオンデバイス AI（エッジ AI）の Gemini Nano と規則で、あなたのパソコンの中で行います。当チームのクラウドを使う拡張機能は、ポップアップのスイッチをオンにしたときだけ動きます。"
         />
         <div className="mb-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {FEATURES.map((f) => (
@@ -359,7 +359,7 @@ function How() {
           <div className="flex min-w-0 flex-col gap-5 rounded-[36px] border-2 border-ink bg-green-soft p-7">
             <div className="flex flex-wrap items-center gap-3">
               <span className="rounded-full border-2 border-ink bg-white px-4 py-1.5 text-lg font-bold">基本機能</span>
-              <span className="font-mono text-xs font-bold tracking-[.12em]">ON-DEVICE · パソコンの中</span>
+              <span className="font-mono text-xs font-bold tracking-[.12em]">ON-DEVICE · エッジ AI · パソコンの中</span>
             </div>
             {BASIC.map((b) => (
               <div key={b.tag} className="flex items-start gap-4">
@@ -371,8 +371,9 @@ function How() {
               </div>
             ))}
             <div className="mt-auto flex flex-wrap gap-2">
-              <CheckPill>当チームのクラウドへの送信ゼロ</CheckPill>
+              <CheckPill>私たちのサーバーに送らない</CheckPill>
               <CheckPill>ログイン不要</CheckPill>
+              <CheckPill>利用者が増えてもサーバー費用 0 円</CheckPill>
               <CheckPill>専用 GPU なしのノート PC で動く</CheckPill>
             </div>
           </div>
@@ -748,7 +749,7 @@ export default function App() {
           <>
             <Hero />
             <Marquee
-              top={["Gemini Nano", "Google Maps", "Chrome Extension", "Firebase", "Vertex AI", "On-device AI"]}
+              top={["Gemini Nano", "Google Maps", "Chrome Extension", "Firebase", "Vertex AI", "On-device AI", "Edge AI"]}
               bottom={["#dfGDGoCHack26", "一見さん", "常連", "Ask", "Store now"]}
             />
             <Demo />
